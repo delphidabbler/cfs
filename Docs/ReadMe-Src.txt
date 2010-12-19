@@ -41,9 +41,8 @@ successfully. They are:
 
 All the libraries need to be available on Delphi's library path.
 
-NOTE: None of the the additional components need to be installed in Delphi's
-component palette since none are required at design time - they are all created
-at run time as required.
+All components must be installed in the Delphi Component Palette if the program
+is to be compiled from the IDE.
 
 The program also requires two binary files in order to compile (provided):
 
@@ -61,9 +60,9 @@ automate full or partial builds. It must be called with a command line switch.
 Switches are:
 
   all    - Builds everything.
-  res    - Builds binary resource files only. Requires VIEd, HTMLRes and BRCC32.
+  res    - Builds binary resource files only. Requires VIEd and BRCC32.
            Creates Version.res and Resources.res from Version.vi and
-           Resources.res respectively.
+           Resources.rc respectively.
   pas    - Builds the Delphi Pascal project. Requires DCC32.
   exe    - Builds program executable from resource and Pascal files. Same as
            "Build res" followed by "Build pas".

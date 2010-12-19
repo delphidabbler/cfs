@@ -17,8 +17,8 @@ object ViewerDlg: TViewerDlg
   object pnlView: TPanel
     Left = 0
     Top = 0
-    Width = 713
-    Height = 380
+    Width = 705
+    Height = 378
     Align = alClient
     BevelOuter = bvNone
     Color = clAppWorkSpace
@@ -26,16 +26,16 @@ object ViewerDlg: TViewerDlg
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 380
-    Width = 713
+    Top = 378
+    Width = 705
     Height = 33
     Align = alBottom
     TabOrder = 1
     DesignSize = (
-      713
+      705
       33)
     object btnClose: TButton
-      Left = 634
+      Left = 626
       Top = 5
       Width = 75
       Height = 25
@@ -45,7 +45,7 @@ object ViewerDlg: TViewerDlg
       TabOrder = 1
     end
     object btnHelp: TButton
-      Left = 551
+      Left = 543
       Top = 5
       Width = 75
       Height = 25
@@ -67,5 +67,13 @@ object ViewerDlg: TViewerDlg
       ShortCut = 27
       OnExecute = actCloseExecute
     end
+  end
+  object wsViewer: TPJUserWdwState
+    AutoSaveRestore = True
+    Options = [woFitWorkArea]
+    OnReadData = wsViewerReadData
+    OnSaveData = wsViewerSaveData
+    Left = 37
+    Top = 8
   end
 end

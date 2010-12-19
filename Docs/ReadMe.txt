@@ -24,9 +24,12 @@ old program.
     CFS-Setup-x.x.x.exe. The installer is a standard wizard style Windows
     installer. Follow the instructions in the wizard. You must accept the
     program's license to proceed. Once the license is accepted you can configure
-    the installation directory, the program group name, optionally display a
-    desktop icon. Once the installation has completed you have the option to
-    display ReadMe.txt and to start the program.
+    the installation directory and the program group name. Once the installation
+    has completed you have the option to display ReadMe.txt and to start the
+    program.
+    
+    NOTE: The installer requires admininstrator privileges. Windows Vista will
+    request elevation.
 
 
 Removing the program
@@ -39,6 +42,9 @@ Removing the program
 
 3.  Once you have confirmed this action the program will now be uninstalled.
     When the process is complete a message will be displayed.
+    
+    NOTE: The uninstaller requires admininstrator privileges. Windows Vista will
+    request elevation.
 
     
 Source code

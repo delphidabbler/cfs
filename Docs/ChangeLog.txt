@@ -1,3 +1,12 @@
+Release 4.0.1 of 04 May 2008
+CFS.exe v4.0.1 of 04 May 2008
++ Fixed bug which meant window size and state were not being stored.
++ Fixed display problem in some viewers.
++ Changed button alignment in view diaolog box.
++ Made locale information extraction safe across all Windows OSs.
++ Fixed minor errors in help file style sheet.
++ Fixed minor error version information.
+
 Release 4.0 of 24 Mar 2008
 CFS.exe v4.0 of 24 Mar 2006
 + Major update.

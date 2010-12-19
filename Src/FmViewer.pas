@@ -10,6 +10,9 @@
  *   - TPJUserWdwState Release 5.3 or later
  *
  * v1.0 of 24 Mar 2008  - Original version.
+ * v1.1 of 03 May 2008  - Bug fix. Window wasn't saving or restoring its
+ *                        settings. Added missing TPJCBViewer component.
+ *                      - Adjusted button position to suit Vista window border.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -29,7 +32,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 1997-2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None.
@@ -66,6 +69,7 @@ type
     btnHelp: TButton;
     pnlBottom: TPanel;
     pnlView: TPanel;
+    wsViewer: TPJUserWdwState;
     procedure actHelpExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure wsViewerReadData(Sender: TObject; var Data: TPJWdwStateData);

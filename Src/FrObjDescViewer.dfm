@@ -68,7 +68,7 @@ object ObjDescViewerFrame: TObjDescViewerFrame
       object edCLSID: TEdit
         Left = 116
         Top = 8
-        Width = 229
+        Width = 237
         Height = 21
         TabStop = False
         ParentColor = True
@@ -79,7 +79,7 @@ object ObjDescViewerFrame: TObjDescViewerFrame
       object edDrawAspect: TEdit
         Left = 116
         Top = 32
-        Width = 229
+        Width = 237
         Height = 21
         TabStop = False
         ParentColor = True
@@ -90,7 +90,7 @@ object ObjDescViewerFrame: TObjDescViewerFrame
       object edSize: TEdit
         Left = 116
         Top = 56
-        Width = 229
+        Width = 237
         Height = 21
         TabStop = False
         ParentColor = True

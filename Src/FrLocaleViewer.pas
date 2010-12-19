@@ -4,6 +4,10 @@
  * Implements a viewer frame that displays selected information about a locale.
  *
  * v1.0 of 10 Mar 2008  - Original version.
+ * v1.1 of 04 May 2008  - Added code to refresh scroll box to ensure contained
+ *                        labels display correctly.
+ *                      - Changed to get locale information from ULocale unit.
+ *                        This code handles different OSs correctly.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -51,34 +55,34 @@ type
     edit controls. Supports selecting and copying text from each edit control.
   }
   TLocaleViewerFrame = class(TFrame)
-    pnlView: TPanel;
-    sbView: TScrollBox;
-    lblLangID: TLabel;
-    lblLangName: TLabel;
-    lblEngLangName: TLabel;
-    lblAbbrevLangName: TLabel;
-    edLangID: TEdit;
-    edLangName: TEdit;
-    edISOLangName: TEdit;
-    edAbbrevLangName: TEdit;
-    edCountryCode: TEdit;
-    lblCountryCode: TLabel;
-    lblCountryName: TLabel;
-    edCountryName: TEdit;
-    edEngCountryName: TEdit;
-    lblEngCountryName: TLabel;
-    lblAbbrevCountryName: TLabel;
-    edAbbrevCountryName: TEdit;
-    edDefCodePage: TEdit;
-    lblDefCodePage: TLabel;
-    lblLanguage: TLabel;
-    lblCountry: TLabel;
-    alView: TActionList;
     actCopy: TEditCopy;
     actSelectAll: TEditSelectAll;
-    mnuView: TPopupMenu;
+    alView: TActionList;
+    edAbbrevCountryName: TEdit;
+    edAbbrevLangName: TEdit;
+    edCountryCode: TEdit;
+    edCountryName: TEdit;
+    edDefCodePage: TEdit;
+    edEngCountryName: TEdit;
+    edISOLangName: TEdit;
+    edLangID: TEdit;
+    edLangName: TEdit;
+    lblAbbrevCountryName: TLabel;
+    lblAbbrevLangName: TLabel;
+    lblCountry: TLabel;
+    lblCountryCode: TLabel;
+    lblCountryName: TLabel;
+    lblDefCodePage: TLabel;
+    lblEngCountryName: TLabel;
+    lblEngLangName: TLabel;
+    lblLangID: TLabel;
+    lblLangName: TLabel;
+    lblLanguage: TLabel;
     miCopy: TMenuItem;
     miSelectAll: TMenuItem;
+    mnuView: TPopupMenu;
+    pnlView: TPanel;
+    sbView: TScrollBox;
   public
     procedure Display(const Locale: LCID);
       {Displays information about a specified locale.
@@ -90,6 +94,13 @@ type
 implementation
 
 
+uses
+  // Delphi
+  SysUtils,
+  // Project
+  ULocale;
+
+
 {$R *.dfm}
 
 
@@ -99,20 +110,23 @@ procedure TLocaleViewerFrame.Display(const Locale: LCID);
   {Displays information about a specified locale.
     @param Locale [in] Locale identifier for which info is to be displayed.
   }
+
   // ---------------------------------------------------------------------------
   function LocaleInfo(const InfoType: LCTYPE): string;
     {Gets a specified piece of information from Locale.
-      @return Required information as stirng.
+      @param InfoType [in] Type of information required. Must be one of LOCALE_
+        LCTYPE flags.
+      @return Required information as string.
+      @except Exception raised if can't get locale info.
     }
-  var
-    BufSize: Integer; // size of buffer needed for requested info
   begin
-    BufSize := GetLocaleInfo(Locale, InfoType, nil, 0);       // gets buf size
-    SetLength(Result, BufSize);
-    GetLocaleInfo(Locale, InfoType, PChar(Result), BufSize);  // reads the info
+    GetLocaleData(Locale, InfoType, Result);
   end;
   // ---------------------------------------------------------------------------
+
 begin
+  // We need to refresh scroll box to ensure labels display properly
+  sbView.Refresh;
   // Store required locale information in edit controls
   edLangID.Text             := LocaleInfo(LOCALE_ILANGUAGE);
   edLangName.Text           := LocaleInfo(LOCALE_SLANGUAGE);

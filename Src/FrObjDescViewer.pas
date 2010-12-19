@@ -5,6 +5,9 @@
  * source descriptors.
  *
  * v1.0 of 10 Mar 2008  - Original version.
+ * v1.1 of 04 May 2008  - Added code to refresh scroll box to ensure contained
+ *                        labels display correctly.
+ *                      - Slightly increased size of some display edit controls.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -108,13 +111,16 @@ resourcestring
   sNotSpecified = 'Not specified';
   sExtent = 'Width: %0:d, Height: %1:d';
 begin
+  // We need to refresh scroll box to ensure labels display properly
+  sbView.Refresh;
+  // Store required object descriptions in edit controls
   edCLSID.Text := GUIDToString(ObjDesc.CLSID);
   case ObjDesc.DrawAspect of
     0: edDrawAspect.Text := sNonSourceAspect;
     DVASPECT_CONTENT: edDrawAspect.Text := 'DVASPECT_CONTENT';
-	  DVASPECT_THUMBNAIL: edDrawAspect.Text := 'DVASPECT_THUMBNAIL';
-	  DVASPECT_ICON: edDrawAspect.Text := 'DVASPECT_ICON';
-	  DVASPECT_DOCPRINT: edDrawAspect.Text := 'DVASPECT_DOCPRINT';
+    DVASPECT_THUMBNAIL: edDrawAspect.Text := 'DVASPECT_THUMBNAIL';
+    DVASPECT_ICON: edDrawAspect.Text := 'DVASPECT_ICON';
+    DVASPECT_DOCPRINT: edDrawAspect.Text := 'DVASPECT_DOCPRINT';
     else edDrawAspect.Text := sBadDrawAspect;
   end;
   if (ObjDesc.Extent.cx = 0) and (ObjDesc.Extent.cy = 0) then

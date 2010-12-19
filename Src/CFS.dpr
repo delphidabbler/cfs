@@ -41,6 +41,7 @@
  *                        UViewers, UWBController and UWindowSettings units.
  *                      - Added third party IDLUtils unit.
  *                      - Added reference to TODO list.
+ * v4.1 of 04 May 2008  - Added new ULocale unit.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -117,6 +118,7 @@ uses
   UHTMLHelp in 'UHTMLHelp.pas',
   UIDListViewer in 'UIDListViewer.pas',
   UIntfObjects in 'UIntfObjects.pas',
+  ULocale in 'ULocale.pas',
   ULocaleViewer in 'ULocaleViewer.pas',
   UMessageBox in 'UMessageBox.pas',
   UMetafileViewer in 'UMetafileViewer.pas',

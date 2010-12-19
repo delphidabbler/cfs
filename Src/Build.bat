@@ -4,6 +4,9 @@
 @rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008
 @rem
 @rem v1.0 of 24 Mar 2008 - Original version.
+@rem v1.1 of 04 May 2008 - Removed environment variable relation to Microsoft
+@rem                       SDK.
+@rem                     - Moved window title statement to sign-on section.
 @rem
 @rem Requires the following compilers and build tools:
 @rem   Borland Delphi7
@@ -40,7 +43,10 @@ rem ----------------------------------------------------------------------------
 
 echo DelphiDabbler Clipboard Format Spy Build Script
 echo -----------------------------------------------
+title DelphiDabbler Clipboard Format Spy Build File
+
 goto Config
+
 
 rem ----------------------------------------------------------------------------
 rem Configure script per command line parameter
@@ -141,11 +147,6 @@ rem ----------------------------------------------------------------------------
 
 :SetEnvVars
 echo Setting Up Environment
-rem set up environment for MS SDK
-
-title DelphiDabbler Clipboard Format Spy Build File
-rem And add a MSSDK Path otherwise we can't find a C pre-processor
-set PATH=%MSSdk%\Bin\win64;%PATH%
 
 rem directories
 

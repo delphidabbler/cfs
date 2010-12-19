@@ -1,13 +1,9 @@
-@PROJECT_NAME           CBInfo
+@PROJECT_NAME           CFS
 @PROJECT_DESC           Clipboard format spy.
 @ROOT                   ..\Source
 @OWNER                  DelphiDabbler
 @AUTHOR                 Peter D Johnson, Ceredigion, West Wales
-@EMAIL                  peter.johnson@openlink.org
-@WEBSITE                http://www.delphidabbler.com/
-@COPYRIGHT              © Peter D Johnson, 1997-2003
-@LEGAL_NOTICE           This program is distributed under the Mozilla Public
-                        License - see CBInfo.dpr for details of the license.
+@COPYRIGHT              © Peter D Johnson, 1997-2008 (www.delphidabbler.com)
 @HISTORY(
   @REVISION(
     @VERSION            1.0
@@ -745,6 +741,72 @@
         @FILE           Res\XPnVista.manifest
         @VERSION        1.0
         @COMMENTS       Manifest for XP and Vista.
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            4.1
+    @DATE               04/05/2008
+    @COMPILERS          + Delphi 7
+                        + BRCC32 5.4
+                        + MS HTML Help Workshop 1.1
+                        + Version Information Editor 2.11
+                        + Inno Setup Compiler 5.2.3 with ISPP preprocessor.
+    @COMMENTS           + Fixed bug where meant window size and state was not
+                          being stored.
+                        + Fixed display problem in some viewers.
+                        + Changed button alignment in view diaolog box.
+                        + Made locale information extraction safe across all
+                          Windows OSs.
+                        + Fixed minor errors in help file style sheet.
+                        + Fixed minor error version information.
+    @FILES(
+      @UPDATED(
+        @FILE           CFS.dpr
+        @VERSION        4.1
+      )
+      @UPDATED(
+        @FILE           Build.bat
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FmMain.pas
+        @VERSION        4.1
+      )
+      @UPDATED(
+        @FILE           FmViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FrFileListViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FrLocaleViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FrObjDescViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           Install.iss
+        @VERSION        1.1
+      )
+      @NEW(
+        @FILE           ULocale.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           Version.vi
+        @DATE           04/05/2008
+        @COMMENTS       + Update file product and build number to 4.0.1.11
+                        + Changed Internal Name from <SPECIALBUILD> to
+                          <SHORTFNAME>.
+      )
+      @UPDATED(
+        @FILE           Help\CSS\main.css
+        @VERSION        1.1
       )
     )
   )

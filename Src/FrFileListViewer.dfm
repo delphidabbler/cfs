@@ -13,7 +13,7 @@ object FileListViewerFrame: TFileListViewerFrame
     BorderStyle = bsNone
     Columns = <
       item
-        Caption = 'Dropped Files'
+        Caption = 'Files / Folders'
         Width = 300
       end
       item

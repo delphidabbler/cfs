@@ -3,7 +3,10 @@
 ;
 ; Clipboard Format Spy install file generation script for use with Inno Setup 5
 ;
-; v1.0 of 24 Mar 2008 - Original version. For use with Clipboard Format Spy v4.0
+; v1.0 of 24 Mar 2008 - Original version. For use with Clipboard Format Spy
+;                       v4.0.
+; v1.1 of 04 May 2008 - Removed creation of HKCU registry keys.
+;                     - Removed creation of desktop icon option.
 ;===============================================================================
 ;
 ; ***** BEGIN LICENSE BLOCK *****
@@ -107,9 +110,6 @@ UpdateUninstallLogAppName=true
 UninstallDisplayIcon={app}\{#ExeFile}
 UserInfoPage=false
 
-[Tasks]
-Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
-
 [Files]
 ; Executable files
 Source: {#SrcExePath}{#ExeFile}; DestDir: {app}; Flags: uninsrestartdelete
@@ -127,7 +127,6 @@ Filename: {app}\{#ShortcutFile}; Section: InternetShortcut; Key: URL; String: {#
 Name: {group}\{#AppName}; Filename: {app}\{#ExeFile}
 Name: {group}\{cm:ProgramOnTheWeb,{#AppName}}; Filename: {app}\{#ShortcutFile}
 Name: {group}\{cm:UninstallProgram,{#AppName}}; Filename: {uninstallexe}
-Name: {userdesktop}\{#AppName}; Filename: {app}\{#ExeFile}; Tasks: desktopicon
 
 [Run]
 Filename: {app}\{#ExeFile}; Description: {cm:LaunchProgram,{#AppName}}; Flags: nowait postinstall skipifsilent
@@ -141,11 +140,7 @@ Name: {app}\{#InstDocsDir}; Flags: uninsalwaysuninstall
 Name: {app}\{#InstUninstDir}; Flags: uninsalwaysuninstall
 
 [Registry]
-; Create program customisation key
-Root: HKCU; Subkey: Software\{#AppPublisher}; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: Software\{#AppPublisher}\CFS; Flags: uninsdeletekeyifempty
-Root: HKCU; Subkey: Software\{#AppPublisher}\CFS\4; Flags: uninsdeletekey
-; Register applications and their paths
+; Register application and its path
 Root: HKLM; Subkey: SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{#ExeFile}; ValueType: string; ValueData: {app}\{#ExeFile}; Flags: uninsdeletekey
 Root: HKLM; Subkey: SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{#ExeFile}; ValueType: string; ValueName: Path; ValueData: {app}\; Flags: uninsdeletekey
 

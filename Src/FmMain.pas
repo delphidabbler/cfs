@@ -107,6 +107,8 @@
  *                        resource).
  *                      - Added application exception handler to display error
  *                        message.
+ * v4.1 of 04 May 2008  - Bug fix. Window wasn't saving or restoring its
+ *                        settings. Added missing TPJCBViewer component.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -152,7 +154,6 @@ uses
 
 
 type
-
   {
   TMainForm:
     Implements main program window.
@@ -177,6 +178,7 @@ type
     tbMain: TToolBar;
     tbSpacer1: TToolButton;
     tbSpacer2: TToolButton;
+    wsMain: TPJUserWdwState;
     procedure actAboutExecute(Sender: TObject);
     procedure actClearClipboardExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
