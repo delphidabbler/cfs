@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--
+ * viewer-binary.htm
+ *
+ * HTML topic for use by HTML Help file.
+ *
+ * v1.0 of 24 Mar 2008 - Original version.
+ *
+ *
+ * ***** BEGIN LICENSE BLOCK *****
+ *
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+ * the specific language governing rights and limitations under the License.
+ *
+ * The Original Code is viewer-binary.htm
+ *
+ * The Initial Developer of the Original Code is Peter Johnson
+ * (http://www.delphidabbler.com/).
+ *
+ * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Johnson. All Rights Reserved.
+ *
+ * Contributor(s): None
+ *
+ * ***** END LICENSE BLOCK *****
+-->
+
+<html>
+<head>
+	<meta
+		HTTP-EQUIV="Content-Type"
+		Content="text-html; charset=Windows-1252"
+	>
+	<title>Binary Viewer</title>
+	<link
+		rel="stylesheet"
+		href="../css/main.css"
+		type="text/css"
+	>
+</head>
+<body>
+	<object
+		type="application/x-oleobject"
+		classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+		<param name="ALink Name" value="BinaryViewerFrame">
+	</object>
+	<h1>
+		Binary Viewer
+	</h1>
+	<p>
+		This window displays binary information about any clipboard format that
+		is represented in global memory. Supported formats will have a size
+		entry in the main window. This binary viewer is always a secondary
+		viewer.
+	</p>
+	<p>
+		The viewer shows 16 bytes of data per line, with each line divided into
+		three sections:
+	<ul>
+		<li>
+			Offset &ndash; this is the offset of the start of the
+			&quot;line&quot; of 16 bytes from the start of the data. The offset
+			is expressed in hex digits and appears on the left of the display.
+		</li>
+		<li>
+			The value of each of the 16 bytes is displayed in the centre of the
+			display in hex.
+		</li>
+		<li>
+			The right hand side of the display shows the printable bytes of data
+			as text. Unprintable characters are represented as dots.
+		</li>
+	</ul>
+	<p>
+		The display can be scrolled up and down and left to right using the
+		scroll bars or by using the following keys:
+	</p>
+	<table class="menu" cellspacing="1" cellpadding="1">
+		<tr>
+			<th>
+				Key
+			</th>
+			<th>
+				Action
+			</th>
+		</tr>
+		<tr>
+			<td class="keys">
+				End
+			</td>
+			<td>
+				Scrolls right to display the end of the line.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Ctrl+End
+			</td>
+			<td>
+				Moves to the end of the document.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Home
+			</td>
+			<td>
+				Scrolls left to display the start of the line.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Ctrl+Home
+			</td>
+			<td>
+				Moved to the start of the document.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Left
+			</td>
+			<td>
+				Scrolls left.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Right
+			</td>
+			<td>
+				Scrolls right.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Down
+			</td>
+			<td>
+				Scrolls down one line.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				PgDn
+			</td>
+			<td>
+				Scrolls down one screen.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				Up
+			</td>
+			<td>
+				Scrolls up one line.
+			</td>
+		</tr>
+		<tr>
+			<td class="keys">
+				PgUp
+			</td>
+			<td>
+				Scrolls up one screen.
+			</td>
+		</tr>
+	</table>
+	<p>
+		There is no context menu available in this window.
+	</p>
+</body>
+</html>

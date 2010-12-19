@@ -1,0 +1,751 @@
+@PROJECT_NAME           CBInfo
+@PROJECT_DESC           Clipboard format spy.
+@ROOT                   ..\Source
+@OWNER                  DelphiDabbler
+@AUTHOR                 Peter D Johnson, Ceredigion, West Wales
+@EMAIL                  peter.johnson@openlink.org
+@WEBSITE                http://www.delphidabbler.com/
+@COPYRIGHT              © Peter D Johnson, 1997-2003
+@LEGAL_NOTICE           This program is distributed under the Mozilla Public
+                        License - see CBInfo.dpr for details of the license.
+@HISTORY(
+  @REVISION(
+    @VERSION            1.0
+    @DATE               09/03/1997
+    @COMMENTS           Original version
+    @COMPILERS          Delphi v1.0
+    @FILES(
+      @NEW(
+        @FILE           CBInfo.dpr
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           CBInfoFm.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Images\CBInfo.ico
+        @DATE           09/03/1997
+        @COMMENTS       Program icon.
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            1.1
+    @DATE               21/07/1997
+    @COMMENTS           Added application title to be displayed when minimised
+                        to project file. Also added icon cbinfo.ico into
+                        cbinfo.res via Delphi project options. This icon will
+                        also be displayed when minimised and it will appear in
+                        Program Manager. Removed design-time caption from form
+                        and set caption at run-time to be same as application
+                        title.
+    @COMPILERS          Delphi 1.0
+    @FILES(
+      @UPDATED(
+        @FILE           CBInfo.dpr
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           CBInfoFm.pas
+        @VERSION        1.1
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            2.0
+    @DATE               07/07/1998
+    @COMMENTS           Total re-write of program.
+                        + Made conform to new standard look and feel for spy
+                          programs. Derived code from common templates and made
+                          use of some common units.
+                        + Added Windows help to program, made window resizeable
+                        + Added About box on system menu.
+                        + Embedded version information. Added user options and
+                          memory of previous size and location of window at run
+                          time.
+                        + Kept only the core logic the program uses to read
+                          clipboard.
+                        + Added ability to name custom formats.
+                        + Changed name of main form unit.
+                        + Revised icon to conform to other spies look and feel.
+    @COMPILERS          + Delphi 1.0
+                        + HC31 Help Compiler
+    @FILES(
+      @UPDATED(
+        @FILE           CBInfo.dpr
+        @VERSION        2.0
+      )
+      @NEW(
+        @FILE           CBUtils.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        2.0
+        @RENAMED_FROM   CBInfoFm.pas
+      )
+      @NEW(
+        @FILE           Option_f.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Opts.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           WdwOpts.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           WdwState.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Version.rc
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Help\CBInfo.hpj
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Help\CBInfo.rtf
+        @DATE           06/07/1998
+      )
+      @NEW(
+        @FILE           Help\CBInfo.inc
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           Images\CBInfo.ico
+        @DATE           06/07/1999
+        @COMMENTS       Revised icon to conform with look and feel of oterh
+                        "spy" programs.
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            2.0a
+    @DATE               27/08/1998
+    @COMMENTS           Removed spurious text from main display at start up
+                        (this was present but not actually seen).
+    @COMPILERS          + Delphi 1.0
+                        + HC31 Help Compiler
+    @FILES(
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        2.0a
+      )
+      @UPDATED(
+        @FILE           Version.rc
+        @VERSION        1.1
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            3.0
+    @DATE               11/12/1999
+    @COMMENTS           Total rewrite and conversion to 32 bit. Adopted new
+                        interface and added ability to:
+                        + delete clipboard contents.
+                        + update display automatically when clipboard contents
+                          change\
+                        Also removed version information resource - version
+                        information now updated via Delphi IDE.
+    @COMPILERS          + Delphi 4 and associated libraries
+                        + Microsoft Help Workshop v4
+                        + Help Topic Author v1.3
+    @FILES(
+      @REMOVED          Version.rc
+      @REMOVED          WdwState.pas
+      @REMOVED          WdwOpts.pas
+      @REMOVED          Option_f.pas
+      @REMOVED          Opts.pas
+      @REMOVED          Help\CBInfo.inc
+      @UPDATED(
+        @FILE           Help\CBInfo.hta
+        @DATE           11/12/1999
+        @COMMENTS       Help file now maintained using this .hta file, which is
+                        used to generated the .rtf file as an intermdiate file
+                        used in building help file.
+        @RENAMED_FROM   Help\CBInfo.rtf
+      )
+      @UPDATED(
+        @FILE           CBInfo.dpr
+        @VERSION        3.0
+      )
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        3.0
+      )
+      @UPDATED(
+        @FILE           Help\CBInfo.hpj
+        @VERSION        2.0
+      )
+      @UPDATED(
+        @FILE           CBUtils.pas
+        @VERSION        1.1
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            3.1
+    @DATE               31/03/2000
+    @COMMENTS           + Tidied code for use with Delphi 4
+                        + Added pop-up menu
+                        + Made button bar hidable
+                        + Added persisency to toolbar settings
+                        + Gave option of whether to save toolbar and window
+                          settings or not
+                        + Gave access to PJSoft website from program
+                        + Update help files to reflect changes
+    @COMPILERS          + Delphi 4.0
+                        + Help Topic Author v1.3
+                        + Microsoft Help Compiler 4
+    @FILES(
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        3.1
+      )
+      @UPDATED(
+        @FILE           Help\CBInfo.hta
+        @DATE           31/03/2000
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            3.2
+    @DATE               27/07/2003
+    @COMMENTS           + Replaced access to PJSoft website with
+                          DelphiDabbler.com and changed method used to access
+                          site.
+                        + Tidied up some of source code.
+                        + Updated help file.
+    @COMPILERS          + Delphi 4.0
+                        + Help Topic Author v1.12.4
+                        + Microsoft Help Compiler 4
+    @FILES(
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        3.2
+      )
+      @UPDATED(
+        @FILE           Help\CBInfo.hap
+        @DATE           27/07/2003
+        @RENAMED_FROM   Help\CBInfo.hta
+        @COMMENTS       Updated help file by:
+                        + improving line spacing
+                        + replacing reference to PJSoft website with
+                          DelphiDabbler.com.
+      )
+      @UPDATED(
+        @FILE           Help\CBInfo.hpj
+        @VERSION        2.1
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            3.3
+    @DATE               28/11/2003
+    @COMPILERS          + Delphi 4.0
+                        + Help Topic Author v1.13
+                        + Microsoft Help Compiler 4
+    @COMMENTS           + Updated toolbar with new images, removed exit button
+                          and added button to access DelphiDabbler website.
+                          Buttons light up in colour when mouse passes over, but
+                          are grey otherwise.
+                        + Popup menu now displays bitmaps as in toolbar.
+                        + Changed to use HKCU\Software\delphiDabbler key in
+                          registry as parent for this program's entries rather
+                          than HKCU\Software\PJSoft.
+                        + Constrained window to always appear within workspace.
+                        + Modified help file re changes in toolbar buttons.
+    @FILES(
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        3.3
+      )
+      @UPDATED(
+        @FILE           Help\CBInfo.hap
+        @DATE           28/11/2003
+        @COMMENTS       Modified main topic re new toolbar - changed images.
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            3.4
+    @DATE               31/12/2003
+    @COMMENTS           Modified to be compatible with Windows XP:
+                        + made some minor UI code changes.
+                        + included XP manifest in resources.\
+                        Changed to Mozilla Public License.
+    @COMPILERS          + Delphi 7
+                        + Help Topic Author v1.13
+                        + Microsoft Help Compiler 4
+    @FILES(
+      @UPDATED(
+        @FILE           Main_f.pas
+        @VERSION        3.4
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            4.0
+    @COMMENTS           + Added facility to view certain clipboard formats by
+                          providing a non-modal viewer dialog box that can
+                          render all supported formats.
+                        + Removed pop-up menu available to whole program window.
+                        + Added context sensitive popup menu for each listed
+                          clipboard format that gives access to viewers.
+                        + Added size of clipboard format in memory to main
+                          display for formats that use global memory.
+                        + Main display can now be sorted by code, format name or
+                          size.
+                        + Removed options to prevent persistance of window
+                          settings and to switch off toolbar.
+                        + Added status bar that displays name of process that
+                          last wrote to clipboard.
+                        + Removed website button from toolbar and replaced with
+                          web link in status bar.
+                        + Updated list of standard Windows clipboard formats and
+                          changed to display symbolic names of standard formats
+                          instead of description.
+                        + Changed help system to HTML Help from WinHelp and
+                          revised content. Added topics for each clipboard
+                          viewer.
+                        + Added build script that can build the application and
+                          help file.
+                        + Changed to new open source license for executable
+                          program and added license to help file.
+                        + Changed to use Inno Setup to generate install program.
+                        + Revised about box. Now has links to delphidabbler.com
+                          and license topic in help file.
+    @DATE               24/03/2008
+    @COMPILERS          + Delphi 7
+                        + BRCC32 5.4
+                        + MS HTML Help Workshop 1.1
+                        + Version Information Editor 2.11
+                        + Inno Setup Compiler v5 with ISPP preprocessor.
+    @FILES(
+      @REMOVED          Help\CBInfo.hap
+      @REMOVED          Help\CBInfo.hpj
+      @UPDATED(
+        @FILE           CFS.dpr
+        @VERSION        4.0
+        @RENAMED_FROM   CBInfo.dpr
+      )
+      @NEW(
+        @FILE           Build.bat
+        @VERSION        1.0
+        @COMMENTS       Build script for program.
+      )
+      @NEW(
+        @FILE           FmAbout.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           FmMain.pas
+        @VERSION        4.0
+        @RENAMED_FROM   Main_f.pas
+      )
+      @NEW(
+        @FILE           FmViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrBinaryViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrFileGroupDescViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrFileListViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrFileNameViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrGraphicViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrHTMLClipViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrHTMLViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrLocaleViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrObjDescViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrRTFViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrShellNameViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrTextViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FrURLViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Install.iss
+        @VERSION        1.0
+        @COMMENTS       Source for Inno Setup install script.
+      )
+      @NEW(
+        @FILE           IntfUIHandlers.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           IntfViewers.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Resources.rc
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UBaseTextViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UBinaryViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UBmpViewer.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           UCBUtils.pas
+        @VERSION        2.0
+        @RENAMED_FROM   CBUtils.pas
+      )
+      @NEW(
+        @FILE           UClipboardLVMgr.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UClipFmt.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UDataBuffer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UDIBViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UFileGroupDescAdapter.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UFileGroupDescViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UFileLists.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UFileNameViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UGlobalMemViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UGlobals.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UGraphicViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHDROPViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHelpManager.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHTMLClip.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHTMLClipViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHTMLDocViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UHTMLHelp.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UIDListViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UIntfObjects.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           ULocaleViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UMessageBox.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UMetafileViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UNulDropTarget.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UNulUIHandler.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UObjDescAdapter.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UObjDescViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UOleClientSite.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UProcessUtils.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           URTFViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           USettings.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UShellNameViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UStatusBarMgr.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UTextTypeSniffer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UTextViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UURLViewer.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UUtils.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UViewerMenuMgr.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UViewers.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UWBController.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UWindowSettings.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           Version.vi
+        @DATE           02/03/2008
+        @COMMENTS       Source for version information resource.
+      )
+      @NEW(
+        @FILE           3rdParty\IDLUtils.pas
+        @VERSION        1.0
+        @DATE           04/08/1998
+        @COMMENTS       By Grahame Marsh based on code by Brad Stowers.
+      )
+      @NEW(
+        @FILE           Help\CFS.hhc
+        @COMMENTS       HTML Help contents file.
+        @DATE           23/03/2008
+      )
+      @NEW(
+        @FILE           Help\CFS.hhp
+        @COMMENTS       HTML Help project file.
+        @DATE           23/03/2008
+      )
+      @NEW(
+        @FILE           Help\CSS\main.css
+        @VERSION        1.0
+        @COMMENTS       HTML help style sheet.
+      )
+      @NEW(
+        @FILE           Help\HTML\author.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\license.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\main.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-binary.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-filegroupdesc.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-filelist.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-filename.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-graphic.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-html.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-htmlclip.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-locale.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-nohelp.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-objdesc.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-rtf.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-text.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewer-url.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\HTML\viewers.htm
+        @VERSION        1.0
+        @COMMENTS       HTML Help Topic.
+      )
+      @NEW(
+        @FILE           Help\Images\about.gif
+        @DATE           03/03/2008
+        @COMMENTS       HTML Help file image.
+      )
+      @NEW(
+        @FILE           Help\Images\delete.gif
+        @DATE           03/03/2008
+        @COMMENTS       HTML Help file image.
+      )
+      @NEW(
+        @FILE           Help\Images\exit.gif
+        @VERSION        1.0
+        @COMMENTS       HTML Help file image.
+      )
+      @NEW(
+        @FILE           Help\Images\help.gif
+        @DATE           03/03/2008
+        @COMMENTS       HTML Help file image.
+      )
+      @UPDATED(
+        @FILE           Res\CFS.ico
+        @DATE           06/07/1999
+        @COMMENTS       Renamed and moved icon. Unchanged.
+        @RENAMED_FROM   Images\CBInfo.ico
+      )
+      @NEW(
+        @FILE           Res\HTMLViewer.css
+        @VERSION        1.0
+        @COMMENTS       Default cascading style sheet for HTML viewers.
+      )
+      @NEW(
+        @FILE           Res\XPnVista.manifest
+        @VERSION        1.0
+        @COMMENTS       Manifest for XP and Vista.
+      )
+    )
+  )
+)

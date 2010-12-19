@@ -1,0 +1,96 @@
+Release 4.0 of 24 Mar 2008
+CFS.exe v4.0 of 24 Mar 2006
++ Major update.
++ Added facility to view certain clipboard formats by providing a non-modal viewer dialog box that can render all supported formats.
++ Removed pop-up menu available to whole program window.
++ Added context sensitive popup menu for each listed clipboard format that gives access to viewers.
++ Added size of clipboard format in memory to main display for formats that use global memory.
++ Main display can now be sorted by code, format name or size.
++ Removed options to prevent persistance of window settings and to switch off toolbar.
++ Added status bar that displays name of process that last wrote to clipboard.
++ Removed website button from toolbar and replaced with web link in status bar.
++ Updated list of standard Windows clipboard formats and changed to display symbolic names of standard formats instead of description.
++ Changed help system to HTML Help from WinHelp and revised content. Added topics for each clipboard viewer.
++ Added build script that can build the application and help file.
++ Changed to new open source license for executable program and added license to help file.
++ Changed to use Inno Setup to generate install program.
++ Revised about box. Now has links to delphidabbler.com and license topic in help file.
+
+Release 3.4a of 16 May 2004
+CBInfo.exe v3.4 of 31 December 2003
++ Fixed bug in install program that was failing to register help file properly.
++ Updated readme file.
+
+Release 3.4 of 31 December 2003
+CBInfo.exe v3.4 of 31 December 2003
++ Modified to be compatible with Windows XP and take on its look and feel.
++ Compiled with Delphi 7.
++ Changed source code to Mozilla Public License.
+
+Release 3.3 of 28 November 2003
+CBInfo.exe v3.3 of 28 November 2003
++ Updated toolbar with new images, removed exit button and added button to access DelphiDabbler website. Buttons are highlighted in colour when mouse passes over, but are grey otherwise.
++ Popup menu now displays same glyphs as related commands on toolbar.
++ Changed to use HKCU\Software\delphiDabbler key in registry as parent for this program's entries rather than HKCU\Software\PJSoft.
++ Constrained window to always appear within workspace.
++ Modified help file re changes in toolbar buttons.
+
+Release 3.2 of 27 July 2003
+CBInfo.exe v3.2 of 27 July 2003
++ Replaced access to PJSoft website with DelphiDabbler.com and changed method used to access site.
++ Tidied up some of source code.
++ Updated help file.
+
+Release 3.1a of 29 July 2000
+CBInfo.exe v3.1 of 31 March 2000
++ Fixed bug in install program.
+
+Release 3.1 of 31 March 2000
+CBInfo.exe v3.1 of 31 March 2000
++ Added pop-up menu.
++ Added access to PJSoft website from pop-up menu.
++ Made it possible to toggle toolbar on and off.
++ Removed some redundant code.
++ Updated help file to deal with new pop-up menu.
++ Changed to use console based install program created by SIBuilder.
+
+Unreleased
+CBInfo.exe v3.0 of 11 December 1999
++ Moved to 32 bit code.
++ Gave program a new interface.
++ Greatly simplified code.
++ Re-wrote help file for new interface. Help file now has hyperlinks to author's website and email.
++ Window now remembers position and size between executions using registry.
++ User can no longer determine whether or not window size is saved.
++ Added HTML and other documentation.
++ Included source code in distribution.
++ Created installation program using InstallShield Express.
++ Moved to Delphi 4 compiler.
+
+Release 2.0 of 6 April 1999
+CBInfo.exe v2.0a of 27 August 1998
++ Removed spurious text from main display at start up.
+
+Unreleased
+CBInfo.exe v2.0 of 09 July 1998
++ Total re-write.
++ Gave new look and feel common to all my "spy" programs.
++ Shared some code with other "spy" programs.
++ Added Windows help to program.
++ Made window resizeable.
++ Made About Box accessibble from system menu rather than button.
++ Embedded version information in program file.
++ Added facility to optionally remember window size and position.
++ Added ability to display names of custom formats.
++ Revised icon to conform to look and feel of other spies.
+
+Unreleased
+CBInfo.exe v1.1 of 21 July 1997
++ Added application title to project file so that it is displayed when program is minimised.
++ Added program icon.
++ Removed design-time caption from form and set caption at run-time to be same as application title.
+
+Unreleased
+CBInfo.exe v1.0 of 09 March 1997
++ Original version (16 bit).
++ Compiled with Delphi 1.

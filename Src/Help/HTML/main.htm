@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--
+ * main.htm
+ *
+ * HTML topic for use by HTML Help file.
+ *
+ * v1.0 of 24 Mar 2008 - Original version.
+ *
+ *
+ * ***** BEGIN LICENSE BLOCK *****
+ *
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+ * the specific language governing rights and limitations under the License.
+ *
+ * The Original Code is main.htm
+ *
+ * The Initial Developer of the Original Code is Peter Johnson
+ * (http://www.delphidabbler.com/).
+ *
+ * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Johnson. All Rights Reserved.
+ *
+ * Contributor(s): None
+ *
+ * ***** END LICENSE BLOCK *****
+-->
+
+<!--
+	Adapted from topic in old WinHelp file
+	Topic id: CONTENTS
+-->
+
+<html>
+<head>
+	<meta
+		HTTP-EQUIV="Content-Type"
+		Content="text-html; charset=Windows-1252"
+	>
+	<title>Overview</title>
+	<link
+		rel="stylesheet"
+		href="../css/main.css"
+		type="text/css"
+	>
+</head>
+<body>
+	<h1>
+		Overview
+	</h1>
+	<p>
+		This program displays the formats currently recorded on the clipboard.
+		It automatically updates the information displayed as the contents of
+		the clipboard change. For certain supported formats you can also view
+		the clipboard contents. The contents of the clipboard can be deleted.
+	</p>
+	<p>
+		For each format displayed on the clipboard, the following information is
+		displayed in the main window:
+	</p>
+	<ul>
+		<li>
+			Code &ndash; this is the identifier used to represent the clipboard
+			format. It is displayed in hexadecimal.
+		</li>
+		<li>
+			Description &ndash; this is the description of the clipboard format.
+			Symbolic constants are displayed for the Windows standard clipboard
+			formats.
+		</li>
+		<li>
+			Size &ndash; this is the size of the data on the clipboard. No value
+			is displayed if the clipboard contents are not stored in global
+			memory.
+		</li>
+	</ul>
+	<p>
+		The display can be sorted in ascending or descending order on any
+		column. Simply click a column header to sort by that column. Clicking
+		twice reverses the sort order. The display columns can be resized by
+		dragging the edge of the column headers.
+	</p>
+	<p>
+		To view a clipboard format select it in the display and right-click to
+		display a pop-up menu. Select the required viewer from the menu. If the
+		format can't be viewed &quot;no viewer&quot; will be displayed in the
+		menu. <a href="viewers.htm">More info</a>.
+	</p>
+	<p>
+		The file name of the process that owns the clipboard is displayed in the
+		status bar. This is the process that last copied data to, or cleared,
+		the clipboard.
+	</p>
+	<p>
+		The window can be resized and the program remembers the size and
+		position information between executions.
+	</p>
+	<p>
+		There is a a toolbar which provides the following functions:
+	</p>
+	<table>
+		<tr>
+			<td>
+				<img
+					src="../Images/delete.gif"
+					style="width:18px;height:18px;"
+					alt="delete image"
+				>
+			</td>
+			<td>
+				Clear the clipboard.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img
+					src="../Images/help.gif"
+					style="width:18px;height:18px;"
+					alt="help image"
+				>
+			</td>
+			<td>
+				Display this help file.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img
+					src="../Images/about.gif"
+					style="width:18px;height:18px;"
+					alt="about image"
+				>
+			</td>
+			<td>
+				Display an about box containing copyright and version
+				information.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img
+					src="../Images/exit.gif"
+					style="width:18px;height:18px;"
+					alt="exit image"
+				>
+			</td>
+			<td>
+				Exit the program.
+			</td>
+		</tr>
+	</table>
+	<p>
+		If your have any comments on the program or find any bugs, please
+		contact the
+		<a href="author.htm">author</a>.
+	</p>
+</body>
+</html>

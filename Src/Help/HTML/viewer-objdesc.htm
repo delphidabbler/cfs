@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--
+ * viewer-objdesc.htm
+ *
+ * HTML topic for use by HTML Help file.
+ *
+ * v1.0 of 23 Mar 2008 - Original version.
+ *
+ *
+ * ***** BEGIN LICENSE BLOCK *****
+ *
+ * Version: MPL 1.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+ * the specific language governing rights and limitations under the License.
+ *
+ * The Original Code is viewer-objdesc.htm
+ *
+ * The Initial Developer of the Original Code is Peter Johnson
+ * (http://www.delphidabbler.com/).
+ *
+ * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Johnson. All Rights Reserved.
+ *
+ * Contributor(s): None
+ *
+ * ***** END LICENSE BLOCK *****
+-->
+
+<html>
+<head>
+	<meta
+		HTTP-EQUIV="Content-Type"
+		Content="text-html; charset=Windows-1252"
+	>
+	<title>Object and Link Source Descriptor Viewer</title>
+	<link
+		rel="stylesheet"
+		href="../css/main.css"
+		type="text/css"
+	>
+</head>
+<body>
+	<object
+		type="application/x-oleobject"
+		classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+		<param name="ALink Name" value="ObjDescViewerFrame">
+	</object>
+	<h1>
+		Object &amp; Link Source Descriptor Viewer
+	</h1>
+	<p>
+		This window displays information about a link source descriptor or an
+		object descriptor described by the &quot;Object Descriptor&quot; and
+		&quot;Link Source Descriptor&quot; clipboard formats. The following
+		information is displayed:
+	</p>
+	<ul>
+		<li>
+			CLSID &ndash; GUID representing the object or link source.
+		</li>
+		<li>
+			The draw aspect of the object or link source: DVASPECT_CONTENT,
+			DVASPECT_THUMBNAIL, DVASPECT_ICON, DVASPECT_DOCPRINT or a comment
+			that the source application did not draw the object.
+		</li>
+		<li>
+			The extent (size) of the object if specified.
+		</li>
+		<li>
+			Status flags in hex which are a bitmask of the Windows OLEMISC
+			enumeration.
+		</li>
+		<li>
+			Full user type name of the object or link source if provided.
+		</li>
+		<li>
+			Name that identifies the display name of the data source.
+		</li>
+	</ul>
+	<p>
+		There is a context menu that appears when any of the text boxes that
+		contain the provided information is right-clicked. This menu gives the
+		option to select and copy the text in CF_TEXT format.
+	</p>
+</body>
+</html>

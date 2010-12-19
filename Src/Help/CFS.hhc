@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x25">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Overview">
+		<param name="Local" value="HTML\main.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Viewers">
+		<param name="Local" value="HTML\viewers.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="File Group Descriptor Viewer">
+			<param name="Local" value="HTML\viewer-filegroupdesc.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="File List Viewer">
+			<param name="Local" value="HTML\viewer-filelist.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="File Name Viewer">
+			<param name="Local" value="HTML\viewer-filename.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Graphic Viewer">
+			<param name="Local" value="HTML\viewer-graphic.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="HTML Viewer">
+			<param name="Local" value="HTML\viewer-html.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="HTML Clip Viewer">
+			<param name="Local" value="HTML\viewer-htmlclip.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Link Source Descriptor Viewer">
+			<param name="Local" value="HTML\viewer-objdesc.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Binary Viewer">
+			<param name="Local" value="HTML\viewer-binary.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Locale Viewer">
+			<param name="Local" value="HTML\viewer-locale.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Object Descriptor Viewer">
+			<param name="Local" value="HTML\viewer-objdesc.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Rich Text Viewer">
+			<param name="Local" value="HTML\viewer-rtf.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Text Viewer">
+			<param name="Local" value="HTML\viewer-text.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="URL Viewer">
+			<param name="Local" value="HTML\viewer-url.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="License">
+		<param name="Local" value="HTML\license.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="About the Author">
+		<param name="Local" value="HTML\author.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>
