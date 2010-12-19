@@ -13,6 +13,10 @@
  * v1.1 of 03 May 2008  - Bug fix. Window wasn't saving or restoring its
  *                        settings. Added missing TPJCBViewer component.
  *                      - Adjusted button position to suit Vista window border.
+ * v1.2 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
+ *                        New base class(es) used to ensure form is parented by
+ *                        owning control and to apply Delphi Alt key bug fix.
+ *                      - Gave help button an accelerator key (H).
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -53,7 +57,7 @@ uses
   // DelphiDabbler library
   PJWdwState,
   // Project
-  IntfViewers;
+  FmBaseDlg, IntfViewers, FmBase;
 
 
 type
@@ -61,7 +65,7 @@ type
   TViewerDlg:
     A non-modal dialog box class that hosts various clipboard viewer frames.
   }
-  TViewerDlg = class(TForm)
+  TViewerDlg = class(TBaseDlgForm)
     actClose: TAction;
     actHelp: TAction;
     alMain: TActionList;

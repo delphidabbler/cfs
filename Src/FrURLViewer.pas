@@ -4,6 +4,7 @@
  * Implements a viewer frame that can display URLs specified as text.
  *
  * v1.0 of 19 Mar 2008  - Original version.
+ * v1.1 of 19 Jun 2008  - Added keywboard accelerator to Go to URL button.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****

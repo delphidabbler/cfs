@@ -5,6 +5,7 @@
  * text.
  *
  * v1.0 of 19 Mar 2008  - Original version.
+ * v1.1 of 19 Jun 2008  - Added keywboard accelerators to Open / Explore button.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -114,8 +115,8 @@ procedure TFileNameViewerFrame.actExecUpdate(Sender: TObject);
   }
 resourcestring
   // Alternative action captions
-  sOpen = 'Open';
-  sExplore = 'Explore';
+  sOpen = '&Open';
+  sExplore = '&Explore';
 var
   FI: TFileInfo;
 begin

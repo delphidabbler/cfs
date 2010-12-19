@@ -29,13 +29,14 @@ old program.
     program.
     
     NOTE: The installer requires admininstrator privileges. Windows Vista will
-    request elevation.
+    request elevation and, if necessary an administrator password.
 
 
 Removing the program
 ====================
 
-1.  Start the Windows Control Panel and select Add / Remove Programs.
+1.  Start the Windows Control Panel and select Add / Remove Programs (a.k.a.
+    Programs and Features on Windows Vista).
 
 2.  Select DelphiDabbler Clipboard Format Spy v4.x.x, where x.x is the minor
     version number, and click the Remove button.
@@ -44,7 +45,7 @@ Removing the program
     When the process is complete a message will be displayed.
     
     NOTE: The uninstaller requires admininstrator privileges. Windows Vista will
-    request elevation.
+    request elevation and, if necessary an administrator password.
 
     
 Source code

@@ -42,6 +42,8 @@
  *                      - Added third party IDLUtils unit.
  *                      - Added reference to TODO list.
  * v4.1 of 04 May 2008  - Added new ULocale unit.
+ * v4.2 of 19 Jun 2008  - Added new FmBase, FmBaseDlg, UAltBugFix and UPlatform
+ *                        units.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -77,6 +79,8 @@ program CFS;
 uses
   Forms,
   FmAbout in 'FmAbout.pas' {AboutBox},
+  FmBase in 'FmBase.pas' {BaseForm},
+  FmBaseDlg in 'FmBaseDlg.pas' {BaseDlgForm},
   FmMain in 'FmMain.pas' {MainForm},
   FmViewer in 'FmViewer.pas' {ViewerDlg},
   FrBinaryViewer in 'FrBinaryViewer.pas' {BinaryViewerFrame: TFrame},
@@ -95,6 +99,7 @@ uses
   IDLUtils in '3rdParty\IDLUtils.pas',
   IntfUIHandlers in 'IntfUIHandlers.pas',
   IntfViewers in 'IntfViewers.pas',
+  UAltBugFix in 'UAltBugFix.pas',
   UBaseTextViewer in 'UBaseTextViewer.pas',
   UBinaryViewer in 'UBinaryViewer.pas',
   UBmpViewer in 'UBmpViewer.pas',
@@ -127,6 +132,7 @@ uses
   UObjDescAdapter in 'UObjDescAdapter.pas',
   UObjDescViewer in 'UObjDescViewer.pas',
   UOleClientSite in 'UOleClientSite.pas',
+  UPlatform in 'UPlatform.pas',
   UProcessUtils in 'UProcessUtils.pas',
   URTFViewer in 'URTFViewer.pas',
   USettings in 'USettings.pas',

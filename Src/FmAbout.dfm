@@ -1,19 +1,13 @@
-object AboutBox: TAboutBox
+inherited AboutBox: TAboutBox
   Left = 212
   Top = 108
+  ActiveControl = btnButton
   BorderStyle = bsDialog
   Caption = 'About'
   ClientHeight = 183
   ClientWidth = 293
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
   OldCreateOrder = True
   Position = poOwnerFormCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMain: TPanel
@@ -144,6 +138,7 @@ object AboutBox: TAboutBox
     Top = 150
     Width = 75
     Height = 25
+    Cancel = True
     Caption = 'OK'
     Default = True
     ModalResult = 1

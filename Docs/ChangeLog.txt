@@ -1,3 +1,11 @@
+; CLIPBOARD FORMAT SPY CHANGE LOG
+
+Release 4.0.2 of 19 June 2008
+CFS.exe v4.0.2 of 19 June 2008
++ Changed to make application minimisation, task bar preview window, and appearance in "Flip 3D" task switching display correctly on Windows Vista.
++ Provided work-around for Delphi's Alt key bug on XP and Vista (CodeGear Quality Central bug report #374030).
++ Added accelerator keys to buttons and check boxes in viewer dialog box and various view frames.
+
 Release 4.0.1 of 04 May 2008
 CFS.exe v4.0.1 of 04 May 2008
 + Fixed bug which meant window size and state were not being stored.

@@ -37,7 +37,7 @@ object TextViewerFrame: TTextViewerFrame
       Top = 8
       Width = 97
       Height = 17
-      Caption = 'Word Wrap'
+      Caption = '&Word Wrap'
       TabOrder = 0
       OnClick = chkWordWrapClick
     end

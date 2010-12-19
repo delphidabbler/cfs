@@ -7,7 +7,7 @@ inherited URLViewerFrame: TURLViewerFrame
   end
   inherited alView: TActionList
     inherited actExec: TAction
-      Caption = 'Go to URL'
+      Caption = 'Go to &URL'
       OnExecute = actExecExecute
     end
   end

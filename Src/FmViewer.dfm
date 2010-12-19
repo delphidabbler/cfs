@@ -1,16 +1,9 @@
-object ViewerDlg: TViewerDlg
+inherited ViewerDlg: TViewerDlg
   Left = 360
   Top = 207
   Width = 721
   Height = 447
   Caption = 'Clipboard Viewer'
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
@@ -58,7 +51,7 @@ object ViewerDlg: TViewerDlg
     Left = 8
     Top = 8
     object actHelp: TAction
-      Caption = 'Help'
+      Caption = '&Help'
       ShortCut = 112
       OnExecute = actHelpExecute
     end

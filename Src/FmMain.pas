@@ -109,6 +109,12 @@
  *                        message.
  * v4.1 of 04 May 2008  - Bug fix. Window wasn't saving or restoring its
  *                        settings. Added missing TPJCBViewer component.
+ * v4.2 of 19 Jun 2008  - Changed to descend from TBaseForm instead of TForm.
+ *                        New base class used to apply Delphi Alt key bug fix.
+ *                      - Modified to change task bar handling. Main form window
+ *                        is now used by task bar instead of Application
+ *                        object's hidden window. This change was required for
+ *                        compatibility with Vista.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -146,11 +152,11 @@ interface
 uses
   // Delphi
   Menus, Classes, ActnList, ImgList, Controls, ComCtrls, ToolWin, ExtCtrls,
-  Forms,
+  Forms, Messages,
   // DelphiDabbler library
   PJCBView, PJWdwState,
   // Project
-  IntfViewers, UClipboardLVMgr, UStatusBarMgr, UViewerMenuMgr;
+  FmBase, IntfViewers, UClipboardLVMgr, UStatusBarMgr, UViewerMenuMgr;
 
 
 type
@@ -158,7 +164,7 @@ type
   TMainForm:
     Implements main program window.
   }
-  TMainForm = class(TForm)
+  TMainForm = class(TBaseForm)
     actAbout: TAction;
     actClearClipboard: TAction;
     actExit: TAction;
@@ -198,6 +204,13 @@ type
       viewers for a selected clipboard format}
     fClipboardLVMgr: TClipboardLVMgr;
       {Object that manages display of clipboard formats in list view}
+    procedure WMSyscommand(var Msg: TWMSysCommand); message WM_SYSCOMMAND;
+      {Handles system command messages. Overrides default processing of
+      minimizing and restoration of main window. This is required now we have
+      inhibited application object's default processing of these messages.
+        @param Msg [in/out] Details of system command. Result field set to 0 if
+          we handle message to prevent default processing.
+      }
     procedure DisplayOwnerExe;
       {Display name of exe file of process that owns the clipboard in status
       bar.
@@ -215,6 +228,12 @@ type
       menu action on list view's associated pop-up menu.
         @param Sender [in] Not used.
       }
+  protected
+    procedure CreateParams(var Params: TCreateParams); override;
+      {Updates style of window to ensure this main window appears on task bar.
+        @params Params [in/out] In: current parameters. Out: adjusted
+          parameters: we update ExStyle field with new window styles.
+      }
   end;
 
 
@@ -226,7 +245,7 @@ implementation
 
 uses
   // Delphi
-  SysUtils,
+  SysUtils, Windows,
   // Project
   FmAbout, FmViewer, UCBUtils, UHelpManager, UMessageBox, UWindowSettings;
 
@@ -284,6 +303,16 @@ begin
   UpdateDisplay;
 end;
 
+procedure TMainForm.CreateParams(var Params: TCreateParams);
+  {Updates style of window to ensure this main window appears on task bar.
+    @params Params [in/out] In: current parameters. Out: adjusted parameters:
+      we update ExStyle field with new window styles.
+  }
+begin
+  inherited;
+  Params.ExStyle := Params.ExStyle and not WS_EX_TOOLWINDOW or WS_EX_APPWINDOW;
+end;
+
 procedure TMainForm.DisplayOwnerExe;
   {Display name of exe file of process that owns the clipboard in status bar.
   }
@@ -306,19 +335,37 @@ procedure TMainForm.FormCreate(Sender: TObject);
     @param Sender [in] Not used.
   }
 begin
+  inherited;
+
+  // Remove hidden application window from task bar: this form is now use on
+  // task bar. This required so task bar button conforms to Vista requirements.
+  ShowWindow(Application.Handle, SW_HIDE);
+  SetWindowLong(
+    Application.Handle,
+    GWL_EXSTYLE,
+    GetWindowLong(Application.Handle, GWL_EXSTYLE)
+      and not WS_EX_APPWINDOW or WS_EX_TOOLWINDOW
+  );
+  ShowWindow(Application.Handle, SW_SHOW);
+
   // Set form caption to be same as title of application
   Caption := Application.Title;
+
   // Set final event handler
   Application.OnException := TMessageBox.ExceptionHandler;
+
   // Set minimum window size
   Constraints.MinWidth := cMinWdwWidth;
   Constraints.MinHeight := cMinWdwHeight;
+
   // Create object that provides and manages status bar
   fStatusBarMgr := TStatusBarMgr.Create(Self);
+
   // Create object that manages viewer popup menu
   fViewerMenuMgr := TViewerMenuMgr.Create(
     mnuViewers, ViewerMenuClickHandler
   );
+
   // Create and configure object used to display clipboard in list view control
   fClipboardLVMgr := TClipboardLVMgr.Create(
     lvDetails, pnlEmpty
@@ -335,6 +382,7 @@ begin
   fClipboardLVMgr.Free;
   fViewerMenuMgr.Free;
   fStatusBarMgr.Free;
+  inherited;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
@@ -386,6 +434,32 @@ begin
   finally
     // permit Viewer to release (free) clipboard data
     Viewer.ReleaseClipData;
+  end;
+end;
+
+procedure TMainForm.WMSyscommand(var Msg: TWMSysCommand);
+  {Handles system command messages. Overrides default processing of minimizing
+  and restoration of main window. This is required now we have inhibited
+  application object's default processing of these messages.
+    @param Msg [in/out] Details of system command. Result field set to 0 if we
+      handle message to prevent default processing.
+  }
+begin
+  // Note: according to Win API low order four bits of Msg.CmdType are reserved
+  // for use by windows. We therefore mask out those bytes before processing.
+  case (Msg.CmdType and $FFF0) of
+    SC_MINIMIZE:
+    begin
+      ShowWindow(Handle, SW_MINIMIZE);
+      Msg.Result := 0;
+    end;
+    SC_RESTORE:
+    begin
+      ShowWindow(Handle, SW_RESTORE);
+      Msg.Result := 0;
+    end;
+    else
+      inherited;
   end;
 end;
 

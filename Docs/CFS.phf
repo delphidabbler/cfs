@@ -745,12 +745,12 @@
     )
   )
   @REVISION(
-    @VERSION            4.1
+    @VERSION            4.0.1
     @DATE               04/05/2008
     @COMPILERS          + Delphi 7
                         + BRCC32 5.4
                         + MS HTML Help Workshop 1.1
-                        + Version Information Editor 2.11
+                        + Version Information Editor 2.11.1
                         + Inno Setup Compiler 5.2.3 with ISPP preprocessor.
     @COMMENTS           + Fixed bug where meant window size and state was not
                           being stored.
@@ -800,13 +800,80 @@
       @UPDATED(
         @FILE           Version.vi
         @DATE           04/05/2008
-        @COMMENTS       + Update file product and build number to 4.0.1.11
+        @COMMENTS       + Updated file product and build number to 4.0.1.11.
                         + Changed Internal Name from <SPECIALBUILD> to
                           <SHORTFNAME>.
       )
       @UPDATED(
         @FILE           Help\CSS\main.css
         @VERSION        1.1
+      )
+    )
+  )
+  @REVISION(
+    @VERSION            4.0.2
+    @DATE               19/06/2008
+    @COMPILERS          + BRCC32 5.4
+                        + MS HTML Help Workshop 1.1
+                        + Version Information Editor 2.11.2
+                        + Inno Setup Compiler 5.2.3 with ISPP preprocessor.
+    @COMMENTS           + Changed to make application minimisation, task bar
+                          preview window, and appearance in "Flip 3D" task
+                          switching display correctly on Windows Vista.
+                        + Provided work-around for Delphi's Alt key bug on XP
+                          and Vista (CodeGear Quality Central bug report
+                          #374030).
+                        + Added accelerator keys to buttons and check boxes in
+                          viewer dialog box and various view frames.
+    @FILES(
+      @UPDATED(
+        @FILE           CFS.dpr
+        @VERSION        4.2
+      )
+      @UPDATED(
+        @FILE           FmAbout.pas
+        @VERSION        1.1
+      )
+      @NEW(
+        @FILE           FmBase.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           FmBaseDlg.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           FmMain.pas
+        @VERSION        4.2
+      )
+      @UPDATED(
+        @FILE           FmViewer.pas
+        @VERSION        1.2
+      )
+      @UPDATED(
+        @FILE           FrFileNameViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FrTextViewer.pas
+        @VERSION        1.1
+      )
+      @UPDATED(
+        @FILE           FrURLViewer.pas
+        @VERSION        1.1
+      )
+      @NEW(
+        @FILE           UAltBugFix.pas
+        @VERSION        1.0
+      )
+      @NEW(
+        @FILE           UPlatform.pas
+        @VERSION        1.0
+      )
+      @UPDATED(
+        @FILE           Version.vi
+        @DATE           19/06/2008
+        @COMMENTS       Updated file product and build number to 4.0.2.12.
       )
     )
   )

@@ -4,6 +4,7 @@
  * Implements a viewer frame that displays plain text documents.
  *
  * v1.0 of 13 Mar 2008  - Original version.
+ * v1.1 of 19 Jun 2008  - Added keyboard accelerator to Word Wrap check box.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****

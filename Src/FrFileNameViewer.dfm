@@ -8,7 +8,6 @@ inherited FileNameViewerFrame: TFileNameViewerFrame
   inherited alView: TActionList
     inherited actExec: TAction
       OnExecute = actExecExecute
-      OnUpdate = actExecUpdate
     end
   end
 end

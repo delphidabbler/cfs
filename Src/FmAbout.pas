@@ -8,6 +8,10 @@
  *   - TPJHotLabel Release 2.1 or later.
  *
  * v1.0 of 08 Mar 2008  - Original version.
+ * v1.1 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
+ *                        New base class(es) used to ensure form is parented by
+ *                        owning control and to apply Delphi Alt key bug fix.
+ *                      - Enabled dialog to close when ESC key pressed.
  *
  *
  * ***** BEGIN LICENSE BLOCK *****
@@ -46,10 +50,12 @@ uses
   // Delphi
   StdCtrls, Graphics, Controls, ExtCtrls, Classes, Forms,
   // DelphiDabbler library
-  PJHotLabel, PJVersionInfo;
+  PJHotLabel, PJVersionInfo,
+  // Project
+  FmBaseDlg;
 
 type
-  TAboutBox = class(TForm)
+  TAboutBox = class(TBaseDlgForm)
     pnlMain: TPanel;
     imgIcon: TImage;
     lblProductName: TLabel;
@@ -100,6 +106,7 @@ procedure TAboutBox.FormCreate(Sender: TObject);
   {Displays required application title and version information in dialog box.
   }
 begin
+  inherited;
   // Use application tile for form caption and product name
   Caption := Caption + ' ' + Application.Title;
   lblProductName.Caption := Application.Title;
