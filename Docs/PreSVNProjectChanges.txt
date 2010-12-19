@@ -1,0 +1,235 @@
+================================================================================
+
+CFS Pre-SVN Project Changes
+
+$Rev$
+$Date$
+
+================================================================================
+
+This file records which source files changed across versions of the CFS project.
+For details of the changes to the files see PreSVNFileChanges.txt. For a
+summary of the changes across different versions of the project see
+ChangeLog.txt.
+
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 1997
+--------------------------------------------------------------------------------
+New:     CBInfo.dpr v1.0
+New:     CBInfoFm.pas v1.0
+New:     Images\CBInfo.ico of 09 Mar 1997
+
+--------------------------------------------------------------------------------
+v1.1 of 21 Jul 1997
+--------------------------------------------------------------------------------    Updated: CBInfo.dpr v1.1
+Updated: CBInfoFm.pas v1.1
+
+--------------------------------------------------------------------------------
+v2.0 of 07 Jul 1998
+--------------------------------------------------------------------------------
+Updated: CBInfo.dpr v2.0
+New:     CBUtils.pas v1.0
+Updated: Main_f.pas v2.0, renamed from CBInfoFm.pas
+New:     Option_f.pas v1.0
+New:     Opts.pas v1.0
+New:     WdwOpts.pas v1.0
+New:     WdwState.pas v1.0
+New:     Version.rc v1.0
+New:     Help\CBInfo.hpj v1.0
+New:     Help\CBInfo.rtf of 06 Jul 1998
+New:     Help\CBInfo.inc v1.0
+Updated: Images\CBInfo.ico of 06 Jul 1998
+
+--------------------------------------------------------------------------------
+v2.0a of 27 Aug 1998
+--------------------------------------------------------------------------------
+Updated: Main_f.pas v2.0a
+Updated: Version.rc v1.1
+
+--------------------------------------------------------------------------------
+v3.0 of 12 Dec 1999
+--------------------------------------------------------------------------------
+Updated: CBInfo.dpr v3.0
+Updated: CBUtils.pas v1.1
+Updated: Main_f.pas v3.0
+Removed: Version.rc
+Removed: WdwState.pas
+Removed: WdwOpts.pas
+Removed: Option_f.pas
+Removed: Opts.pas
+Updated: Help\CBInfo.hpj v2.0
+New:     Help\CBInfo.hta of 11 Dec 1999
+New:     Help\Bitmaps\AboutBtn.bmp of 11 Dec 1999
+New:     Help\Bitmaps\ClearCBBtn.bmp of 11 Dec 1999
+New:     Help\Bitmaps\ExitBtn.bmp of 29 Oct 1999
+New:     Help\Bitmaps\HelpBtn.bmp of 29 Oct 1999
+Removed: Help\CBInfo.inc
+Removed: Help\CBInfo.rtf
+
+--------------------------------------------------------------------------------
+v3.1 of 31 Mar 2000
+--------------------------------------------------------------------------------
+Updated: Main_f.pas v3.1
+Updated: Help\CBInfo.hta of 31 Mar 2000
+
+--------------------------------------------------------------------------------
+v3.2 of 27 Jul 2003
+--------------------------------------------------------------------------------
+Updated: Main_f.pas v3.2
+Updated: Help\CBInfo.hap or 27 Jul 2003, renamed from Help\CBInfo.hta.
+Updated: Help\CBInfo.hpj v2.1
+
+--------------------------------------------------------------------------------
+v3.3 of 28 Nov 2003
+--------------------------------------------------------------------------------
+Updated: Main_f.pas v3.3
+Updated: Help\CBInfo.hap of 28 Nov 2003.
+Updated: Help\Bitmaps\About_help.bmp of 28 Nov 2003,
+         renamed from Help\Bitmaps\AboutBtn.bmp
+Updated: Help\Bitmaps\Delete_help.bmp of 28 Nov 2003,
+         renamed from Help\Bitmaps\ClearCBBtn.bmp
+Removed: Help\Bitmaps\ExitBtn.bmp
+Updated: Help\Bitmaps\Help_help.bmp of 28 Nov 2003,
+         renamed from Help\Bitmaps\HelpBtn.bmp
+New:     Help\Bitmaps\Website_help.bmp of 28 Nov 2003.
+
+--------------------------------------------------------------------------------
+v3.4 of 31 Dec 2003
+--------------------------------------------------------------------------------
+Updated: Main_f.pas v3.4
+
+--------------------------------------------------------------------------------
+v4.0 of 24 Mar 2008
+--------------------------------------------------------------------------------
+Updated: CFS.dpr v4.0, renamed from CBInfo.dpr
+New:     Build.bat v1.0
+New:     FmAbout.pas v1.0
+Updated: FmMain.pas v4.0, renamed from Main_f.pas
+New:     FmViewer.pas v1.0
+New:     FrBinaryViewer.pas v1.0
+New:     FrFileGroupDescViewer.pas v1.0
+New:     FrFileListViewer.pas v1.0
+New:     FrFileNameViewer.pas v1.0
+New:     FrGraphicViewer.pas v1.0
+New:     FrHTMLClipViewer.pas v1.0
+New:     FrHTMLViewer.pas v1.0
+New:     FrLocaleViewer.pas v1.0
+New:     FrObjDescViewer.pas v1.0
+New:     FrRTFViewer.pas v1.0
+New:     FrShellNameViewer.pas v1.0
+New:     FrTextViewer.pas v1.0
+New:     FrURLViewer.pas v1.0
+New:     Install.iss v1.0
+New:     IntfUIHandlers.pas v1.0
+New:     IntfViewers.pas v1.0
+New:     Resources.rc v1.0
+New:     UBaseTextViewer.pas v1.0
+New:     UBinaryViewer.pas v1.0
+New:     UBmpViewer.pas v1.0
+Updated: UCBUtils.pas v2.0
+New:     UClipboardLVMgr.pas v1.0
+New:     UClipFmt.pas v1.0
+New:     UDataBuffer.pas v1.0
+New:     UDIBViewer.pas v1.0
+New:     UFileGroupDescAdapter.pas v1.0
+New:     UFileGroupDescViewer.pas v1.0
+New:     UFileLists.pas v1.0
+New:     UFileNameViewer.pas v1.0
+New:     UGlobalMemViewer.pas v1.0
+New:     UGlobals.pas v1.0
+New:     UGraphicViewer.pas v1.0
+New:     UHDROPViewer.pas v1.0
+New:     UHelpManager.pas v1.0
+New:     UHTMLClip.pas v1.0
+New:     UHTMLClipViewer.pas v1.0
+New:     UHTMLDocViewer.pas v1.0
+New:     UHTMLHelp.pas v1.0
+New:     UIDListViewer.pas v1.0
+New:     UIntfObjects.pas v1.0
+New:     ULocaleViewer.pas v1.0
+New:     UMessageBox.pas v1.0
+New:     UMetafileViewer.pas v1.0
+New:     UNulDropTarget.pas v1.0
+New:     UNulUIHandler.pas v1.0
+New:     UObjDescAdapter.pas v1.0
+New:     UObjDescViewer.pas v1.0
+New:     UOleClientSite.pas v1.0
+New:     UProcessUtils.pas v1.0
+New:     URTFViewer.pas v1.0
+New:     USettings.pas v1.0
+New:     UShellNameViewer.pas v1.0
+New:     UStatusBarMgr.pas v1.0
+New:     UTextTypeSniffer.pas v1.0
+New:     UTextViewer.pas v1.0
+New:     UURLViewer.pas v1.0
+New:     UUtils.pas v1.0
+New:     UViewerMenuMgr.pas v1.0
+New:     UViewers.pas v1.0
+New:     UWBController.pas v1.0
+New:     UWindowSettings.pas v1.0
+New:     Version.vi of 02 Mar 2008
+New:     3rdParty\IDLUtils.pas v1.0
+Removed: Help\CBInfo.hap
+Removed: Help\CBInfo.hpj
+New:     Help\CFS.hhc of 23 Mar 2008
+New:     Help\CFS.hhp of 23 Mar 2009
+New:     Help\CSS\main.css v1.0
+Removed: Help\Bitmaps\AboutBtn.bmp
+Removed: Help\Bitmaps\ClearCBBtn.bmp
+Removed: Help\Bitmaps\ExitBtn.bmp
+Removed: Help\Bitmaps\HelpBtn.bmp
+New:     Help\HTML\author.htm v1.0
+New:     Help\HTML\license.htm v1.0
+New:     Help\HTML\main.htm v1.0
+New:     Help\HTML\viewer-binary.htm v1.0
+New:     Help\HTML\viewer-filegroupdesc.htm v1.0
+New:     Help\HTML\viewer-filelist.htm v1.0
+New:     Help\HTML\viewer-filename.htm v1.0
+New:     Help\HTML\viewer-graphic.htm v1.0
+New:     Help\HTML\viewer-html.htm v1.0
+New:     Help\HTML\viewer-htmlclip.htm v1.0
+New:     Help\HTML\viewer-locale.htm v1.0
+New:     Help\HTML\viewer-nohelp.htm v1.0
+New:     Help\HTML\viewer-objdesc.htm v1.0
+New:     Help\HTML\viewer-rtf.htm v1.0
+New:     Help\HTML\viewer-text.htm v1.0
+New:     Help\HTML\viewer-url.htm v1.0
+New:     Help\HTML\viewers.htm v1.0
+New:     Help\Images\about.gif of 03 Mar 2008
+New:     Help\Images\delete.gif of 03 Mar 2008
+New:     Help\Images\exit.gif of 03 Mar 2008
+New:     Help\Images\help.gif of 03 Mar 2008
+Renamed: Res\CFS.ico as Images\CBInfo.ico
+New:     Res\HTMLViewer.css v1.0
+New:     Res\XPnVista.manifest v1.0
+
+--------------------------------------------------------------------------------
+v4.0.1 of 04 May 2008
+--------------------------------------------------------------------------------
+Updated: CFS.dpr v4.1
+Updated: Build.bat v1.1
+Updated: FmMain.pas v4.1
+Updated: FmViewer.pas v1.1
+Updated: FrFileListViewer.pas v1.1
+Updated: FrLocaleViewer.pas v1.1
+Updated: FrObjDescViewer.pas v1.1
+Updated: Install.iss v1.1
+New:     ULocale.pas v1.0
+Updated: Version.vi of 04 May 2008
+Updated: Help\CSS\main.css v1.1
+
+--------------------------------------------------------------------------------
+v4.0.2 of 19 Jun 2008
+--------------------------------------------------------------------------------
+Updated: CFS.dpr v4.2
+Updated: FmAbout.pas v1.1
+New:     FmBase.pas v1.0
+New:     FmBaseDlg.pas v1.0
+Updated: FmMain.pas v4.2
+Updated: FmViewer.pas v1.2
+Updated: FrFileNameViewer.pas v1.1
+Updated: FrTextViewer.pas v1.1
+Updated: FrURLViewer.pas v1.1
+New:     UAltBugFix.pas v1.0
+New:     UPlatform.pas v1.0
+Updated: Version.vi of 19 Jun 2008

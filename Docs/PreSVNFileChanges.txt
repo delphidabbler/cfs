@@ -1,0 +1,980 @@
+================================================================================
+
+CFS Pre-SVN Files Changes
+
+$Rev$
+$Date$
+
+================================================================================
+
+This file list changes to all known files for which information is available,
+going all the way back to CFS v1.
+
+For a description of which files formed which releases see
+PreSVNProjectChanges.txt. For a summary of the changes across different versions 
+of the project see ChangeLog.txt
+
+Src Directory
+================================================================================
+
+The following section lists file in the Src directory.
+
+--------------------------------------------------------------------------------
+Build.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+v1.1 of 04 May 2008  - Removed environment variable relation to Microsoft SDK.
+                     - Moved window title statement to sign-on section.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+CFS.dpr
+--------------------------------------------------------------------------------
+v1.0 of 08 Mar 1997  - Original version, named CBInfo.dpr
+v1.1 of 21 Jul 1997  - Added program title.
+v2.0 of 07 Jul 1998  - Added Option_f, Opts, CBUtils, WdwOpts and WdwState
+                       units.
+                     - Renamed CBInfoFm unit as Main_f.
+                     - Included Version.res resource.
+v3.0 of 07 Dec 1999  - Removed WdwState, WdwOpts, Option_f and Opts units.
+                     - Removed Version.res resource. Now automatically include
+                       version information from project file.
+v4.0 of 24 Mar 2008  - Renamed as CFS.dpr.
+                     - Renamed Main_f unit as FmMain and CBUtils unit as
+                       UCBUtils.
+                     - Removed code that set application's help file.
+                     - Prevented project automatically adding application icon
+                       and version information to executable and replaced with
+                       explicitly included Version.res and Resources.res
+                       resource files.
+                     - Added new FmAbout, FrBinaryViewer, FrFileGroupDescViewer,
+                       FrFileListViewer, FrFileNameViewer, FrGraphicViewer,
+                       FrHTMLClipViewer, FrHTMLViewer, FrLocaleViewer,
+                       FrObjDescViewer, FrRTFViewer, FrShellNameViewer,
+                       FrTextViewer, FrURLViewer, FmViewer, IntfUIHandlers,
+                       IntfViewers, UBaseTextViewer, UBinaryViewer, UBmpViewer,
+                       UClipboardLVMgr, UClipFmt, UDataBuffer, UDIBViewer,
+                       UFileGroupDescAdapter, UFileGroupDescViewer, UFileLists,
+                       UFileNameViewer, UGlobalMemViewer, UGlobals,
+                       UGraphicViewer, UHDROPViewer, UHelpManager, UHTMLClip,
+                       UHTMLClipViewer, UHTMLDocViewer, UHTMLHelp,
+                       UIDListViewer, UIntfObjects, ULocaleViewer, UMessageBox,
+                       UMetafileViewer, UNulDropTarget, UNulUIHandler,
+                       UObjDescAdapter, UObjDescViewer, UOleClientSite,
+                       UProcessUtils, URTFViewer, USettings, UShellNameViewer,
+                       UStatusBarMgr, UTextTypeSniffer, UTextViewer, UURLViewer,
+                       UUtils, UViewerMenuMgr, UViewers, UWBController and
+                       UWindowSettings units.
+                     - Added third party IDLUtils unit.
+                     - Added reference to TODO list.
+v4.1 of 04 May 2008  - Added new ULocale unit.
+v4.2 of 19 Jun 2008  - Added new FmBase, FmBaseDlg, UAltBugFix and UPlatform
+                       units.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FmAbout.pas
+--------------------------------------------------------------------------------
+v1.0 of 08 Mar 2008  - Original version.
+v1.1 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
+                       New base class(es) used to ensure form is parented by
+                       owning control and to apply Delphi Alt key bug fix.
+                     - Enabled dialog to close when ESC key pressed.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FmBase.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Jun 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FmBaseDlg.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Jun 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FmMain.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 1997  - Original version named CBInfoFm.pas.
+v1.1 of 21 Jul 1997  - Removed caption from form and set it at run-time (in new
+                       FormCreate event handler) to be same as application
+                       title.
+                     - Also removed empty clauses, re-ordered source code and
+                       improved commenting.
+v2.0 of 07 Jul 1998  - Revised to use new code based on a generic template used
+                       for all spies, altered to add required functionality and
+                       to remove unwanted features. This unit now implements
+                       main user interface and reads clipboard (using logic from
+                       v1.0).
+                     - Renamed to Main_f.pas.
+v2.0a of 27 Aug 1998 - Removed "Test" notes from first line of text in form's
+                       tabbed list box component and replaced with spaces. Some
+                       text is required as a kludge to allow tabs to be set so
+                       spaces were used to avoid being visible.
+v3.0 of 07 Dec 1999  - Total re-write of code to provide new interface. All the
+                       program's functionality (except for a small amount of
+                       support code that deals with clipboard format names and
+                       code) is now in this unit. Other units have been dropped.
+                     - Made use of TPJRegWdwState component to remember window's
+                       position and size between executions instead of using
+                       custom code in a separate unit.
+                     - Made use of TPJCBView component to allow display to be
+                       updated automatically when clipboard changes rather than
+                       requiring user to click button to refresh the display.
+                     - Replaced tabbed list box with a ListView component.
+                     - Allowed user to sort display on either code or
+                       description of clipboard format by clicking column
+                       headers.
+                     - Removed code that asked user if they wanted to save
+                       window state. This now happens automatically.
+                     - Removed About Box from system menu and placed on a
+                       button bar (where help and exit buttons now appear).
+                     - Added facility to clear clipboard by clicking button.
+v3.1 of 31 Mar 2000  - Added pop-up menu to main body of window that can:
+                       - toggle toolbar on and off;
+                       - access PJSoft website;
+                       - access all toolbar functions if toolbar is switched
+                         off;
+                       - determine whether program's setting are saved on exit.
+                     - Removed WMGetMinMaxInfo message handler - in Delphi 4 we
+                       can now use form's Constraints property to set min size.
+v3.2 of 27 Jul 2003  - Replaced use of CBView unit with PJCBView unit for
+                       clipboard viewer component.
+                     - Hard-wired website address into program rather than
+                       accessing from registry. Now access DelphiDabbler.com.
+                     - Replaced all string literals with resourcestrings.
+                     - Replaced literals for registry keys with constants.
+v3.3 of 28 Nov 2003  - Now uses actions for main user interface code.
+                     - Uses Windows toolbar rather than panel and speedbuttons.
+                     - Removed exit button.
+                     - Added button for DelphiDabbler website.
+                     - Updated button glyphs (grey scale and colours when moused
+                       over). Also echoed glyphs in popup menu.
+                     - Changed to use HKCU\Software\DelphiDabbler key in
+                       registry as parent for this program's entries rather than
+                       HKCU\Software\PJSoft.
+                     - Constrained window to always appear within workspace.
+v3.4 of 31 Dec 2003  - Modified to compile with Delphi 7 and to have Windows XP
+                       style on that OS.
+                     - Added XPMan unit to include XP manifest in program's
+                       resources.
+                     - Clipboard viewer component doesn't now trigger event on
+                       creation since doing so was displaying incorrectly
+                       at startup when clipboard was empty under Windows XP.
+                       We now update the display when the form is first
+                       shown.
+                     - No longer use mono spaced font in main display.
+v4.0 of 24 Mar 2008  - Renamed unit from Main_f.pas to FmMain.pas.
+                     - Removed main window's pop-up menu and hence ability to
+                       toggle toolbar on and off and ability to prevent
+                       settings being saved on exit.
+                     - Removed toolbar command that accesses website.
+                     - Added Exit button to toolbar
+                     - Changed to automatically store window settings in
+                       registry's HKCU\Software\DelphiDabbler\CFS\4 via new
+                       Settings object. All other settings removed.
+                     - Changed to use a custom dialog to display about box
+                       rather than the DelphiDabbler About Box component.
+                       Removed associated version information component.
+                     - Changed to use HTML help instead of WinHelp.
+                     - Added status bar to display name of process that owns
+                       clipboard along with a link to website.
+                     - Moved clipboard clearing code UCBUtils unit.
+                     - Moved list view management code to separate manager
+                       unit. Extra column added for size. All columns can now
+                       be sorted. List view now hidden when clipboard empty.
+                     - Added pop-up menu to list view, along with supporting
+                       object that enables clipboard formats to be viewed
+                       using registered viewers.
+                     - Removed XPMan unit (replaced with custom manifest
+                       resource).
+                     - Added application exception handler to display error
+                       message.
+v4.1 of 04 May 2008  - Bug fix. Window wasn't saving or restoring its
+                       settings. Added missing TPJCBViewer component.
+v4.2 of 19 Jun 2008  - Changed to descend from TBaseForm instead of TForm.
+                       New base class used to apply Delphi Alt key bug fix.
+                     - Modified to change task bar handling. Main form window
+                       is now used by task bar instead of Application
+                       object's hidden window. This change was required for
+                       compatibility with Vista.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FmViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+v1.1 of 03 May 2008  - Bug fix. Window wasn't saving or restoring its settings.
+                       Added missing TPJCBViewer component.
+                     - Adjusted button position to suit Vista window border.
+v1.2 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
+                       New base class(es) used to ensure form is parented by
+                       owning control and to apply Delphi Alt key bug fix.
+                     - Gave help button an accelerator key (H).
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrBinaryViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 16 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrFileGroupDescViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrFileListViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+v1.1 of 04 May 2008  - Changed caption of 1st list view to "Files / Folders"
+                       from "Dropped Files".
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrFileNameViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Mar 2008  - Original version.
+v1.1 of 19 Jun 2008  - Added keywboard accelerators to Open / Explore button.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrGraphicViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrHTMLClipViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrHTMLViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrLocaleViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+v1.1 of 04 May 2008  - Added code to refresh scroll box to ensure contained
+                       labels display correctly.
+                     - Changed to get locale information from ULocale unit. This
+                       code handles different OSs correctly.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrObjDescViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+v1.1 of 04 May 2008  - Added code to refresh scroll box to ensure contained
+                       labels display correctly.
+                     - Slightly increased size of some display edit controls.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrRTFViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrShellNameViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrTextViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 13 Mar 2008  - Original version.
+v1.1 of 19 Jun 2008  - Added keyboard accelerator to Word Wrap check box.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+FrURLViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Mar 2008  - Original version.
+v1.1 of 19 Jun 2008  - Added keywboard accelerator to Go to URL button.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Install.iss
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version. For use with Clipboard Format Spy
+                       v4.0.
+v1.1 of 04 May 2008  - Removed creation of HKCU registry keys.
+                     - Removed creation of desktop icon option.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+IntfUIHandlers.pas
+--------------------------------------------------------------------------------
+v1.0 of 08 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+IntfViewers.pas
+--------------------------------------------------------------------------------
+v1.0 of 16 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Option_f.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - Original version.
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+Opts.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - Original version.
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+Resources.rc
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UAltBugFix.pas
+--------------------------------------------------------------------------------
+v1.0 of 18 Jun 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UBaseTextViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UBinaryViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UBmpViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UCBUtils.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - Original version.
+v1.1 of 07 Dec 1999  - Added CF_XXX format codes new to 32 bit Windows and
+                       constants to hold number of formats.
+v2.0 of 11 Mar 2008  - Renamed unit from CBUtils.pas to UCBUtils.pas
+                     - Changed code that gets standard windows clipboard format
+                       names to return name of constant rather than description.
+                       Also refactored this code.
+                     - Added new routines:
+                       - ClipboardOwnerExe: gets process that owns clipboard.
+                       - ClearClipboard: clears all data from clipboard.
+                       - IsDataInGlobalMemFormat: checks if clipboard data in
+                         global memory.
+                       - CanOpenClipboard: checks if clipboard can be opened.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UClipboardLVMgr.pas
+--------------------------------------------------------------------------------
+v1.0 of 17 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UClipFmt.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UDataBuffer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UDIBViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UFileGroupDescAdapter.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UFileGroupDescViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UFileLists.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UFileNameViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UGlobalMemViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UGlobals.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UGraphicViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHDROPViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHelpManager.pas
+--------------------------------------------------------------------------------
+v1.0 of 18 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHTMLClip.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHTMLClipViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHTMLDocViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UHTMLHelp.pas
+--------------------------------------------------------------------------------
+v1.0 of 02 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UIDListViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UIntfObjects.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ULocale.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ULocaleViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UMessageBox.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UMetafileViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UNulDropTarget.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UNulUIHandler.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UObjDescAdapter.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UObjDescViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UOleClientSite.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UPlatform.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Jun 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UProcessUtils.pas
+--------------------------------------------------------------------------------
+v1.0 of 19 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+URTFViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 10 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+USettings.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UShellNameViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UStatusBarMgr.pas
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UTextTypeSniffer.pas
+--------------------------------------------------------------------------------
+v1.0 of 07 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UTextViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UURLViewer.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UUtils.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UViewerMenuMgr.pas
+--------------------------------------------------------------------------------
+v1.0 of 14 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UViewers.pas
+--------------------------------------------------------------------------------
+v1.0 of 11 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UWBController.pas
+--------------------------------------------------------------------------------
+v1.0 of 18 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+UWindowSettings.pas
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Version.rc
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - Original version.
+                     - Contains version information for file and product version
+                       2.0.
+v1.1 of 27 Aug 1998  - Updated product version to 2.0a
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+Version.vi
+--------------------------------------------------------------------------------
+        02 Mar 2008  - New source file for version information resource.
+        04 May 2008  - Updated file product and build number to 4.0.1.11.
+                     - Changed Internal Name from <SPECIALBUILD> to
+                       <SHORTFNAME>.
+        19 Jun 2008  - Updated file product and build number to 4.0.2.12.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+WdwOpts.pas
+--------------------------------------------------------------------------------
+v1.0 of 06 Jul 1998  - Original version
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+WdwState.pas
+--------------------------------------------------------------------------------
+v1.0 of 06 Jul 1998  - Original version
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+3rdParty\IDLUtils.pas
+--------------------------------------------------------------------------------
+v1.0 of 04 Aug 1998  - By Grahame Marsh - poached from Brad's work. 3rd party
+                       utilities for working with PIDLs and IDLs.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\CBInfo.inc
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - New include file containing help file context numbers.
+        12 Dec 1999  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\CBInfo.hap
+--------------------------------------------------------------------------------
+        11 Dec 1999  - New Help Topic Author file used to generate source RTF
+                       for help file. Replaces Help\CBInfo.rtf.
+                     - Originally named Help\CBInfo.hta
+        31 Mar 2000  - Updated re changes in release 3.1.
+        27 Jul 2003  - Renamed Help\CBInfo.hap.
+                     - Improving line spacing.
+                     - Replacing reference to PJSoft website with
+                       DelphiDabbler.com.
+        28 Nov 2003  - Modified main topic re new toolbar - changed images.
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\CBInfo.hpj
+--------------------------------------------------------------------------------
+v1.0 of 07 Jul 1998  - Original version of WinHelp help project file.
+v2.0 of 11 Dec 1999  - Total rewrite of previous version. Removed mappings and
+                       added copyright information.
+v2.1 of 27 Jul 2003  - Updated copyright date line.
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\CBInfo.rtf
+--------------------------------------------------------------------------------
+        06 Jul 1998  - Original WinHelp help file source.
+        11 Dec 1999  - DELETED (replaced by Help\CBInfo.hta).
+
+--------------------------------------------------------------------------------
+Help\CFS.hhc
+--------------------------------------------------------------------------------
+        23 Mar 2008  - New HTML Help contents file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\CFS.hhp
+--------------------------------------------------------------------------------
+        23 Mar 2009  - New HTML Help project file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\Bitmaps\About_help.bmp
+--------------------------------------------------------------------------------
+        11 Dec 1999  - New bitmap for About button for WinHelp file.
+                     - Originally named Help\Bitmaps\AboutBtn.bmp.
+        28 Nov 2003  - Changed image to reflect revised toolbar button.
+                     - Renamed as Help\Bitmaps\About_help.bmp.
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\Bitmaps\Delete_help.bmp
+--------------------------------------------------------------------------------
+        11 Dec 1999  - New bitmap for Clear Clipboard button for WinHelp file.
+                     - Originally named Help\Bitmaps\ClearCBBtn.bmp.
+        28 Nov 2003  - Changed image to reflect revised toolbar button.
+                     - Renamed as Help\Bitmaps\Delete_help.bmp.
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\Bitmaps\ExitBtn.bmp
+--------------------------------------------------------------------------------
+        29 Oct 1999  - New bitmap for Exit button for WinHelp file.
+        28 Nov 2003  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\Bitmaps\Help_help.bmp
+--------------------------------------------------------------------------------
+        29 Oct 1999  - New bitmap for Help button for WinHelp file.
+                     - Originally named Help\Bitmaps\HelpBtn.bmp.
+        28 Nov 2003  - Changed image to reflect revised toolbar button.
+                     - Renamed as Help\Bitmaps\Help_help.bmp
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\Bitmaps\Website_help.bmp
+--------------------------------------------------------------------------------
+        28 Nov 2003  - New bitmap for Website toolbar button for WinHelp file.
+        24 Mar 2008  - DELETED.
+
+--------------------------------------------------------------------------------
+Help\CSS\ main.css
+--------------------------------------------------------------------------------
+v1.0 of 23 Mar 2008  - Original version.
+v1.1 of 04 May 2008  - Fixed typo error in h1 font-weight property.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\author.htm
+--------------------------------------------------------------------------------
+v1.0 of 02 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\license.htm
+--------------------------------------------------------------------------------
+v1.0 of 02 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\main.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-binary.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-filegroupdesc.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-filelist.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-filename.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-graphic.htm
+--------------------------------------------------------------------------------
+v1.0 of 23 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-html.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-htmlclip.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-locale.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-nohelp.htm
+--------------------------------------------------------------------------------
+v1.0 of 18 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-objdesc.htm
+--------------------------------------------------------------------------------
+v1.0 of 23 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-rtf.htm
+--------------------------------------------------------------------------------
+v1.0 of 19 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewers.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-text.htm
+--------------------------------------------------------------------------------
+v1.0 of 18 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\HTML\viewer-url.htm
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\Images\about.gif
+--------------------------------------------------------------------------------
+        03 Mar 2008  - New "About" toolbar button glyph for HTML help file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\Images\delete.gif
+--------------------------------------------------------------------------------
+        03 Mar 2008  - New "Delete" toolbar button glyph for HTML help file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\Images\exit.gif
+--------------------------------------------------------------------------------
+        03 Mar 2008  - New "Exit" toolbar button glyph for HTML help file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help\Images\help.gif
+--------------------------------------------------------------------------------
+        03 Mar 2008  - New "Help" toolbar button glyph for HTML help file.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Res\CFS.ico
+--------------------------------------------------------------------------------
+        09 Mar 1997  - Original program icon.
+                     - Originally named Images\CBInfo.ico.
+        06 Jul 1998  - Revised icon to conform with look and feel of other
+                       similar "spy" programs.
+        24 Mar 2008  - Renamed as Res\CFS.ico
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Res\XPnVista.manifest
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Res\HTMLViewer.css
+--------------------------------------------------------------------------------
+v1.0 of 09 Mar 2008  - Original version.
+        19 Dec 2010  - MOVED TO SVN.
+        
+        
+DevTools Directory
+================================================================================
+
+The following section lists file in the DevTools directory.
+
+--------------------------------------------------------------------------------
+BuildAll.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+BuildExe.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+BuildHelp.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+BuildPascal.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+BuildResources.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+BuildSetup.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ReleaseExe.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ReleaseSrc.bat
+--------------------------------------------------------------------------------
+v1.0 of 24 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Tidy.bat
+--------------------------------------------------------------------------------
+v1.0 of 02 Mar 2008  - First version.
+        19 Dec 2010  - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
