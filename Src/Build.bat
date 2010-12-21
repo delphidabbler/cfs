@@ -1,26 +1,24 @@
 @rem ---------------------------------------------------------------------------
 @rem Script used to build the DelphiDabbler CLipboard Format Spy project
 @rem
-@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008
+@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008-2010
 @rem
-@rem v1.0 of 24 Mar 2008 - Original version.
-@rem v1.1 of 04 May 2008 - Removed environment variable relation to Microsoft
-@rem                       SDK.
-@rem                     - Moved window title statement to sign-on section.
+@rem $Rev$
+@rem $Date$
 @rem
 @rem Requires the following compilers and build tools:
-@rem   Borland Delphi7
-@rem   Borland BRCC32 from Delphi 7 installation
+@rem   Borland Delphi 2010
+@rem   Borland BRCC32 from Delphi 2010 installation
 @rem   DelphiDabbler HTML Resource Compiler from www.delphidabbler.com
 @rem   DelphiDabbler Version Information Editor from www.delphidabbler.com
 @rem   Microsoft HTML Help compiler v1.1
 @rem   Inno Setup
 @rem
 @rem Also requires the following environment variables:
-@rem   DELPHI7 to be set to the install directory of Delphi 7
-@rem   DELPHIDABLIBD7 to be set to the install directory of the required
-@rem     DelphiDabbler components on Delphi 7.
-@rem   INNOSETUP to be set to Inno Setup install directory
+@rem   DELPHI2010 to be set to the install directory of Delphi 2010.
+@rem   DELPHIDABLIBD2010 to be set to the install directory of the required
+@rem     DelphiDabbler components on Delphi 2010.
+@rem   INNOSETUP to be set to Unicode Inno Setup install directory.
 @rem
 @rem Switches: exactly one of the following must be provided
 @rem   all - build everything
@@ -119,8 +117,8 @@ rem ----------------------------------------------------------------------------
 :CheckEnvVars
 
 echo Checking predefined environment environment variables
-if not defined DELPHI7 goto BadDELPHI7Env
-if not defined DELPHIDABLIBD7 goto BadDELPHIDABLIBD7Env
+if not defined DELPHI2010 goto BadDELPHI2010Env
+if not defined DELPHIDABLIBD2010 goto BadDELPHIDABLIBD2010Env
 if not defined INNOSETUP goto BadINNOSETUPEnv
 echo Done.
 echo.
@@ -128,12 +126,12 @@ goto SetEnvVars
 
 rem we have at least one undefined env variable
 
-:BadDELPHI7Env
-set ErrorMsg=DELPHI7 Environment variable not defined
+:BadDELPHI2010Env
+set ErrorMsg=DELPHI2010 Environment variable not defined
 goto Error
 
-:BadDELPHIDABLIBD7Env
-set ErrorMsg=DELPHIDABLIBD7 Environment variable not defined
+:BadDELPHIDABLIBD2010Env
+set ErrorMsg=DELPHIDABLIBD2010 Environment variable not defined
 goto Error
 
 :BadINNOSETUPEnv
@@ -165,10 +163,10 @@ set ExeDir=..\Exe\
 
 rem executable programs
 
-rem Delphi 7 - use full path since maybe multple installations
-set DCC32Exe="%DELPHI7%\Bin\DCC32.exe"
+rem Delphi 2010 - use full path since maybe multple installations
+set DCC32Exe="%DELPHI2010%\Bin\DCC32.exe"
 rem Borland Resource Compiler - use full path since maybe multple installations
-set BRCC32Exe="%DELPHI7%\Bin\BRCC32.exe"
+set BRCC32Exe="%DELPHI2010%\Bin\BRCC32.exe"
 rem Inno Setup command line compiler
 set ISCCExe="%INNOSETUP%\ISCC.exe"
 rem Microsoft HTML Workshop - assumed to be on the path
@@ -261,7 +259,7 @@ rem Set up required env vars
 set PascalBase=CFS
 set PascalSrc=%SrcDir%%PascalBase%.dpr
 set PascalExe=%ExeDir%%PascalBase%.exe
-set DDabLib=%DELPHIDABLIBD7%
+set DDabLib=%DELPHIDABLIBD2010%
 
 if not defined BuildPascal goto Build_Help
 echo Building Pascal Project
