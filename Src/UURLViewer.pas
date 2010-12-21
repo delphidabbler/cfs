@@ -3,8 +3,8 @@
  *
  * Implements a viewer object for URLs stored as text on the clipboard.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -113,7 +113,7 @@ function TURLViewer.SupportsFormat(const FmtID: Word): Boolean;
   }
 begin
   // we support both ansi and unicode formats
-  Result := (FmtID = CF_SHELLURLA) or (FmtID = CF_SHELLURLW);
+  Result := (FmtID = CF_INETURLA) or (FmtID = CF_INETURLW);
 end;
 
 function TURLViewer.UIFrameClass: TFrameClass;

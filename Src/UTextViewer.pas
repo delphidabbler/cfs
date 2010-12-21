@@ -5,8 +5,8 @@
  * Unicode and OEM text. Also used as a secondary viewer for plain text
  * formatted code, such as HTML or RTF.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -25,7 +25,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -145,8 +145,8 @@ begin
     or (FmtID = CF_RTFNOOBJS)
     or (FmtID = CF_FILENAMEA)
     or (FmtID = CF_FILENAMEW)
-    or (FmtID = CF_SHELLURLA)
-    or (FmtID = CF_SHELLURLW)
+    or (FmtID = CF_INETURLA)
+    or (FmtID = CF_INETURLW)
     or (FmtID = CF_HTML)
     or (FmtID = CF_HYPERTEXT)
     or (FmtID = CF_MIME_HTML)

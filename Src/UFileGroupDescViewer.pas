@@ -3,8 +3,8 @@
  *
  * Implements a viewer for shell file group descriptors.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -160,9 +160,9 @@ begin
   try
     // hand off both ansi and wide forms of data to TFileGroupDescAdapter to
     // interpret
-    if FmtID = CF_FILEDESCRIPTORA then
+    if FmtID = CF_FILEGROUPDESCRIPTORA then
       fGroupDesc := TFileGroupDescAdapter.Create(PFileGroupDescriptorA(PDesc)^)
-    else // CF_FILEDESCRIPTORW
+    else // CF_FILEGROUPDESCRIPTORW
       fGroupDesc := TFileGroupDescAdapter.Create(PFileGroupDescriptorW(PDesc)^);
   finally
     Data.Unlock;
@@ -185,7 +185,8 @@ function TFileGroupDescViewer.SupportsFormat(const FmtID: Word): Boolean;
   }
 begin
   // We support ansi and unicode versions of file descriptors
-  Result := (FmtID = CF_FILEDESCRIPTORA) or (FmtID = CF_FILEDESCRIPTORW);
+  Result := (FmtID = CF_FILEGROUPDESCRIPTORA)
+    or (FmtID = CF_FILEGROUPDESCRIPTORW);
 end;
 
 function TFileGroupDescViewer.UIFrameClass: TFrameClass;

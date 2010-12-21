@@ -3,8 +3,8 @@
  *
  * Declares and registers custom Windows clipboard formats.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -78,10 +78,10 @@ var
   CF_FILENAMEA: Word;
   // Shell format: file name as Unicode text
   CF_FILENAMEW: Word;
-  // Shell format: URL as ANSI text
-  CF_SHELLURLA: Word;
+  /// Shell format: URL as ANSI text
+  CF_INETURLA: Word;
   // Shell format: URL as Unicode text
-  CF_SHELLURLW: Word;
+  CF_INETURLW: Word;
   // Shell format: Description of object transfer operations for use in UI
   CF_OBJECTDESCRIPTOR: Word;
   // Shell format: Description of links in transfer operations for use in UI
@@ -89,9 +89,9 @@ var
   // Shell format: Shell ID list for a folder
   CF_IDLIST: Word;
   // Shell format: ANSI version of file group descriptor
-  CF_FILEDESCRIPTORA: Word;
+  CF_FILEGROUPDESCRIPTORA: Word;
   // Shell format: Unicode version of file group descriptor
-  CF_FILEDESCRIPTORW: Word;
+  CF_FILEGROUPDESCRIPTORW: Word;
   // Rich Edit Format code.
   CF_RTF: Word;
   // Rich Edit Format code with no objects.
@@ -124,11 +124,11 @@ const
   // Names of custom clipboard formats
   CFSTR_FILENAMEA           = ShlObj.CFSTR_FILENAMEA;
   CFSTR_FILENAMEW           = ShlObj.CFSTR_FILENAMEW;
-  CFSTR_SHELLURLA           = ShlObj.CFSTR_SHELLURL;
-  CFSTR_SHELLURLW           = 'UniformResourceLocatorW';
+  CFSTR_INETURLA            = ShlObj.CFSTR_INETURLA;
+  CFSTR_INETURLW            = ShlObj.CFSTR_INETURLW;
   CFSTR_OBJECTDESCRIPTOR    = 'Object Descriptor';
   CFSTR_LINKSRCDESCRIPTOR   = 'Link Source Descriptor';
-  CFSTR_IDLIST              = ShlObj.CFSTR_SHELLIDLIST;
+  CFSTR_SHELLIDLIST         = ShlObj.CFSTR_SHELLIDLIST;
   CFSTR_FILEDESCRIPTORA     = ShlObj.CFSTR_FILEDESCRIPTORA;
   CFSTR_FILEDESCRIPTORW     = ShlObj.CFSTR_FILEDESCRIPTORW;
   CFSTR_HTML                = 'HTML Format';
@@ -147,8 +147,8 @@ initialization
 // Register custom clipboard formats
 CF_FILENAMEA            := RegisterClipboardFormat(CFSTR_FILENAMEA);
 CF_FILENAMEW            := RegisterClipboardFormat(CFSTR_FILENAMEW);
-CF_SHELLURLA            := RegisterClipboardFormat(CFSTR_SHELLURLA);
-CF_SHELLURLW            := RegisterClipboardFormat(CFSTR_SHELLURLW);
+CF_INETURLA             := RegisterClipboardFormat(CFSTR_INETURLA);
+CF_INETURLW             := RegisterClipboardFormat(CFSTR_INETURLW);
 CF_RTF                  := RegisterClipboardFormat(CFSTR_RTF);
 CF_RTFNOOBJS            := RegisterClipboardFormat(CFSTR_RTFNOOBJS);
 CF_RTFASTEXT            := RegisterClipboardFormat(CFSTR_RTFASTEXT);
@@ -160,9 +160,9 @@ CF_MIME_HTML            := RegisterClipboardFormat(CFSTR_MIME_HTML);
 CF_MIME_MOZHTMLCONTEXT  := RegisterClipboardFormat(CFSTR_MIME_MOZHTMLCTX);
 CF_OBJECTDESCRIPTOR     := RegisterClipboardFormat(CFSTR_OBJECTDESCRIPTOR);
 CF_LINKSRCDESCRIPTOR    := RegisterClipboardFormat(CFSTR_LINKSRCDESCRIPTOR);
-CF_IDLIST               := RegisterClipboardFormat(CFSTR_IDLIST);
-CF_FILEDESCRIPTORA      := RegisterClipboardFormat(CFSTR_FILEDESCRIPTORA);
-CF_FILEDESCRIPTORW      := RegisterClipboardFormat(CFSTR_FILEDESCRIPTORW);
+CF_IDLIST               := RegisterClipboardFormat(CFSTR_SHELLIDLIST);
+CF_FILEGROUPDESCRIPTORA := RegisterClipboardFormat(CFSTR_FILEDESCRIPTORA);
+CF_FILEGROUPDESCRIPTORW := RegisterClipboardFormat(CFSTR_FILEDESCRIPTORW);
 
 end.
 
