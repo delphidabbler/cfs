@@ -3,48 +3,8 @@
  *
  * Main project file for Clipboard Format Spy.
  *
- * v1.0 of 08 Mar 1997  - Original version, named CBInfo.dpr
- * v1.1 of 21 Jul 1997  - Added program title.
- * v2.0 of 07 Jul 1998  - Added Option_f, Opts, CBUtils, WdwOpts and WdwState
- *                        units.
- *                      - Renamed CBInfoFm unit as Main_f.
- *                      - Included Version.res resource.
- * v3.0 of 07 Dec 1999  - Removed WdwState, WdwOpts, Option_f and Opts units.
- *                      - Removed Version.res resource. Now automatically
- *                        include version information from project file.
- * v4.0 of 24 Mar 2008  - Renamed this file from CBInfo.dpr to CFS.dpr.
- *                      - Renamed Main_f unit as FmMain and CBUtils unit as
- *                        UCBUtils.
- *                      - Removed code that set application's help file.
- *                      - Prevented project automatically adding application
- *                        icon and version information to executable and
- *                        replaced with explicitly included Version.res and
- *                        Resources.res resource files.
- *                      - Added new FmAbout, FrBinaryViewer,
- *                        FrFileGroupDescViewer, FrFileListViewer,
- *                        FrFileNameViewer, FrGraphicViewer, FrHTMLClipViewer,
- *                        FrHTMLViewer, FrLocaleViewer, FrObjDescViewer,
- *                        FrRTFViewer, FrShellNameViewer, FrTextViewer,
- *                        FrURLViewer, FmViewer, IntfUIHandlers, IntfViewers,
- *                        UBaseTextViewer, UBinaryViewer, UBmpViewer,
- *                        UClipboardLVMgr, UClipFmt, UDataBuffer, UDIBViewer,
- *                        UFileGroupDescAdapter, UFileGroupDescViewer,
- *                        UFileLists, UFileNameViewer, UGlobalMemViewer,
- *                        UGlobals, UGraphicViewer, UHDROPViewer, UHelpManager,
- *                        UHTMLClip, UHTMLClipViewer, UHTMLDocViewer, UHTMLHelp,
- *                        UIDListViewer, UIntfObjects, ULocaleViewer,
- *                        UMessageBox, UMetafileViewer, UNulDropTarget,
- *                        UNulUIHandler, UObjDescAdapter, UObjDescViewer,
- *                        UOleClientSite, UProcessUtils, URTFViewer, USettings,
- *                        UShellNameViewer, UStatusBarMgr, UTextTypeSniffer,
- *                        UTextViewer, UURLViewer, UUtils, UViewerMenuMgr,
- *                        UViewers, UWBController and UWindowSettings units.
- *                      - Added third party IDLUtils unit.
- *                      - Added reference to TODO list.
- * v4.1 of 04 May 2008  - Added new ULocale unit.
- * v4.2 of 19 Jun 2008  - Added new FmBase, FmBaseDlg, UAltBugFix and UPlatform
- *                        units.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -63,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 1997-2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 1997-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s):
@@ -151,6 +111,9 @@ uses
 {$RESOURCE Version.res}
 
 begin
+  ReportMemoryLeaksOnShutdown := DebugHook <> 0;
+  Application.MainFormOnTaskBar := True;
+  Application.ModalPopupMode := pmAuto;
   Application.Title := 'Clipboard Format Spy';
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
