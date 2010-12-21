@@ -34,7 +34,6 @@
 
 program CFS;
 
-{%ToDo 'CFS.todo'}
 
 uses
   Forms,
