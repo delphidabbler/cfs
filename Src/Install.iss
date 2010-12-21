@@ -1,12 +1,12 @@
 ;===============================================================================
 ; Install.iss
 ;
-; Clipboard Format Spy install file generation script for use with Inno Setup 5
+; Clipboard Format Spy install file generation script for use with Inno Setup.
+; 
+; The Unicode version of Inno Setup 5.4.0 or later is required.
 ;
-; v1.0 of 24 Mar 2008 - Original version. For use with Clipboard Format Spy
-;                       v4.0.
-; v1.1 of 04 May 2008 - Removed creation of HKCU registry keys.
-;                     - Removed creation of desktop icon option.
+; $Rev$
+; $Date$
 ;===============================================================================
 ;
 ; ***** BEGIN LICENSE BLOCK *****
@@ -26,7 +26,7 @@
 ; The Initial Developer of the Original Code is Peter Johnson
 ; (http://www.delphidabbler.com/).
 ;
-; Portions created by the Initial Developer are Copyright (C) 2008 Peter
+; Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
 ; Johnson. All Rights Reserved.
 ;
 ; Contributor(s): None
@@ -88,7 +88,7 @@ Compression=lzma/ultra
 SolidCompression=true
 OutputDir={#OutDir}
 OutputBaseFilename=CFS-Setup-{#AppVersion}
-MinVersion=4.1.1998,4.0.1381
+MinVersion=0,5
 RestartIfNeededByRun=false
 PrivilegesRequired=poweruser
 UsePreviousAppDir=true
