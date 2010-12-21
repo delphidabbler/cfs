@@ -1,0 +1,223 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{C86C6392-72AB-49C5-8CA8-047F27DE2596}</ProjectGuid>
+			<MainSource>CFS.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\Bin;3rdParty;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DependencyCheckOutputName>..\Exe\CFS.exe</DCC_DependencyCheckOutputName>
+			<DCC_SYMBOL_PLATFORM>false</DCC_SYMBOL_PLATFORM>
+			<DCC_ExeOutput>..\Exe</DCC_ExeOutput>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_CVT_WIDENING_STRING_LOST>true</DCC_CVT_WIDENING_STRING_LOST>
+			<DCC_CVT_ACHAR_TO_WCHAR>true</DCC_CVT_ACHAR_TO_WCHAR>
+			<DCC_EXPLICIT_STRING_CAST_LOSS>true</DCC_EXPLICIT_STRING_CAST_LOSS>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_DcuOutput>..\Bin</DCC_DcuOutput>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="CFS.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="FmAbout.pas">
+				<Form>AboutBox</Form>
+			</DCCReference>
+			<DCCReference Include="FmBase.pas">
+				<Form>BaseForm</Form>
+			</DCCReference>
+			<DCCReference Include="FmBaseDlg.pas">
+				<Form>BaseDlgForm</Form>
+			</DCCReference>
+			<DCCReference Include="FmMain.pas">
+				<Form>MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="FmViewer.pas">
+				<Form>ViewerDlg</Form>
+			</DCCReference>
+			<DCCReference Include="FrBinaryViewer.pas">
+				<Form>BinaryViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrFileGroupDescViewer.pas">
+				<Form>FileGroupDescViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrFileListViewer.pas">
+				<Form>FileListViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrFileNameViewer.pas">
+				<Form>FileNameViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrGraphicViewer.pas">
+				<Form>GraphicViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrHTMLClipViewer.pas">
+				<Form>HTMLClipViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrHTMLViewer.pas">
+				<Form>HTMLViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrLocaleViewer.pas">
+				<Form>LocaleViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrObjDescViewer.pas">
+				<Form>ObjDescViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrRTFViewer.pas">
+				<Form>RTFViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrShellNameViewer.pas">
+				<Form>ShellNameViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrTextViewer.pas">
+				<Form>TextViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="FrURLViewer.pas">
+				<Form>URLViewerFrame</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="3rdParty\IDLUtils.pas"/>
+			<DCCReference Include="IntfUIHandlers.pas"/>
+			<DCCReference Include="IntfViewers.pas"/>
+			<DCCReference Include="UAltBugFix.pas"/>
+			<DCCReference Include="UBaseTextViewer.pas"/>
+			<DCCReference Include="UBinaryViewer.pas"/>
+			<DCCReference Include="UBmpViewer.pas"/>
+			<DCCReference Include="UCBUtils.pas"/>
+			<DCCReference Include="UClipboardLVMgr.pas"/>
+			<DCCReference Include="UClipFmt.pas"/>
+			<DCCReference Include="UDataBuffer.pas"/>
+			<DCCReference Include="UDIBViewer.pas"/>
+			<DCCReference Include="UFileGroupDescAdapter.pas"/>
+			<DCCReference Include="UFileGroupDescViewer.pas"/>
+			<DCCReference Include="UFileLists.pas"/>
+			<DCCReference Include="UFileNameViewer.pas"/>
+			<DCCReference Include="UGlobalMemViewer.pas"/>
+			<DCCReference Include="UGlobals.pas"/>
+			<DCCReference Include="UGraphicViewer.pas"/>
+			<DCCReference Include="UHDROPViewer.pas"/>
+			<DCCReference Include="UHelpManager.pas"/>
+			<DCCReference Include="UHTMLClip.pas"/>
+			<DCCReference Include="UHTMLClipViewer.pas"/>
+			<DCCReference Include="UHTMLDocViewer.pas"/>
+			<DCCReference Include="UHTMLHelp.pas"/>
+			<DCCReference Include="UIDListViewer.pas"/>
+			<DCCReference Include="UIntfObjects.pas"/>
+			<DCCReference Include="ULocale.pas"/>
+			<DCCReference Include="ULocaleViewer.pas"/>
+			<DCCReference Include="UMessageBox.pas"/>
+			<DCCReference Include="UMetafileViewer.pas"/>
+			<DCCReference Include="UNulDropTarget.pas"/>
+			<DCCReference Include="UNulUIHandler.pas"/>
+			<DCCReference Include="UObjDescAdapter.pas"/>
+			<DCCReference Include="UObjDescViewer.pas"/>
+			<DCCReference Include="UOleClientSite.pas"/>
+			<DCCReference Include="UPlatform.pas"/>
+			<DCCReference Include="UProcessUtils.pas"/>
+			<DCCReference Include="URTFViewer.pas"/>
+			<DCCReference Include="USettings.pas"/>
+			<DCCReference Include="UShellNameViewer.pas"/>
+			<DCCReference Include="UStatusBarMgr.pas"/>
+			<DCCReference Include="UTextTypeSniffer.pas"/>
+			<DCCReference Include="UTextViewer.pas"/>
+			<DCCReference Include="UURLViewer.pas"/>
+			<DCCReference Include="UUtils.pas"/>
+			<DCCReference Include="UViewerMenuMgr.pas"/>
+			<DCCReference Include="UViewers.pas"/>
+			<DCCReference Include="UWBController.pas"/>
+			<DCCReference Include="UWindowSettings.pas"/>
+			<None Include="CFS.todo"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">CFS.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">3</VersionInfo>
+						<VersionInfo Name="MinorVer">4</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">9</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">DelphiDabbler, Llanarth, Ceredigion, Wales, UK.</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Clipboard Format Spy</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">3.4.0.9</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">CBInfo</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">Copyright © 1997-2003 P D Johnson.</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename">CBInfo.exe</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">Clipboard Format Spy</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">Release 3.4</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">This program is released under the Mozilla Public License: http://www.mozilla.org/MPL/.</VersionInfoKeys>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
