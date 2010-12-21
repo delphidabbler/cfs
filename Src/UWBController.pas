@@ -4,8 +4,8 @@
  * Implements a class and supporting types  used to control performance and
  * appearance of a web browser control.
  *
- * v1.0 of 18 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -317,16 +317,14 @@ uses
   UNulDropTarget;
 
 
-function TaskAllocWideString(const S: AnsiString): PWChar;
-  {Converts an ANSI string to a wide string and stores it in a buffer allocated
-  by the Shell's task allocator. Caller is responsible for freeing the buffer
-  and must use the shell's allocator to do this.
-    @param S [in] ANSI string to convert.
+function TaskAllocWideString(const S: string): PWChar;
+  {Allocates memory for a wide string using the Shell's task allocator and
+  copies a given string into the memory as a wide string. Caller is responsible
+  for freeing the buffer and must use the shell's allocator to do this.
+    @param S [in] String to convert.
     @return Pointer to buffer containing wide string.
     @except EOutOfMemory raised in can't allocate a suitable buffer.
   }
-resourcestring
-  sCanAllocBuffer = 'TaskAllocWideString(): Can''t allocate a string buffer';
 var
   StrLen: Integer;  // length of string in bytes
 begin
@@ -335,7 +333,7 @@ begin
   // Allocate buffer for wide string using task allocator
   Result := CoTaskMemAlloc(StrLen * SizeOf(WideChar));
   if not Assigned(Result) then
-    raise EOutOfMemory.Create(sCanAllocBuffer);
+    raise EOutOfMemory.Create('TaskAllocWideString: can''t allocate buffer.');
   // Convert string to wide string and store in buffer
   StringToWideChar(S, Result, StrLen);
 end;
