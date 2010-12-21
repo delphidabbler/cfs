@@ -59,7 +59,6 @@ uses
   IDLUtils in '3rdParty\IDLUtils.pas',
   IntfUIHandlers in 'IntfUIHandlers.pas',
   IntfViewers in 'IntfViewers.pas',
-  UAltBugFix in 'UAltBugFix.pas',
   UBaseTextViewer in 'UBaseTextViewer.pas',
   UBinaryViewer in 'UBinaryViewer.pas',
   UBmpViewer in 'UBmpViewer.pas',

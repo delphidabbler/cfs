@@ -74,9 +74,7 @@ implementation
 
 uses
   // Delphi
-  SysUtils, StrUtils, Themes,
-  // Project
-  UAltBugFix;
+  SysUtils, StrUtils, Themes;
 
 
 {$R *.dfm}
@@ -106,21 +104,21 @@ begin
 end;
 
 procedure TBaseForm.FormCreate(Sender: TObject);
-  {Handles form's OnCreate event. Registers form with object that works around
-  Delphi's Alt Key bug.
+  {Do-nothing handler of form's OnCreate event.
     @param Sender [in] Not used.
   }
 begin
-  AltBugFix.RegisterCtrl(Self);
+  // For reasons I don't understand this do-nothing event handler must be
+  // present otherwise OnCreate handlers of descendant forms won't get called!!
 end;
 
 procedure TBaseForm.FormDestroy(Sender: TObject);
-  {Handles form's OnDestroy event. Unregisters form with object that works
-  around Delphi's Alt Key bug.
+  {Do-nothing handler of form's OnDestroy event.
     @param Sender [in] Not used.
   }
 begin
-  AltBugFix.UnRegisterCtrl(Self);
+  // For reasons I don't understand this do-nothing event handler must be
+  // present otherwise OnDestroy handlers of descendant forms won't get called!!
 end;
 
 end.

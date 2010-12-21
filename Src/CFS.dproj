@@ -115,7 +115,6 @@
 			<DCCReference Include="3rdParty\IDLUtils.pas"/>
 			<DCCReference Include="IntfUIHandlers.pas"/>
 			<DCCReference Include="IntfViewers.pas"/>
-			<DCCReference Include="UAltBugFix.pas"/>
 			<DCCReference Include="UBaseTextViewer.pas"/>
 			<DCCReference Include="UBinaryViewer.pas"/>
 			<DCCReference Include="UBmpViewer.pas"/>
