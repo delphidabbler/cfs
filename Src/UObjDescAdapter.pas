@@ -4,8 +4,8 @@
  * Implements a cthat provides an alternative interface to Object descriptors
  * and Link Source descriptors.
  *
- * v1.0 of 11 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -45,33 +45,37 @@ uses
 
 
 type
-
-  {
-  TObjDescAdapter:
-    Class that provides an alternative interface to Object descriptors and Link
-    Source descriptors that provide information user interface information
-    during data transfer operations, as used in the Paste Special dialog box.
-  }
+  ///  <summary>
+  ///  Class that provides an alternative interface to Object descriptors and
+  ///  Link Source descriptors as represented by the TObjectDescriptor
+  ///  (OBJECTDESCRIPTOR) structure.
+  ///  </summary>
+  ///  <remarks>
+  ///  <para>These formats provide user interface information during data
+  ///  transfer operations.</para>
+  ///  <para>See http://tinyurl.com/34jbglt (MSDN).</para>
+  ///  </remarks>
   TObjDescAdapter = class(TObject)
   private
     fStatus: DWORD;
       {Value of status property}
     fDrawAspect: DWORD;
       {Value of DrawAspect property}
-    fFullUserTypeName: string;
+    fFullUserTypeName: UnicodeString;
       {Value of FullUserTypeName property}
-    fSrcOfCopy: string;
+    fSrcOfCopy: UnicodeString;
       {Value of SrcOfCopy property}
     fCLSID: TGUID;
       {Value of CLSID property}
     fExtent: TSize;
       {Value of Extent property}
     function GetStringFromOffset(const OD: TObjectDescriptor;
-      const Offset: Integer): string;
+      const Offset: Integer): UnicodeString;
       {Fetches Unicode string located at a specified byte offset from the start
       of a TObjectDescriptor record.
         @param OD [in] Object descriptor record beyond which string is located.
         @param Offset [in] Offset from start of OD at which string is located.
+        @return Required Unicode string.
       }
   public
     constructor Create(const OD: TObjectDescriptor);
@@ -89,9 +93,9 @@ type
       (0,0) if source application did not draw the object}
     property Status: DWORD read fStatus;
       {Status flags for the object defined by OLEMISC structure}
-    property FullUserTypeName: string read fFullUserTypeName;
+    property FullUserTypeName: UnicodeString read fFullUserTypeName;
       {Full user type name of the object. May be ''}
-    property SrcOfCopy: string read fSrcOfCopy;
+    property SrcOfCopy: UnicodeString read fSrcOfCopy;
       {Specifies the source of the transfer. May be '' for an unknown source}
   end;
 
@@ -106,8 +110,6 @@ constructor TObjDescAdapter.Create(const OD: TObjectDescriptor);
   descriptor.
     @param OD [in] Record providing information about descriptor.
   }
-resourcestring
-  sUnknownSource = 'Unknown Source';    // value used when source is unknown
 begin
   // Set property values
   // OD.pointl field ignored since only relevant to drag-drop
@@ -125,11 +127,12 @@ begin
 end;
 
 function TObjDescAdapter.GetStringFromOffset(const OD: TObjectDescriptor;
-  const Offset: Integer): string;
+  const Offset: Integer): UnicodeString;
   {Fetches Unicode string located at a specified byte offset from the start of a
   TObjectDescriptor record.
     @param OD [in] Object descriptor record beyond which string is located.
     @param Offset [in] Offset from start of OD at which string is located.
+    @return Required Unicode string.
   }
 begin
   Result := PWideChar(Pointer(Integer(@OD) + Offset));
