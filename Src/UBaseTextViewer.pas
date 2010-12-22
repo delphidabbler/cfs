@@ -4,8 +4,8 @@
  * Implements a base class for all viewers that read text from the clipboard.
  * Provides access to text on clipboard.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -40,6 +40,8 @@ interface
 
 
 uses
+  // Delphi
+  SysUtils,
   // Project
   UGlobalMemViewer;
 
@@ -61,13 +63,17 @@ type
       }
   end;
 
+type
+  TBaseAnsiTextViewer = class(TGlobalMemViewer)
+  strict protected
+    function GetAsBytes(const FmtID: Word): TBytes;
+  end;
+
 
 implementation
 
 
 uses
-  // Delphi
-  SysUtils,
   // Project
   UDataBuffer, UTextTypeSniffer;
 
@@ -101,12 +107,39 @@ begin
       if Sniffer.IsUnicode then
         Result := PWideChar(Buffer) // Unicode: convert back to string
       else
+        // *** THIS IS WRONG!!
         Result := PChar(Buffer);    // Ansi: just return it
     finally
       Data.Unlock;
     end;
   finally
     FreeAndNil(Sniffer);
+  end;
+end;
+
+{ TBaseAnsiTextViewer }
+
+function TBaseAnsiTextViewer.GetAsBytes(const FmtID: Word): TBytes;
+var
+  Data: IDataBuffer;          // data buffer containing copy of clipboard data
+  Buffer: Pointer;            // pointer into data buffer
+  Len: Integer;               // length of "string" from data buffer
+begin
+  // Take copy of clipboard data
+  Data := CopyClipboardMemData(FmtID);
+  // Get data in correct format
+  Buffer := Data.Lock;
+  try
+    // copy clipboard data into byte array: format must have ASCII text
+    SetLength(Result, Data.Size);
+    Move(Buffer^, Pointer(Result)^, Data.Size);
+    // remove all trailing zeros - we don't want these in final string
+    Len := Length(Result);
+    while (Len > 0) and (Result[Len - 1] = 0) do
+      Dec(Len);
+    SetLength(Result, Len);
+  finally
+    Data.Unlock;
   end;
 end;
 
