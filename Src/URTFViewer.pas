@@ -3,8 +3,8 @@
  *
  * Implements a viewer for rich text clipboard formats.
  *
- * v1.0 of 10 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -156,9 +156,7 @@ function TRTFViewer.SupportsFormat(const FmtID: Word): Boolean;
     @return True if format is supported, False if not.
   }
 begin
-  Result := (FmtID = CF_RTF)
-    or (FmtID = CF_RTFNOOBJS)
-    or (FmtID = CF_MIME_RICHTEXT);
+  Result := (FmtID = CF_RTF) or (FmtID = CF_RTFNOOBJS);
 end;
 
 function TRTFViewer.UIFrameClass: TFrameClass;

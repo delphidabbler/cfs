@@ -104,8 +104,6 @@ var
   CF_HYPERTEXT: Word;
   // MIME: Plain text
   CF_MIME_PLAINTEXT: Word;
-  // MIME: Rich text code
-  CF_MIME_RICHTEXT: Word;
   // MIME: HTML code (may be partial document)
   CF_MIME_HTML: Word;
   // Complete HTML tag structure wrapping a selection
@@ -137,7 +135,6 @@ const
   CFSTR_RTFNOOBJS           = RichEdit.CF_RTFNOOBJS;
   CFSTR_RTFASTEXT           = 'RTF As Text';
   CFSTR_MIME_PLAINTEXT      = 'text/plain';
-  CFSTR_MIME_RICHTEXT       = 'text/richtext';
   CFSTR_MIME_HTML           = 'text/html';
   CFSTR_MIME_MOZHTMLCTX     = 'text/_moz_htmlcontext';
 
@@ -155,7 +152,6 @@ CF_RTFASTEXT            := RegisterClipboardFormat(CFSTR_RTFASTEXT);
 CF_HTML                 := RegisterClipboardFormat(CFSTR_HTML);
 CF_HYPERTEXT            := RegisterClipboardFormat(CFSTR_HYPERTEXT);
 CF_MIME_PLAINTEXT       := RegisterClipboardFormat(CFSTR_MIME_PLAINTEXT);
-CF_MIME_RICHTEXT        := RegisterClipboardFormat(CFSTR_MIME_RICHTEXT);
 CF_MIME_HTML            := RegisterClipboardFormat(CFSTR_MIME_HTML);
 CF_MIME_MOZHTMLCONTEXT  := RegisterClipboardFormat(CFSTR_MIME_MOZHTMLCTX);
 CF_OBJECTDESCRIPTOR     := RegisterClipboardFormat(CFSTR_OBJECTDESCRIPTOR);

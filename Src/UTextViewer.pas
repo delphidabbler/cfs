@@ -150,7 +150,6 @@ begin
     or (FmtID = CF_HTML)
     or (FmtID = CF_HYPERTEXT)
     or (FmtID = CF_MIME_HTML)
-    or (FmtID = CF_MIME_RICHTEXT)
     or (FmtID = CF_MIME_MOZHTMLCONTEXT);
 end;
 
