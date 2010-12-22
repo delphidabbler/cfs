@@ -12,6 +12,7 @@ object RTFViewerFrame: TRTFViewerFrame
     TabStop = False
     Align = alClient
     BorderStyle = bsNone
+    ParentFont = False
     PopupMenu = mnuView
     ReadOnly = True
     ScrollBars = ssBoth
