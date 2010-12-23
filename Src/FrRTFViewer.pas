@@ -3,8 +3,8 @@
  *
  * Implements a viewer frame that displays rich text format documents.
  *
- * v1.0 of 10 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -40,16 +40,17 @@ interface
 
 uses
   // Delphi
-  Forms, StdActns, Classes, ActnList, Menus, Controls, StdCtrls, ComCtrls;
+  SysUtils, Forms, StdActns, Classes, ActnList, Menus, Controls, StdCtrls,
+  ComCtrls;
 
 
 type
 
   {
   TRTFViewerFrame:
-    Viewer frame that displays rich text format documents using provided RTF
-    source. Supports selecting and copying of selections to clipboard as text
-    and rich text.
+    Viewer frame that displays rich text format documents using provided ASCII
+    encoded RTF source. Supports selecting and copying of selections to
+    clipboard as text and rich text.
   }
   TRTFViewerFrame = class(TFrame)
     reView: TRichEdit;
@@ -64,9 +65,10 @@ type
       {Sets left and right margins in rich edit control.
       }
   public
-    procedure Display(const RTF: string);
+    procedure Display(const RTF: TBytes);
       {Displays RTF in rich edit control.
-        @param RTF [in] RTF code to be displayed.
+        @param RTF [in] Byte array containing ASCII encoded RTF code to be
+          displayed.
       }
   end;
 
@@ -83,13 +85,22 @@ uses
 
 { TRTFViewerFrame }
 
-procedure TRTFViewerFrame.Display(const RTF: string);
+procedure TRTFViewerFrame.Display(const RTF: TBytes);
   {Displays RTF in rich edit control.
-    @param RTF [in] RTF code to be displayed.
+    @param RTF [in] Byte array containing ASCII encoded RTF code to be
+      displayed.
   }
+var
+  Stm: TBytesStream;  // used to load RTF bytes into rich edit control
 begin
   reView.MaxLength := Length(RTF);  // ensures control has large enough capacity
-  reView.Text := RTF;
+  reView.PlainText := False;
+  Stm := TBytesStream.Create(RTF);
+  try
+    reView.Lines.LoadFromStream(Stm, TEncoding.ASCII);
+  finally
+    Stm.Free;
+  end;
   SetMargins;
 end;
 

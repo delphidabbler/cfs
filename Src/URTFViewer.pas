@@ -40,7 +40,7 @@ interface
 
 uses
   // Delphi
-  Forms,
+  SysUtils, Forms,
   // Project
   IntfViewers, UBaseTextViewer;
 
@@ -51,11 +51,11 @@ type
   TRTFViewer:
     Viewer for rich text clipboard formats.
   }
-  TRTFViewer = class(TBaseTextViewer,
+  TRTFViewer = class(TBaseAnsiTextViewer,
     IViewer
   )
   private
-    fRTF: string;
+    fRTF: TBytes;
       {Contains rich text source code}
   protected
     { IViewer }
@@ -128,7 +128,7 @@ procedure TRTFViewer.ReleaseClipData;
   }
 begin
   // we simply empty the string holding rich text source
-  fRTF := '';
+  SetLength(fRTF, 0);
 end;
 
 procedure TRTFViewer.RenderClipData(const FmtID: Word);
@@ -138,7 +138,7 @@ procedure TRTFViewer.RenderClipData(const FmtID: Word);
   }
 begin
   // rtf code is stored as plain text on clipboard
-  fRTF := CopyClipboardText(FmtID);
+  fRTF := GetAsBytes(FmtID);
 end;
 
 procedure TRTFViewer.RenderView(const Frame: TFrame);
