@@ -55,18 +55,14 @@ type
   }
   TBaseTextViewer = class(TGlobalMemViewer)
   protected
-    function CopyClipboardText(const FmtID: Word): string;
+    function CopyClipboardText(const FmtID: Word): string; deprecated;
       {Makes a copy of textual clipboard data and returns it as text. Text can
       be either Ansi or Unicode.
         @param FmtID [in] Required clipboard format.
         @return Required text.
       }
-  end;
-
-type
-  TBaseAnsiTextViewer = class(TGlobalMemViewer)
-  strict protected
-    function GetAsBytes(const FmtID: Word): TBytes;
+    function GetAsAnsiBytes(const FmtID: Word): TBytes;
+//    function GetAsUnicodeBytes(const FmtID: Word): TBytes;
   end;
 
 
@@ -117,9 +113,7 @@ begin
   end;
 end;
 
-{ TBaseAnsiTextViewer }
-
-function TBaseAnsiTextViewer.GetAsBytes(const FmtID: Word): TBytes;
+function TBaseTextViewer.GetAsAnsiBytes(const FmtID: Word): TBytes;
 var
   Data: IDataBuffer;          // data buffer containing copy of clipboard data
   Buffer: Pointer;            // pointer into data buffer

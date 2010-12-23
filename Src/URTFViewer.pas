@@ -51,7 +51,7 @@ type
   TRTFViewer:
     Viewer for rich text clipboard formats.
   }
-  TRTFViewer = class(TBaseAnsiTextViewer,
+  TRTFViewer = class(TBaseTextViewer,
     IViewer
   )
   private
@@ -138,7 +138,7 @@ procedure TRTFViewer.RenderClipData(const FmtID: Word);
   }
 begin
   // rtf code is stored as plain text on clipboard
-  fRTF := GetAsBytes(FmtID);
+  fRTF := GetAsAnsiBytes(FmtID);
 end;
 
 procedure TRTFViewer.RenderView(const Frame: TFrame);
