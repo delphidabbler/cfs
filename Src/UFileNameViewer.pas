@@ -3,8 +3,8 @@
  *
  * Implements a viewer object for file names stored as text on the clipboard.
  *
- * v1.0 of 10 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -44,17 +44,21 @@ uses
 
 
 type
-
-  {
-  TFileNameViewer:
-    Viewer for file names stored as text on the clipboard.
-  }
-  TFileNameViewer = class(TShellNameViewer,
+  ///  <summary>
+  ///  Abstract base class for viewers for file names stored as text on
+  ///  clipboard.
+  ///  </summary>
+  TFileNameViewer = class abstract(TShellNameViewer,
     IViewer
   )
   protected
+    function GetShellName(const FmtID: Word): UnicodeString; override; abstract;
+      {Gets Unicode representation of shell name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required shell name.
+      }
     { IViewer }
-    function SupportsFormat(const FmtID: Word): Boolean;
+    function SupportsFormat(const FmtID: Word): Boolean; virtual; abstract;
       {Checks whether viewer supports a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if format is supported, False if not.
@@ -75,11 +79,53 @@ type
       }
   end;
 
+type
+  ///  <summary>
+  ///  Viewer for file names stored on clipboard as ANSI text.
+  ///  </summary>
+  TAnsiFileNameViewer = class sealed(TFileNameViewer,
+    IViewer
+  )
+  protected
+    function GetShellName(const FmtID: Word): UnicodeString; override;
+      {Gets Unicode representation of file name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required file name.
+      }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for file names stored on clipboard as Unicode text.
+  ///  </summary>
+  TUnicodeFileNameViewer = class sealed(TFileNameViewer,
+    IViewer
+  )
+  protected
+    function GetShellName(const FmtID: Word): UnicodeString; override;
+      {Gets Unicode representation of file name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required file name.
+      }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
 
 implementation
 
 
 uses
+  // Delphi
+  SysUtils,
   // Project
   FrFileNameViewer, UClipFmt, UViewers;
 
@@ -106,16 +152,6 @@ begin
   Result := sMenuText;
 end;
 
-function TFileNameViewer.SupportsFormat(const FmtID: Word): Boolean;
-  {Checks whether viewer supports a clipboard format.
-    @param FmtID [in] ID of required clipboard format.
-    @return True if format is supported, False if not.
-  }
-begin
-  // we support both ansi and unicode forms: file names are simple text
-  Result := (FmtID = CF_FILENAMEA) or (FmtID = CF_FILENAMEW);
-end;
-
 function TFileNameViewer.UIFrameClass: TFrameClass;
   {Gets the class type of the viewer frame.
     @return Required frame class.
@@ -124,11 +160,51 @@ begin
   Result := TFileNameViewerFrame;
 end;
 
+{ TAnsiFileNameViewer }
+
+function TAnsiFileNameViewer.GetShellName(const FmtID: Word): UnicodeString;
+  {Gets Unicode representation of file name.
+    @param FmtID [in] ID of clipboard format to be rendered.
+    @return Required file name.
+  }
+begin
+  Result := TEncoding.Default.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function TAnsiFileNameViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_FILENAMEA;
+end;
+
+{ TUnicodeFileNameViewer }
+
+function TUnicodeFileNameViewer.GetShellName(const FmtID: Word): UnicodeString;
+  {Gets Unicode representation of file name.
+    @param FmtID [in] ID of clipboard format to be rendered.
+    @return Required file name.
+  }
+begin
+  Result := TEncoding.Unicode.GetString(GetAsUnicodeBytes(FmtID));
+end;
+
+function TUnicodeFileNameViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_FILENAMEW;
+end;
 
 initialization
 
 // Register viewer
-ViewerRegistrar.RegisterViewer(TFileNameViewer.Create);
+ViewerRegistrar.RegisterViewer(TAnsiFileNameViewer.Create);
+ViewerRegistrar.RegisterViewer(TUnicodeFileNameViewer.Create);
 
 end.
 

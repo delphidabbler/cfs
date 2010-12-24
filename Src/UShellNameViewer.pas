@@ -4,8 +4,8 @@
  * Implements a base class for viewers that display shell names provided as
  * simple text.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -47,16 +47,20 @@ uses
 
 
 type
-
-  {
-  TShellNameViewer:
-    Base class for viewers that display shell names provided as simple text.
-  }
-  TShellNameViewer = class(TBaseTextViewer)
+  ///  <summary>
+  ///  Abstract base class for viewers that display shell names provided as
+  ///  simple ANSI or Unicode text.
+  ///  </summary>
+  TShellNameViewer = class abstract(TBaseTextViewer)
   private
-    fShellName: string;
+    fShellName: UnicodeString;
       {Name of referenced shell reference. Could be file name or URL}
   protected
+    function GetShellName(const FmtID: Word): UnicodeString; virtual; abstract;
+      {Gets Unicode representation of shell name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required shell name.
+      }
     { IViewer }
     procedure RenderClipData(const FmtID: Word);
       {Reads data for a specified format from the clipboard and renders it into
@@ -98,7 +102,7 @@ procedure TShellNameViewer.RenderClipData(const FmtID: Word);
   }
 begin
   // get shell name from clipboard text
-  fShellName := CopyClipboardText(FmtID);
+  fShellName := GetShellName(FmtID);
 end;
 
 procedure TShellNameViewer.RenderView(const Frame: TFrame);

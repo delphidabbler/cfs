@@ -44,17 +44,20 @@ uses
 
 
 type
-
-  {
-  TURLViewer:
-    Viewer for URLs stored as text on the clipboard.
-  }
-  TURLViewer = class(TShellNameViewer,
+  ///  <summary>
+  ///  Abstract base class for viewers for URLs stored as text on clipboard.
+  ///  </summary>
+  TURLViewer = class abstract(TShellNameViewer,
     IViewer
   )
   protected
+    function GetShellName(const FmtID: Word): UnicodeString; override; abstract;
+      {Gets Unicode representation of shell name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required shell name.
+      }
     { IViewer }
-    function SupportsFormat(const FmtID: Word): Boolean;
+    function SupportsFormat(const FmtID: Word): Boolean; virtual; abstract;
       {Checks whether viewer supports a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if format is supported, False if not.
@@ -75,11 +78,53 @@ type
       }
   end;
 
+type
+  ///  <summary>
+  ///  Viewer for URLs stored on clipboard as ASCII text.
+  ///  </summary>
+  TAnsiURLViewer = class sealed(TURLViewer,
+    IViewer
+  )
+  protected
+    function GetShellName(const FmtID: Word): UnicodeString; override;
+      {Gets Unicode representation of URL name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required URL name.
+      }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for URLs stored on clipboard as Unicode text.
+  ///  </summary>
+  TUnicodeURLViewer = class sealed(TURLViewer,
+    IViewer
+  )
+  protected
+    function GetShellName(const FmtID: Word): UnicodeString; override;
+      {Gets Unicode representation of URL name.
+        @param FmtID [in] ID of clipboard format to be rendered.
+        @return Required URL name.
+      }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
 
 implementation
 
 
 uses
+  // Delphi
+  SysUtils,
   // Project
   FrURLViewer, UClipFmt, UViewers;
 
@@ -106,16 +151,6 @@ begin
   Result := sMenuText;
 end;
 
-function TURLViewer.SupportsFormat(const FmtID: Word): Boolean;
-  {Checks whether viewer supports a clipboard format.
-    @param FmtID [in] ID of required clipboard format.
-    @return True if format is supported, False if not.
-  }
-begin
-  // we support both ansi and unicode formats
-  Result := (FmtID = CF_INETURLA) or (FmtID = CF_INETURLW);
-end;
-
 function TURLViewer.UIFrameClass: TFrameClass;
   {Gets the class type of the viewer frame.
     @return Required frame class.
@@ -125,10 +160,52 @@ begin
 end;
 
 
+{ TAnsiURLViewer }
+
+function TAnsiURLViewer.GetShellName(const FmtID: Word): UnicodeString;
+  {Gets Unicode representation of URL name.
+    @param FmtID [in] ID of clipboard format to be rendered.
+    @return Required URL name.
+  }
+begin
+  // ANSI URLs should be in ASCII format if properly URL encoded.
+  Result := TEncoding.ASCII.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function TAnsiURLViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_INETURLA;
+end;
+
+{ TUnicodeURLViewer }
+
+function TUnicodeURLViewer.GetShellName(const FmtID: Word): UnicodeString;
+{Gets Unicode representation of URL name.
+    @param FmtID [in] ID of clipboard format to be rendered.
+    @return Required URL name.
+  }
+begin
+  Result := TEncoding.Unicode.GetString(GetAsUnicodeBytes(FmtID));
+end;
+
+function TUnicodeURLViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_INETURLW;
+end;
+
 initialization
 
 // Register viewer
-ViewerRegistrar.RegisterViewer(TURLViewer.Create);
+ViewerRegistrar.RegisterViewer(TAnsiURLViewer.Create);
+ViewerRegistrar.RegisterViewer(TUnicodeURLViewer.Create);
 
 end.
 
