@@ -3,8 +3,8 @@
  *
  * Implements a viewer object for HTML clips.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -148,10 +148,18 @@ procedure THTMLClipViewer.RenderClipData(const FmtID: Word);
   a format suitable for display.
     @param FmtID [in] ID of clipboard format to be rendered.
   }
+var
+  UTF8Bytes: TBytes;
+  UTF8Str: UTF8String;
 begin
   ReleaseClipData;        // ensure any previously rendered data is released
   // we pass copy of clipboard data to THTMLClip object for parsing
-  fClip := THTMLClip.Create(CopyClipboardText(FmtID));
+  // TODO: Move this code down into base class and generalise
+  UTF8Bytes := GetAsAnsiBytes(FmtID);
+  SetLength(UTF8Str, Length(UTF8Bytes));
+  if Length(UTF8Str) > 0 then
+    Move(Pointer(UTF8Bytes)^, Pointer(UTF8Str)^, Length(UTF8Bytes));
+  fClip := THTMLClip.Create(UTF8Str);
 end;
 
 procedure THTMLClipViewer.RenderView(const Frame: TFrame);
