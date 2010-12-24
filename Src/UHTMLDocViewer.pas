@@ -4,8 +4,8 @@
  * Implements a viewer object for complete or partial HTML documents stored on
  * clipboard.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -47,20 +47,25 @@ uses
 
 
 type
-
-  {
-  THTMLDocViewer:
-    Viewer for complete or partial HTML documents stored on clipboard.
-  }
-  THTMLDocViewer = class(TBaseTextViewer,
+  ///  <summary>
+  ///  Abstract base class for viewers of complete or partial HTML documents
+  ///  stored on clipboard.
+  ///  </summary>
+  THTMLDocViewer = class abstract(TBaseTextViewer,
     IViewer
   )
   private
-    fHTML: string;
+    fHTML: UnicodeString;
       {Contains HTML source code to be displayed}
   protected
+    function GetHTML(const FmtID: Word): UnicodeString; virtual; abstract;
+      {Gets HTML as Unicode text, converted from appropriate clipboard text
+      encoding.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required Unicode HTML.
+      }
     { IViewer }
-    function SupportsFormat(const FmtID: Word): Boolean;
+    function SupportsFormat(const FmtID: Word): Boolean; virtual; abstract;
       {Checks whether viewer supports a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if format is supported, False if not.
@@ -93,15 +98,64 @@ type
       }
   end;
 
+type
+  ///  <summary>
+  ///  Viewer for "text/html" format partial HTML documents stored on clipboard
+  ///  as Unicode text.
+  ///  </summary>
+  TMIMEHTMLViewer = class sealed(THTMLDocViewer,
+    IViewer
+  )
+  protected
+    function GetHTML(const FmtID: Word): UnicodeString; override;
+     {Gets HTML as Unicode text, copied directly from clipboard.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required Unicode HTML.
+      }
+    { IViewer }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for "HTML (HyperText Markup Language)" format complete HTML
+  ///  documents stored on clipboard as ANSI text in default encoding.
+  ///  </summary>
+  ///  <remarks>
+  ///  Default ANSI encoding inferred from experiments. Form observing format
+  ///  created by Open Office Writer it seems that the charset noted in the
+  ///  HTML content-type meta tag (UTF-8) is no correct.
+  ///  </remarks>
+  THyperTextViewer = class sealed(THTMLDocViewer,
+    IViewer
+  )
+  protected
+    function GetHTML(const FmtID: Word): UnicodeString; override;
+     {Gets HTML as Unicode text, converted from default ANSI format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required Unicode HTML.
+      }
+    { IViewer }
+    function SupportsFormat(const FmtID: Word): Boolean; override;
+      {Checks whether viewer supports a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if format is supported, False if not.
+      }
+  end;
+
 
 implementation
 
 
 uses
   // Delphi
-  FrHTMLViewer,
+  SysUtils,
   // Project
-  UClipFmt, UViewers;
+  FrHTMLViewer, UClipFmt, UViewers;
 
 
 { THTMLDocViewer }
@@ -140,8 +194,8 @@ procedure THTMLDocViewer.RenderClipData(const FmtID: Word);
     @param FmtID [in] ID of clipboard format to be rendered.
   }
 begin
-  // HTML source is stored as simple text on clipboard (may be unicode)
-  fHTML := CopyClipboardText(FmtID);
+  // HTML stored as text on clipboard: format depends on FmtID
+  fHTML := GetHTML(FmtID);
 end;
 
 procedure THTMLDocViewer.RenderView(const Frame: TFrame);
@@ -153,16 +207,6 @@ begin
   (Frame as THTMLViewerFrame).Display(fHTML);
 end;
 
-function THTMLDocViewer.SupportsFormat(const FmtID: Word): Boolean;
-  {Checks whether viewer supports a clipboard format.
-    @param FmtID [in] ID of required clipboard format.
-    @return True if format is supported, False if not.
-  }
-begin
-  // these formats either provide complete or partial HTML documents
-  Result := (FmtID = CF_HYPERTEXT) or (FmtID = CF_MIME_HTML);
-end;
-
 function THTMLDocViewer.UIFrameClass: TFrameClass;
   {Gets the class type of the viewer frame.
     @return Required frame class.
@@ -171,11 +215,51 @@ begin
   Result := THTMLViewerFrame;
 end;
 
+{ TMIMEHTMLViewer }
+
+function TMIMEHTMLViewer.GetHTML(const FmtID: Word): UnicodeString;
+ {Gets HTML as Unicode text, copied directly from clipboard.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required Unicode HTML.
+  }
+begin
+  Result := TEncoding.Unicode.GetString(GetAsUnicodeBytes(FmtID));
+end;
+
+function TMIMEHTMLViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_MIME_HTML;
+end;
+
+{ THyperTextViewer }
+
+function THyperTextViewer.GetHTML(const FmtID: Word): UnicodeString;
+ {Gets HTML as Unicode text, converted from default ANSI format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required Unicode HTML.
+  }
+begin
+  Result := TEncoding.Default.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function THyperTextViewer.SupportsFormat(const FmtID: Word): Boolean;
+  {Checks whether viewer supports a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if format is supported, False if not.
+  }
+begin
+  Result := FmtID = CF_HYPERTEXT;
+end;
 
 initialization
 
 // Register viewer
-ViewerRegistrar.RegisterViewer(THTMLDocViewer.Create);
+ViewerRegistrar.RegisterViewer(TMIMEHTMLViewer.Create);
+ViewerRegistrar.RegisterViewer(THyperTextViewer.Create);
 
 end.
 
