@@ -48,6 +48,7 @@ uses
 
 type
 
+  // TODO: comment new methods
   {
   TBaseTextViewer:
     Base class for all viewers that read text from the clipboard. Provides
@@ -62,7 +63,7 @@ type
         @return Required text.
       }
     function GetAsAnsiBytes(const FmtID: Word): TBytes;
-//    function GetAsUnicodeBytes(const FmtID: Word): TBytes;
+    function GetAsUnicodeBytes(const FmtID: Word): TBytes;
   end;
 
 
@@ -119,6 +120,8 @@ var
   Buffer: Pointer;            // pointer into data buffer
   Len: Integer;               // length of "string" from data buffer
 begin
+  // We make assumption here that an ANSI character is 1 byte
+  Assert(SizeOf(AnsiChar) = 1);
   // Take copy of clipboard data
   Data := CopyClipboardMemData(FmtID);
   // Get data in correct format
@@ -131,6 +134,35 @@ begin
     Len := Length(Result);
     while (Len > 0) and (Result[Len - 1] = 0) do
       Dec(Len);
+    SetLength(Result, Len);
+  finally
+    Data.Unlock;
+  end;
+end;
+
+function TBaseTextViewer.GetAsUnicodeBytes(const FmtID: Word): TBytes;
+var
+  Data: IDataBuffer;          // data buffer containing copy of clipboard data
+  Buffer: Pointer;            // pointer into data buffer
+  Len: Integer;               // length of "string" from data buffer
+begin
+  // We make assumption here that a Unicode character is 2 bytes
+  Assert(SizeOf(WideChar) = 2);
+  // Take copy of clipboard data
+  Data := CopyClipboardMemData(FmtID);
+  // Get data in correct format
+  Buffer := Data.Lock;
+  try
+    // copy clipboard data into byte array: format must have Unicode text
+    SetLength(Result, Data.Size);
+    Move(Buffer^, Pointer(Result)^, Data.Size);
+    // ensure correct length (multiple of 2)
+    Len := Length(Result);
+    if Odd(Len) then
+      Dec(Len);
+    // remove all trailing WideChar zeros - we don't want these in final string
+    while (Len >= 2) and (Result[Len - 1] = 0) and (Result[Len - 2] = 0) do
+      Dec(Len, 2);
     SetLength(Result, Len);
   finally
     Data.Unlock;
