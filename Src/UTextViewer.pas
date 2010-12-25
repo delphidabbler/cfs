@@ -358,7 +358,8 @@ function TAnsiTextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
       not.
   }
 begin
-  Result := (FmtID = CF_FILENAMEA);
+  Result := (FmtID = CF_FILENAMEA) or (FmtID = CF_HYPERTEXT);
+
 end;
 
 { TUTF8TextViewer }
@@ -420,8 +421,7 @@ function TASCIITextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
 begin
   Result := (FmtID = CF_RTF)
     or (FmtID = CF_RTFNOOBJS)
-    or (FmtID = CF_INETURLA)
-    or (FmtID = CF_HYPERTEXT);
+    or (FmtID = CF_INETURLA);
 end;
 
 { TOEMTextViewer }
