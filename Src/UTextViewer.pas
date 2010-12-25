@@ -48,35 +48,35 @@ uses
 
 
 type
-
-  {
-  TTextViewer:
-    Viewer object that displays plain text clipboard formats, including Ansi,
-    Unicode and OEM text. Also used as a secondary viewer for plain text
-    formatted code, such as HTML or RTF.
-  }
-  TTextViewer = class(TBaseTextViewer,
+  ///  <summary>
+  ///  Abstract base classes for viewers that display plain text clipboard
+  ///  formats.
+  ///  </summary>
+  TTextViewer = class abstract(TBaseTextViewer,
     IViewer
   )
   private
-    fIsOEM: Boolean;
-      {Flag set true if OEM text is being displayed, False if not}
-    fText: string;
+    fText: UnicodeString;
       {Text read from clipboard}
-    function IsSecondaryViewer(const FmtID: Word): Boolean;
+  protected
+    function IsSecondaryViewer(const FmtID: Word): Boolean; virtual; abstract;
       {Checks if the viewer is a "secondary" viewer for a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if the viewer is a secondary viewer for the FmtID, False if
           not.
       }
-  protected
+    function GetText(const FmtID: Word): UnicodeString; virtual; abstract;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
     { IViewer }
     function SupportsFormat(const FmtID: Word): Boolean;
       {Checks whether viewer supports a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if format is supported, False if not.
       }
-    function IsPrimaryViewer(const FmtID: Word): Boolean;
+    function IsPrimaryViewer(const FmtID: Word): Boolean; virtual; abstract;
       {Checks if the viewer is the "primary" viewer for a clipboard format.
         @param FmtID [in] ID of required clipboard format.
         @return True if the viewer is a primary viewer, False if not.
@@ -104,54 +104,139 @@ type
       }
   end;
 
+type
+  ///  <summary>
+  ///  Viewer for plain text stored on clipboard in Unicode format.
+  ///  </summary>
+  TUnicodeTextViewer = class sealed(TTextViewer)
+  strict protected
+    function GetText(const FmtID: Word): UnicodeString; override;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
+    function IsSecondaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is a "secondary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a secondary viewer for the FmtID, False if
+          not.
+      }
+    function IsPrimaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is the "primary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a primary viewer, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for plain text stored on clipboard in ANSI format using the system
+  ///  default code page.
+  ///  </summary>
+  TAnsiTextViewer = class sealed(TTextViewer)
+  strict protected
+    function GetText(const FmtID: Word): UnicodeString; override;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
+    function IsSecondaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is a "secondary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a secondary viewer for the FmtID, False if
+          not.
+      }
+    function IsPrimaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is the "primary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a primary viewer, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for plain text stored on clipboard in UTF-8 format.
+  ///  </summary>
+  TUTF8TextViewer = class sealed(TTextViewer)
+  strict protected
+    function GetText(const FmtID: Word): UnicodeString; override;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
+    function IsSecondaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is a "secondary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a secondary viewer for the FmtID, False if
+          not.
+      }
+    function IsPrimaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is the "primary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a primary viewer, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for plain text stored on clipboard in ASCII format.
+  ///  </summary>
+  TASCIITextViewer = class sealed(TTextViewer)
+  strict protected
+    function GetText(const FmtID: Word): UnicodeString; override;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
+    function IsSecondaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is a "secondary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a secondary viewer for the FmtID, False if
+          not.
+      }
+    function IsPrimaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is the "primary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a primary viewer, False if not.
+      }
+  end;
+
+type
+  ///  <summary>
+  ///  Viewer for plain text stored on clipboard as OEM (ANSI) text.
+  ///  </summary>
+  TOEMTextViewer = class sealed(TTextViewer)
+  strict protected
+    function GetText(const FmtID: Word): UnicodeString; override;
+      {Gets the text to display in Unicode format.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required string.
+      }
+    function IsSecondaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is a "secondary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a secondary viewer for the FmtID, False if
+          not.
+      }
+    function IsPrimaryViewer(const FmtID: Word): Boolean; override;
+      {Checks if the viewer is the "primary" viewer for a clipboard format.
+        @param FmtID [in] ID of required clipboard format.
+        @return True if the viewer is a primary viewer, False if not.
+      }
+  end;
+
 
 implementation
 
 
 uses
+  // Delphi
+  SysUtils, Windows,
   // Project
   FrTextViewer, UClipFmt, UViewers;
 
 
-function TTextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
-  {Checks if the viewer is the "primary" viewer for a clipboard format.
-    @param FmtID [in] ID of required clipboard format.
-    @return True if the viewer is a primary viewer, False if not.
-  }
-begin
-  // Text viewer is primary viewer for plain text formats in either Ansi, OEM
-  // or Unicode formats. The latter are converted to Ansi. The viewer is also
-  // the primary viewer for specially formatted formats that are intended to be
-  // viewed as source - CF_RTFASTEXT for example.
-  Result := (FmtID = CF_TEXT)
-    or (FmtID = CF_UNICODETEXT)
-    or (FmtID = CF_OEMTEXT)
-    or (FmtID = CF_RTFASTEXT)
-    or (FmtID = CF_MIME_PLAINTEXT);
-end;
-
-function TTextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
-  {Checks if the viewer is a "secondary" viewer for a clipboard format.
-    @param FmtID [in] ID of required clipboard format.
-    @return True if the viewer is a secondary viewer for the FmtID, False if
-      not.
-  }
-begin
-  // Text viewer is a 2ndary view for formats known to be stored as plain text
-  // but which have a special format (e.g. HTML) that is better rendered by a
-  // dedicated primary viewer. The text viewer is provided to enable the
-  // underlying source to be viewed.
-  Result := (FmtID = CF_RTF)
-    or (FmtID = CF_RTFNOOBJS)
-    or (FmtID = CF_FILENAMEA)
-    or (FmtID = CF_FILENAMEW)
-    or (FmtID = CF_INETURLA)
-    or (FmtID = CF_INETURLW)
-    or (FmtID = CF_HTML)
-    or (FmtID = CF_HYPERTEXT)
-    or (FmtID = CF_MIME_HTML)
-    or (FmtID = CF_MIME_MOZHTMLCONTEXT);
-end;
+{ TTextViewer }
 
 function TTextViewer.MenuText(const FmtID: Word): string;
   {Gets text to display in viewer menu.
@@ -182,8 +267,7 @@ procedure TTextViewer.RenderClipData(const FmtID: Word);
     @param FmtID [in] ID of clipboard format to be rendered.
   }
 begin
-  fText := inherited CopyClipboardText(FmtID);
-  fIsOEM := FmtID = CF_OEMTEXT;
+  fText := GetText(FmtID);
 end;
 
 procedure TTextViewer.RenderView(const Frame: TFrame);
@@ -192,7 +276,7 @@ procedure TTextViewer.RenderView(const Frame: TFrame);
   }
 begin
   // We pass the text and OEM flag to frame
-  (Frame as TTextViewerFrame).Display(fText, fIsOEM);
+  (Frame as TTextViewerFrame).Display(fText);
 end;
 
 function TTextViewer.SupportsFormat(const FmtID: Word): Boolean;
@@ -214,10 +298,177 @@ begin
   Result := TTextViewerFrame;
 end;
 
+{ TUnicodeTextViewer }
+
+function TUnicodeTextViewer.GetText(const FmtID: Word): UnicodeString;
+  {Gets the text to display in Unicode format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required string.
+  }
+begin
+  Result := TEncoding.Unicode.GetString(GetAsUnicodeBytes(FmtID));
+end;
+
+function TUnicodeTextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is the "primary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a primary viewer, False if not.
+  }
+begin
+  Result := FmtID = CF_UNICODETEXT;
+end;
+
+function TUnicodeTextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is a "secondary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a secondary viewer for the FmtID, False if
+      not.
+  }
+begin
+  Result := (FmtID = CF_FILENAMEW)
+    or (FmtID = CF_INETURLW)
+    or (FmtID = CF_MIME_HTML)
+    or (FmtID = CF_MIME_MOZHTMLCONTEXT);
+end;
+
+{ TAnsiTextViewer }
+
+function TAnsiTextViewer.GetText(const FmtID: Word): UnicodeString;
+  {Gets the text to display in Unicode format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required string.
+  }
+begin
+  Result := TEncoding.Default.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function TAnsiTextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is the "primary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a primary viewer, False if not.
+  }
+begin
+  Result := FmtID = CF_TEXT;
+end;
+
+function TAnsiTextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is a "secondary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a secondary viewer for the FmtID, False if
+      not.
+  }
+begin
+  Result := (FmtID = CF_FILENAMEA);
+end;
+
+{ TUTF8TextViewer }
+
+function TUTF8TextViewer.GetText(const FmtID: Word): UnicodeString;
+  {Gets the text to display in Unicode format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required string.
+  }
+begin
+  Result := TEncoding.UTF8.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function TUTF8TextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is the "primary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a primary viewer, False if not.
+  }
+begin
+  Result := False;
+end;
+
+function TUTF8TextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is a "secondary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a secondary viewer for the FmtID, False if
+      not.
+  }
+begin
+  Result := FmtID = CF_HTML;
+end;
+
+{ TASCIITextViewer }
+
+function TASCIITextViewer.GetText(const FmtID: Word): UnicodeString;
+  {Gets the text to display in Unicode format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required string.
+  }
+begin
+  Result := TEncoding.ASCII.GetString(GetAsAnsiBytes(FmtID));
+end;
+
+function TASCIITextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is the "primary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a primary viewer, False if not.
+  }
+begin
+  Result := FmtID = CF_RTFASTEXT;
+end;
+
+function TASCIITextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is a "secondary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a secondary viewer for the FmtID, False if
+      not.
+  }
+begin
+  Result := (FmtID = CF_RTF)
+    or (FmtID = CF_RTFNOOBJS)
+    or (FmtID = CF_INETURLA)
+    or (FmtID = CF_HYPERTEXT);
+end;
+
+{ TOEMTextViewer }
+
+function TOEMTextViewer.GetText(const FmtID: Word): UnicodeString;
+  {Gets the text to display in Unicode format.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required string.
+  }
+var
+  Bytes: TBytes;  // bytes of OEM char string on clipboard
+begin
+  // Get bytes in OEM char set from clipboard
+  Bytes := GetAsAnsiBytes(FmtID);
+  // Convert from OEM char set to ANSI
+  OEMToCharBuffA(PAnsiChar(Bytes), PAnsiChar(Bytes), Length(Bytes));
+  // Convert to Unicode
+  Result := TEncoding.Default.GetString(Bytes);
+end;
+
+function TOEMTextViewer.IsPrimaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is the "primary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a primary viewer, False if not.
+  }
+begin
+  Result := FmtID = CF_OEMTEXT;
+end;
+
+function TOEMTextViewer.IsSecondaryViewer(const FmtID: Word): Boolean;
+  {Checks if the viewer is a "secondary" viewer for a clipboard format.
+    @param FmtID [in] ID of required clipboard format.
+    @return True if the viewer is a secondary viewer for the FmtID, False if
+      not.
+  }
+begin
+  Result := False;
+end;
+
 initialization
 
 // Register viewer
-ViewerRegistrar.RegisterViewer(TTextViewer.Create);
+ViewerRegistrar.RegisterViewer(TUnicodeTextViewer.Create);
+ViewerRegistrar.RegisterViewer(TAnsiTextViewer.Create);
+ViewerRegistrar.RegisterViewer(TUTF8TextViewer.Create);
+ViewerRegistrar.RegisterViewer(TASCIITextViewer.Create);
+ViewerRegistrar.RegisterViewer(TOEMTextViewer.Create);
 
 end.
 

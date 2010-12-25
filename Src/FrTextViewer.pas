@@ -3,9 +3,8 @@
  *
  * Implements a viewer frame that displays plain text documents.
  *
- * v1.0 of 13 Mar 2008  - Original version.
- * v1.1 of 19 Jun 2008  - Added keyboard accelerator to Word Wrap check box.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -80,10 +79,9 @@ type
     destructor Destroy; override;
       {Class destructor. Tears down frame and stores current preferences.
       }
-    procedure Display(const Text: string; const IsOEM: Boolean);
+    procedure Display(const Text: UnicodeString);
       {Displays required text.
         @param Text [in] Text to be displayed.
-        @param IsOEM [in] Whether text is in OEM format.
       }
   end;
 
@@ -134,13 +132,11 @@ begin
   inherited;
 end;
 
-procedure TTextViewerFrame.Display(const Text: string; const IsOEM: Boolean);
+procedure TTextViewerFrame.Display(const Text: UnicodeString);
   {Displays required text.
     @param Text [in] Text to be displayed.
-    @param IsOEM [in] Whether text is in OEM format.
   }
 begin
-  edView.OEMConvert := IsOEM;
   edView.Lines.BeginUpdate;
   try
     edView.Text := Text;
