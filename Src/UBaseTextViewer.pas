@@ -48,22 +48,23 @@ uses
 
 type
 
-  // TODO: comment new methods
-  {
-  TBaseTextViewer:
-    Base class for all viewers that read text from the clipboard. Provides
-    access to text on clipboard.
-  }
+  ///  <summary>
+  ///  Base class for all viewers that read text from the clipboard.
+  ///  </summary>
   TBaseTextViewer = class(TGlobalMemViewer)
   protected
-    function CopyClipboardText(const FmtID: Word): string; deprecated;
-      {Makes a copy of textual clipboard data and returns it as text. Text can
-      be either Ansi or Unicode.
-        @param FmtID [in] Required clipboard format.
-        @return Required text.
-      }
     function GetAsAnsiBytes(const FmtID: Word): TBytes;
+      {Copies clipboard data from global memory into byte array of ANSI
+      character codes with trailing zero bytes removed.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required byte array of ANSI character values.
+      }
     function GetAsUnicodeBytes(const FmtID: Word): TBytes;
+      {Copies clipboard data from global memory into byte array of Unicode
+      character codes with trailing WideChar zero bytes removed.
+        @param FmtID [in] ID of required clipboard format.
+        @return Required byte array of Unicode character values.
+      }
   end;
 
 
@@ -72,49 +73,17 @@ implementation
 
 uses
   // Project
-  UDataBuffer, UTextTypeSniffer;
+  UDataBuffer;
 
 
 { TBaseTextViewer }
 
-function TBaseTextViewer.CopyClipboardText(const FmtID: Word): string;
-  {Makes a copy of textual clipboard data and returns it as text. Text can be
-  either Ansi or Unicode.
-    @param FmtID [in] Required clipboard format.
-    @return Required text.
-  }
-var
-  Data: IDataBuffer;          // data buffer containing copy of clipboard data
-  Buffer: Pointer;            // pointer into data buffer
-  Sniffer: TTextTypeSniffer;  // used to test whether text is Unicode or ANSI
-begin
-  // Take copy of clipboard data
-  // NOTE: Three copies of clipboard text exist during this method, which is
-  // inefficient. 1st is copy on clipboard, second is copy in data buffer and
-  // third is text in result string. Data buffer is freed at the end of the
-  // method. If this proves too much overhead then bypass CopyClipboardData
-  // and hold clipboard open while reading text.
-  Data := CopyClipboardMemData(FmtID);
-  // Create sniffer object to check whether data is Unicode or Ansi text
-  Sniffer := TTextTypeSniffer.Create(Data);
-  try
-    // Get data in correct format
-    Buffer := Data.Lock;
-    try
-      if Sniffer.IsUnicode then
-        Result := PWideChar(Buffer) // Unicode: convert back to string
-      else
-        // *** THIS IS WRONG!!
-        Result := PChar(Buffer);    // Ansi: just return it
-    finally
-      Data.Unlock;
-    end;
-  finally
-    FreeAndNil(Sniffer);
-  end;
-end;
-
 function TBaseTextViewer.GetAsAnsiBytes(const FmtID: Word): TBytes;
+  {Copies clipboard data from global memory into byte array of ANSI character
+  codes with trailing zero bytes removed.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required byte array of ANSI character values.
+  }
 var
   Data: IDataBuffer;          // data buffer containing copy of clipboard data
   Buffer: Pointer;            // pointer into data buffer
@@ -141,6 +110,11 @@ begin
 end;
 
 function TBaseTextViewer.GetAsUnicodeBytes(const FmtID: Word): TBytes;
+  {Copies clipboard data from global memory into byte array of Unicode character
+  codes with trailing WideChar zero bytes removed.
+    @param FmtID [in] ID of required clipboard format.
+    @return Required byte array of Unicode character values.
+  }
 var
   Data: IDataBuffer;          // data buffer containing copy of clipboard data
   Buffer: Pointer;            // pointer into data buffer
