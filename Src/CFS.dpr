@@ -96,7 +96,6 @@ uses
   USettings in 'USettings.pas',
   UShellNameViewer in 'UShellNameViewer.pas',
   UStatusBarMgr in 'UStatusBarMgr.pas',
-  UTextTypeSniffer in 'UTextTypeSniffer.pas',
   UTextViewer in 'UTextViewer.pas',
   UURLViewer in 'UURLViewer.pas',
   UUtils in 'UUtils.pas',
