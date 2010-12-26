@@ -4,8 +4,8 @@
  * Implements classes that provide alternative interface to both ansi and
  * unicode versions of file group descriptors and contained file descriptors.
  *
- * v1.0 of 11 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -53,7 +53,7 @@ type
   }
   TFileDescAdapter = class(TObject)
   private
-    fFileName: string;
+    fFileName: UnicodeString;
       {Name of file}
     fCLSID: TGUID;
       {File class identifier}
@@ -127,7 +127,7 @@ type
         @return String representation of file attributes or '' if Attrs property
           is not valid.
       }
-    property FileName: string read fFileName;
+    property FileName: UnicodeString read fFileName;
       {Name of file. Undefined if HaveFileName returns false}
     property CLSID: TGUID read fCLSID;
       {File class identifier. Undefined if HaveCLSID returns false}
@@ -196,7 +196,7 @@ implementation
 
 uses
   // Delphi
-  SysUtils, ActiveX,
+  SysUtils, ActiveX, Classes {for inlining},
   // Project
   UUtils;
 
@@ -304,12 +304,9 @@ constructor TFileDescAdapter.Create(const FD: TFileDescriptorA);
   {Class constructor. Constructs an adapter object for an ansi file descriptor.
     @param FGD [in] Ansi version of a file group descriptor.
   }
-var
-  FDH: TFileDescriptorHeader;
 begin
   inherited Create;
-  fFileName := FD.cFileName;
-  FDH := PFileDescriptorHeader(@FD)^;
+  fFileName := UnicodeString(FD.cFileName);
   ProcessHeader(@FD);
 end;
 
@@ -318,12 +315,9 @@ constructor TFileDescAdapter.Create(const FD: TFileDescriptorW);
   descriptor.
     @param FGD [in] Unicode version of a file group descriptor.
   }
-var
-  FDH: TFileDescriptorHeader;
 begin
   inherited Create;
   fFileName := FD.cFileName;
-  FDH := PFileDescriptorHeader(@FD)^;
   ProcessHeader(@FD);
 end;
 
