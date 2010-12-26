@@ -13,6 +13,9 @@
 //                     PIDLSize, CreateEmptyPIDL, ConcatPIDL, CopyPIDL,
 //                     CreateSimplePIDL, NextPIDL
 //
+// Version 1.1  26-12-2010 Peter Johnson (www.delphidabbler.com) - fixed to work
+//                     with Unicode Delphis where PChar = PWideChar.
+//
 //------------------------------------------------------------------------------
 
 unit IDLUtils;
@@ -86,7 +89,11 @@ begin
   begin
     if Assigned (PIDL1) then
       Move (PIDL1^, Result^, Size1);
-    Move (PIDL2^, PChar(Result)[Size1], Size2)
+//  PJ 26-12-2010 - replaced use of PChar with PByte (use of PChar breaks code
+//                  when PChar = PWideChar as on Unicode Delphis - use PByte
+//                  instead which should work on all Delphis
+//    Move (PIDL2^, PChar(Result)[Size1], Size2)
+    Move (PIDL2^, PByte(Result)[Size1], Size2)
   end
 end;
 
