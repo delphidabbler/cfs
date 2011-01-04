@@ -34,9 +34,10 @@ Additional libraries / components are required to compile Clipboard Format Spy
 successfully. They are:
 
   From DelphiDabbler.com:
-    Version Information Component (v3.1.1 or later)
-    Window State Components (v5.3 or later)
-    Clipboard Viewer Component (v1.2 or later)
+    Version Information Component (v3.3 or later)
+    Window State Components (v5.3.1 or later)
+    Clipboard Viewer Component (v1.4 or later)
+    Hot Label Component (v2.1.1 or later)
   The Delphi 2010 VCL.
 
 All the libraries need to be available on Delphi's library path.
