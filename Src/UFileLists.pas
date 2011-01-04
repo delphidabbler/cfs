@@ -5,8 +5,8 @@
  * information about a file. Also implements classes that can populate a file
  * list object from both HDROP handles and Shell ID List arrays.
  *
- * v1.0 of 11 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -25,7 +25,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -324,7 +324,7 @@ begin
   fName := FileName;
   fAttrs := FileGetAttr(FileName);
   if not IsDirectory then
-    fModified := FileDateToDateTime(FileAge(FileName))
+    fModified := FileDateToDateTime(UUtils.FileAge(FileName))
   else
     fModified := 0.0;
 end;

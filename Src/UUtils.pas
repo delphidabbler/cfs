@@ -3,8 +3,8 @@
  *
  * Miscellaneous utility routines.
  *
- * v1.0 of 11 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -72,6 +72,13 @@ function IntToFixed(const Value: Integer;
 procedure Pause(const ADelay: Cardinal);
   {Pauses program. Performs a busy wait.
     @param ADelay [in] Length of time to wait in msec.
+  }
+
+function FileAge(const FileName: string): Integer;
+  {Gets the OS time stamp for a file.
+    @param FileName [in] Name of file.
+    @return Required OS time stamp or -1 if file does not exist or is a
+      directory.
   }
 
 
@@ -162,6 +169,28 @@ begin
   repeat
     Application.ProcessMessages;
   until Int64(GetTickCount) - Int64(StartTC) >= ADelay;
+end;
+
+function FileAge(const FileName: string): Integer;
+  {Gets the OS time stamp for a file.
+    @param FileName [in] Name of file.
+    @return Required OS time stamp or -1 if file does not exist or is a
+      directory.
+  }
+var
+  FH: Integer;  // file handle
+begin
+  // This function is provided to avoid using FileAge unit in SysUtils since
+  // the routine is deprecated in Delphi 2010
+  Result := -1;
+  if DirectoryExists(FileName) then
+    Exit;   // FileName is a directory
+  FH := FileOpen(FileName, fmOpenRead or fmShareDenyNone);
+  if FH <> -1 then
+  begin
+    Result := FileGetDate(FH);
+    FileClose(FH);
+  end;
 end;
 
 end.
