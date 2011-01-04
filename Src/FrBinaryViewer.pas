@@ -302,14 +302,14 @@ procedure TBinaryViewerFrame.PaintLine(const X, Y: Integer;
   }
 
   // ---------------------------------------------------------------------------
-  function MapChar(const Ch: Byte): AnsiChar;
+  function MapChar(const Ch: Byte): Char;
     {Maps a byte onto a printable character.
       @param Ch [in] Byte to be displayed.
       @return Character used to represent bytes ('.' if byte not printable).
     }
   begin
     if Ch in [32..126] then
-      Result := AnsiChar(Ch)
+      Result := Char(Ch)
     else
       Result := '.';
   end;
