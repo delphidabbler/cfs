@@ -31,7 +31,7 @@ DelphiDabbler Clipboard Format Spy you are consenting to be bound by the
 agreement. If you do not agree to the terms and conditions of this agreement do
 not install or use any part of DelphiDabbler Clipboard Format Spy.
 
-DelphiDabbler Clipboard Format Spy is copyright © 1997-2008 by Peter D Johnson,
+DelphiDabbler Clipboard Format Spy is copyright © 1997-2011 by Peter D Johnson,
 http://www.delphidabbler.com.
 
 
@@ -74,7 +74,7 @@ or other proprietary notice in or on the Product.
 THE PRODUCT IS PROVIDED "AS IS" WITH ALL FAULTS. TO THE EXTENT PERMITTED BY LAW,
 THE AUTHOR HEREBY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED,
 INCLUDING WITHOUT LIMITATION WARRANTIES THAT THE PRODUCT IS FREE OF DEFECTS,
-MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE AND NON-INFRINGING. YOU BEAR THE 
+MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE AND NON-INFRINGING. YOU BEAR THE
 ENTIRE RISK AS TO SELECTING THE PRODUCT FOR YOUR PURPOSES AND AS TO THE QUALITY
 AND PERFORMANCE OF THE PRODUCT. THIS LIMITATION WILL APPLY NOTWITHSTANDING THE
 FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY. SHOULD THE PRODUCT PROVE DEFECTIVE,
