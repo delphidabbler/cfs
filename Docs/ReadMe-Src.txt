@@ -15,7 +15,7 @@ The directory structure is:
 
   Bin        : Binary resource files (*1)
   Src        : Pascal and other source code + batch file controlling build  (*2)
-    3rdParty : Supplied 3rd party source code 
+    3rdParty : Supplied 3rd party source code
     Help     : Source files for the CFS.chm HTML Help file (*3)
       CSS    : Cascading style sheet used by HTML Help file
       HTML   : HTML source documents for HTML help topics
@@ -37,7 +37,7 @@ successfully. They are:
     Version Information Component (v3.1.1 or later)
     Window State Components (v5.3 or later)
     Clipboard Viewer Component (v1.2 or later)
-  The Delphi 7 VCL.
+  The Delphi 2010 VCL.
 
 All the libraries need to be available on Delphi's library path.
 
@@ -74,13 +74,14 @@ The programs required by the build process are:
 
   VIEd   - DelphiDabbler Version Information Editor, available from
            www.delphidabbler.com. Requires v2.11 or later.
-  BRCC32 - Borland Resource Compiler, supplied with Delphi 7.
-  DCC32  - Delphi Command Line Compiler, supplied with Delphi 7.
+  BRCC32 - Borland Resource Compiler, supplied with Delphi 2010.
+  DCC32  - Delphi Command Line Compiler, supplied with Delphi 2010.
   HHC    - Microsoft HTML Help Compiler, supplied with Microsoft HTML Help
            Workshop.
   ISC    - Inno Setup command line compiler, supplied with Inno Setup v5. Also
-           requires the ISPP pre-processor v5.
-        
+           requires the ISPP pre-processor v5. The Unicode version of Inno Setup
+           is required.
+
 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 Licensing
@@ -100,8 +101,10 @@ Clipboard Format Spy, please contact me at delphidabbler [At] yahoo [DOT] co
 log at http://www.delphidabbler.com/software/cfs/changelog for details of
 available versions.
 
-Please note: source code for versions more than one year old may no longer be
-available. 
+Please note: source code for versions before v4.0.0 are no longer available.
 
 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+$Rev$
+$Date$
+________________________________________________________________________________

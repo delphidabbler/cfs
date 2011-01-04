@@ -27,9 +27,9 @@ old program.
     the installation directory and the program group name. Once the installation
     has completed you have the option to display ReadMe.txt and to start the
     program.
-    
-    NOTE: The installer requires admininstrator privileges. Windows Vista will
-    request elevation and, if necessary an administrator password.
+
+    NOTE: The installer requires admininstrator privileges. Windows Vista and
+    later will request elevation and, if necessary an administrator password.
 
 
 Removing the program
@@ -43,16 +43,16 @@ Removing the program
 
 3.  Once you have confirmed this action the program will now be uninstalled.
     When the process is complete a message will be displayed.
-    
-    NOTE: The uninstaller requires admininstrator privileges. Windows Vista will
-    request elevation and, if necessary an administrator password.
 
-    
+    NOTE: The uninstaller requires admininstrator privileges. Windows Vista and
+    later will request elevation and, if necessary an administrator password.
+
+
 Source code
 ===========
 
-This program was written in Delphi Pascal and compiled with Delphi 7. The main
-source code for the program is available from
+This program was written in Delphi Pascal and compiled with Delphi 2010. The
+main source code for the program is available from
 http://www.delphidabbler.com/software/cfs/download. In order to compile the
 program various components will also be required. They are all available from
 the URL above.
@@ -63,3 +63,8 @@ Further information
 
 Further information about the program can be found at
 http://www.delphidabbler.com/cfs.
+
+--------------------------------------------------------------------------------
+$Rev$
+$Date$
+--------------------------------------------------------------------------------
