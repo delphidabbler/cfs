@@ -1,0 +1,966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ * Clipboard Format Spy Documentation: Supported Clipboard Formats
+ *
+ * $Rev$
+ * $Date$
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<title>
+  CFS: Supported Clipboard Formats
+</title>
+
+<style type="text/css" media="screen">
+  body {
+    margin: 1em;
+    padding: 0;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 150%;
+  }
+
+  .title {
+    margin: 0 0 1em 0;
+    padding: 0.5em;
+    border: 1px silver solid;
+    background-color: #eee;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+  }
+  .title .subtitle {
+    margin-top: 0.5em;
+    font-style: italic;
+    color: #336;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: Georgia, Garamond, "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: navy;
+    padding: 0;
+  }
+  h1 {
+    margin: 1.5em 0 0 0;
+    padding-bottom: 0.5em;
+    border-bottom: 2px silver solid;
+    font-size: 18pt;
+    font-style: italic;
+  }
+  h2 {
+    margin: 1em 0 0 0;
+    padding-bottom: 0.5em;
+    border-bottom: 1px silver solid;
+    font-size: 16pt;
+    font-style: italic;
+  }
+  h3 {
+    margin: 0.5em 0 0.5em 0;
+    font-size: 14pt;
+  }
+  h4 {
+    margin: 0.5em 0 0 0;
+    font-size: 12pt;
+  }
+
+  p,
+  div.spaced  {
+    margin: 0.5em 0 0 0;
+    padding: 0;
+  }
+  div.half-spaced {
+    margin: 0.25em 0 0 0;
+    padding: 0;
+  }
+
+  dl {
+    margin: 0.5em 0 0 0;
+    padding: 0;
+  }
+  dt {
+    margin-left: 0;
+    margin-top: 0.5em;
+  }
+  dd {
+    margin: 0.25em 0 0 3em;
+  }
+
+  ul, ol {
+    margin: 0.5em 0 0 3em;
+    padding: 0;
+  }
+  ul {
+    list-style-type: square;
+  }
+  ul li,
+  ol li {
+    margin-top: 0.5em;
+  }
+  ul.squashed,
+  ol.squashed {
+    margin-top: 0;
+  }
+  ul.squashed li,
+  ol.squashed li {
+    margin-top: 0;
+  }
+  ul.unspaced li,
+  ol.unspaced li {
+    margin-top: 0;
+  }
+
+  code {
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  a:link {
+    color: #336;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #669;
+    text-decoration: underline;
+  }
+  a:active {
+    color: #336;
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .pullout {
+    border: 1px silver solid;
+    border-left: 8px silver solid;
+    background-color: #ddd;
+    margin: 0.5em 0 0 0;
+    padding: 0.25em 0.5em;
+  }
+
+  p.todo {
+    border: 1px #faa solid;
+    border-left: 8px #faa solid;
+    background-color: #fdd;
+    color: red;
+    margin: 0.5em 0 0 0;
+    padding: 0.25em 0.5em;
+  }
+
+  span.todo {
+    background-color: #fdd;
+    color: red;
+  }
+
+  acronym {
+    color: purple;
+    border-bottom: 1px dotted purple;
+  }
+
+  .box {
+    border: 1px silver solid;
+    padding: 0.5em;
+  }
+
+  .indent {
+    margin-left: 3em;
+  }
+
+  .highlight {
+    color: #336;
+    font-style: italic;
+    font-weight: bold;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="title">
+  <div>CFS</div>
+  <div class="subtitle">Supported Clipboard Formats</div>
+</div>
+
+<h1>
+  CF_BITMAP
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_BITMAP (2)
+</p>
+
+<p>
+  A handle to a bitmap (HBITMAP). Stored on clipboard as a GDI handle.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UBmpViewer.TBmpViewer (primary viewer)
+  </li>
+</ul>
+
+<h1>
+  CF_DIB
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_DIB (8)
+</p>
+
+<p>
+  A device independent bitmap stored in global memory as a <a
+    href="http://msdn.microsoft.com/en-us/library/dd183375%28v=vs.85%29.aspx"
+  >BITMAPINFO</a> structure followed by the bitmap's bits.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UDIBViewer.TDIBViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  CF_ENHMETAFILE
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_ENHMETAFILE (14)
+</p>
+
+<p>
+  A handle to an enhanced metafile (HENHMETAFILE). Stored on clipboard as a GDI
+  handle.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UMetafileViewer.TMetafileViewer (primary viewer)
+  </li>
+</ul>
+
+<h1>
+  CF_HDROP
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_HDROP (15)
+</p>
+
+<p>
+  A handle of type HDROP that identifies a list of files in global memory. Read
+  the file list using the <a
+    href="http://msdn.microsoft.com/en-us/library/bb776408%28VS.85%29.aspx"
+  >DragQueryFile</a> function.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UHDROPViewer.THDROPViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  CF_LOCALE
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_LOCALE (16)
+</p>
+
+<p>
+  The data is a handle to the locale identifier associated with text in the
+  clipboard. It is stored in global memory as a pointer to a <a
+    href="http://msdn.microsoft.com/en-us/library/cc233968.aspx"
+  >LCID</a> structure.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    ULocaleViewer.TLocaleViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  CF_METAFILEPICT
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_METAFILEPICT (3)
+</p>
+
+<p>
+  A handle to a metafile picture format as defined by the <a
+    href="http://msdn.microsoft.com/en-us/library/ms649017%28v=vs.85%29.aspx"
+  >METAFILEPICT</a> structure.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UMetafileViewer.TMetafileViewer (primary viewer)
+  </li>
+</ul>
+
+<h1>
+  CF_OEMTEXT
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_OEMTEXT (7)
+</p>
+
+<p>
+  Text format containing characters in the OEM character set. Each line ends
+  with CRLF.
+</p>
+
+<p>
+  Stored in global memory as a zero terminated ANSI string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UTextViewer.TOEMTextViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  CF_TEXT
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_TEXT (1)
+</p>
+
+<p>
+  Text format containing ANSI characters. Each line ends with CRLF.
+</p>
+
+<p>
+  Stored in global memory as a zero terminated ANSI string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UTextViewer.TAnsiTextViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  CF_UNICODETEXT
+</h1>
+
+<p>
+  <a
+    href="http://msdn.microsoft.com/en-us/library/ff729168%28v=vs.85%29.aspx"
+  >Standard Format</a>: CF_UNICODETEXT (13)
+</p>
+
+<p>
+  Text format containing Unicode characters. Each line ends with WideChar CRLF.
+</p>
+
+<p>
+  Stored in global memory as a WideChar zero terminated Unicode string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UTextViewer.TUnicodeTextViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  FileGroupDescriptor
+</h1>
+
+<p>
+  Custom format: CF_FILEGROUPDESCRIPTORA
+</p>
+
+<p>
+  Provides a description of a group of files.
+</p>
+
+<p>
+  Stored in global memory as an ANSI
+  <a
+    href="http://msdn.microsoft.com/en-us/library/bb773290%28v=vs.85%29.aspx"
+  >FILEGROUPDESCRIPTORA</a> structure which comprises a count of the number of
+  files in the group followed by the required number of <a
+    href="http://msdn.microsoft.com/en-us/library/bb773288%28v=vs.85%29.aspx"
+  >FILEDESCRIPTORA</a> structures.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UFileGroupDescViewer.TFileGroupDescViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  FileGroupDescriptorW
+</h1>
+
+<p>
+  Custom format: CF_FILEGROUPDESCRIPTORW
+</p>
+
+<p>
+  Provides a description of a group of files.
+</p>
+
+<p>
+  Stored in global memory as a Unicode
+  <a
+    href="http://msdn.microsoft.com/en-us/library/bb773290%28v=vs.85%29.aspx"
+  >FILEGROUPDESCRIPTORW</a> structure which comprises a count of the number of
+  files in the group followed by the required number of <a
+    href="http://msdn.microsoft.com/en-us/library/bb773288%28v=vs.85%29.aspx"
+  >FILEDESCRIPTORW</a> structures.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UFileGroupDescViewer.TFileGroupDescViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  FileName
+</h1>
+
+<p>
+  Custom format: CF_FILENAMEA
+</p>
+
+<p>
+  Defines a file name as ANSI text. Default code page is assumed.
+</p>
+
+<p>
+  Stored in global memory as a zero terminated ANSI string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UFileNameViewer.TAnsiFileNameViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TAnsiTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  FileNameW
+</h1>
+
+<p>
+  Custom format: CF_FILENAMEW
+</p>
+
+<p>
+  Defines a file name as Unicode text.
+</p>
+
+<p>
+  Stored in global memory as a WideChar zero terminated Unicode string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UFileNameViewer.TUnicodeFileNameViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TUnicodeTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  HTML Format
+</h1>
+
+<p>
+  Custom format: <a
+    href="http://msdn.microsoft.com/en-us/library/aa767917%28v=vs.85%29.aspx"
+  >CF_HTML</a>
+</p>
+
+<p>
+  Defines a fragment of raw HTML text and its context. The fragment comprises
+  a header stored as ASCII text followed by content as UTF-8 text. Since UTF-8
+  format and ASCII format are indentical for character codes up to 127, the data
+  is treaded as UTF-8.
+</p>
+
+<p>
+  Stored in global memory as zero terminated UTF-8 text.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UHTMLClipViewer.THTMLClipViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TUTF8TextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  HTML (HyperText Markup Language)
+</h1>
+
+<p>
+  Custom format: CF_HYPERTEXT
+</p>
+
+<p>
+  Contains a complete HTML document. Appears to be stored as ANSI text (default
+  code page assumed), even if CONTENT-TYPE meta tag header says UTF-8. This code
+  makes assumption of use of default ANSI code page.
+</p>
+
+<p>
+  Stored in global memory as zero terminated ANSI (see above).
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UHTMLDocViewer.THyperTextViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TAnsiTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  Link Source Descriptor
+</h1>
+
+<p>
+  Custom format: CF_LINKSRCDESCRIPTOR.
+</p>
+
+<p>
+  Provides user interface information during data transfer operations. See also
+  &quot;Object Descriptor&quot;.
+</p>
+
+<p>
+  Stores required data in global memory as a <a
+    href="http://msdn.microsoft.com/en-us/library/ms683735%28VS.85%29.aspx"
+  >OBJECTDESCRIPTOR</a> structure.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UObjDescViewer.TObjDescViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  Object Descriptor
+</h1>
+
+<p>
+  Custom format: CF_OBJECTDESCRIPTOR.
+</p>
+
+<p>
+  Provides user interface information during data transfer operations. See also
+  &quot;Link Source Descriptor&quot;.
+</p>
+
+<p>
+  Stores required data in global memory as a <a
+    href="http://msdn.microsoft.com/en-us/library/ms683735%28VS.85%29.aspx"
+  >OBJECTDESCRIPTOR</a> structure.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UObjDescViewer.TObjDescViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  Rich Text Format
+</h1>
+
+<p>
+  Custom Format: CF_RTF
+</p>
+
+<p>
+  Stores rich text code as zero terminated ASCII text in global memory.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    URTFViewer.TRTFViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TASCIITextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  Rich Text Format Without Objects
+</h1>
+
+<p>
+  Custom Format: CF_RTFNOOBJS
+</p>
+
+<p>
+  As CF_RTF but code does not include any embedded objects. Stores rich text
+  code as zero terminated ASCII text in global memory.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    URTFViewer.TRTFViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TASCIITextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  RTF As Text
+</h1>
+
+<p>
+  Custom format: CF_RTFASTEXT
+</p>
+
+<p>
+  Identical format to CF_RTF (zero terminated ASCII text in global memory) but
+  designed for displaying RTF code instead of formatted text.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UTextViewer.TASCIITextViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  Shell IDList Array
+</h1>
+
+<p>
+  Custom format: CF_IDLIST
+</p>
+
+<p>
+  This format is used when transferring the locations of one or more existing
+  namespace objects. It is used in much the same way as CF_HDROP, but it
+  contains PIDLs instead of file system paths.
+</p>
+
+<p>
+  The data is stored in global memory as a <a
+    href="http://msdn.microsoft.com/en-us/library/bb773212%28v=VS.85%29.aspx"
+  >CIDA</a> structure along with a number of <a
+    href="http://msdn.microsoft.com/en-us/library/bb773321%28v=VS.85%29.aspx"
+  >ITEMIDLIST</a> structures. Full details are on MSDN under the <a
+    href="http://tinyurl.com/3yx4o2l"
+  >CFSTR_SHELLIDLIST</a> constant.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UIDListViewer.TIDListViewer (primary viewer)
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  text/html
+</h1>
+
+<p>
+  Custom format: CF_MIME_HTML
+</p>
+
+<p>
+  Contains a fragment of an HTML document, including all necessary opening and
+  closing tags.
+</p>
+
+<p>
+  Stored in global memory as WideChar zero terminated Unicode text.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UHTMLDocViewer.TMIMEHTMLViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TUnicodeTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  text/_moz_htmlcontext
+</h1>
+
+<p>
+  Custom format: CF_MIME_MOZHTMLCONTEXT
+</p>
+
+<p>
+  Contains context of HTML currently on clipboard in text/html format. This
+  context is the HTML of the branch of the DOM containing HTML in text/html.
+  The context comprises only HTML tags: there is no text.
+<p>
+
+<p>
+  Stored in global memory as WideChar zero terminated Unicode text.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UTextViewer.TUnicodeTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  UniformResourceLocator
+</h1>
+
+<p>
+  Custom format: CF_INETURLA
+</p>
+
+<p>
+  Defines a URL as ASCII text. ASCII is assumed since properly URL encoded URLs
+  should be ASCII.
+</p>
+
+<p>
+  Stored in global memory as a zero terminated ASCII string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UURLViewer.TAnsiURLViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TASCIITextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+<h1>
+  UniformResourceLocatorW
+</h1>
+
+<p>
+  Custom format: CF_INETURLW
+</p>
+
+<p>
+  Defines a URL as Unicode text.
+</p>
+
+<p>
+  Stored in global memory as a WideChar zero terminated Unicode string.
+</p>
+
+<p>
+  CFS supports using:
+</p>
+
+<ul>
+  <li>
+    UURLViewer.TUnicodeURLViewer (primary viewer)
+  </li>
+  <li>
+    UTextViewer.TUnicodeTextViewer
+  </li>
+  <li>
+    UBinaryViewer.TBinaryViewer
+  </li>
+</ul>
+
+</body>
+
+</html>
