@@ -25,7 +25,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -100,7 +100,11 @@ begin
   Assert(Name <> '',                                       // ** do not localise
     'TBaseForm.CreateParams: Name is empty string');
   WindowClassName := 'DelphiDabbler.CFS.' + Name;
-  StrLCopy(Params.WinClassName, PChar(WindowClassName), 62);
+  StrLCopy(
+    Params.WinClassName,
+    PChar(WindowClassName),
+    SizeOf(Params.WinClassName) div SizeOf(Char) - 1
+  );
 end;
 
 procedure TBaseForm.FormCreate(Sender: TObject);
