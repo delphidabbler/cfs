@@ -19,7 +19,8 @@
 @rem   DELPHIDABLIBD2010 to be set to the install directory of the required
 @rem     DelphiDabbler components on Delphi 2010.
 @rem   INNOSETUP to be set to Unicode Inno Setup install directory.
-@rem   VIED to be set to Version Information Editor install directory.
+@rem   VIEDROOT to be set to Version Information Editor install directory.
+@rem   HHCROOT to be set to the HTML Help Compiler install directory.
 @rem
 @rem Switches: exactly one of the following must be provided
 @rem   all - build everything
@@ -175,7 +176,7 @@ set BRCC32Exe="%DELPHI2010%\Bin\BRCC32.exe"
 rem Inno Setup command line compiler
 set ISCCExe="%INNOSETUP%\ISCC.exe"
 rem Microsoft HTML Workshop - assumed to be on the path
-set HHCExe=HHC.exe
+set HHCExe="%HHCROOT%\HHC.exe"
 rem DelphiDabbler Version Information Editor - assumed to be on the path
 set VIEdExe="%VIEDROOT%\VIEd.exe"
 
