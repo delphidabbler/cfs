@@ -1,7 +1,7 @@
 Copyright & Licensing
 =====================
 
-See the file License.txt included with this distribution for licensing
+See the file `License.txt` included with this distribution for licensing
 information. The license is also displayed by the installer.
 
 
@@ -10,41 +10,41 @@ Installing the program
 
 Note: You can install Clipboard Format Spy v4 alongside earlier versions. If you
 have an earlier version and wish to uninstall it you should do this before
-installing the new version. Use the Add / Remove Programs applet to remove the
-old program.
+installing the new version. Use the "Programs and Features" (a.k.a "Add / Remove
+Programs") applet to remove the old program.
 
 1.  The program is distributed in a zip archive which contains two files –
-    ReadMe.txt (this file) and CFS-Setup-x.x.x.exe, where x.x.x. is the
+    `ReadMe.txt` (this file) and `CFS-Setup-x.x.x.exe`, where "x.x.x". is the
     program's version number. Extract both files from the archive.
 
-2.  ReadMe.txt contains installation instructions and other relevant
+2.  `ReadMe.txt` contains installation instructions and other relevant
     information. You should read this file before proceeding.
 
-3.  CFS-Setup-x.x.x.exe is the installation program. Double-click
-    CFS-Setup-x.x.x.exe. The installer is a standard wizard style Windows
+3.  `CFS-Setup-x.x.x.exe` is the installation program. Double-click
+    `CFS-Setup-x.x.x.exe`. The installer is a standard wizard style Windows
     installer. Follow the instructions in the wizard. You must accept the
     program's license to proceed. Once the license is accepted you can configure
     the installation directory and the program group name. Once the installation
-    has completed you have the option to display ReadMe.txt and to start the
+    has completed you have the option to display `ReadMe.txt` and to start the
     program.
 
-    NOTE: The installer requires admininstrator privileges. Windows Vista and
+    NOTE: The installer requires administrator privileges. Windows Vista and
     later will request elevation and, if necessary an administrator password.
 
 
 Removing the program
 ====================
 
-1.  Start the Windows Control Panel and select Add / Remove Programs (a.k.a.
-    Programs and Features on Windows Vista).
+1.  Start the Windows Control Panel and select "Programs and Features" (aka.
+    "Add / Remove Programs").
 
-2.  Select DelphiDabbler Clipboard Format Spy v4.x.x, where x.x is the minor
-    version number, and click the Remove button.
+2.  Select "DelphiDabbler Clipboard Format Spy v4.x.x", where "x.x" is the minor
+    version number, and click the _Remove_ button.
 
 3.  Once you have confirmed this action the program will now be uninstalled.
     When the process is complete a message will be displayed.
 
-    NOTE: The uninstaller requires admininstrator privileges. Windows Vista and
+    NOTE: The uninstaller requires administrator privileges. Windows Vista and
     later will request elevation and, if necessary an administrator password.
 
 
@@ -62,9 +62,12 @@ Further information
 ===================
 
 Further information about the program can be found at
-http://www.delphidabbler.com/cfs.
+http://www.delphidabbler.com/software/cfs.
 
 --------------------------------------------------------------------------------
+
 $Rev$
+
 $Date$
+
 --------------------------------------------------------------------------------
