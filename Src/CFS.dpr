@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 1997-2010 Peter
+ * Portions created by the Initial Developer are Copyright (C) 1997-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s):
@@ -78,7 +78,6 @@ uses
   UHTMLClip in 'UHTMLClip.pas',
   UHTMLClipViewer in 'UHTMLClipViewer.pas',
   UHTMLDocViewer in 'UHTMLDocViewer.pas',
-  UHTMLHelp in 'UHTMLHelp.pas',
   UIDListViewer in 'UIDListViewer.pas',
   UIntfObjects in 'UIntfObjects.pas',
   ULocale in 'ULocale.pas',

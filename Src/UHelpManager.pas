@@ -4,9 +4,6 @@
  * Implements static class that manages the Clipboard Format Spy HTML Help
  * system.
  *
- * v1.0 of 18 Mar 2008  - Original version.
- *
- *
  * ***** BEGIN LICENSE BLOCK *****
  *
  * Version: MPL 1.1
@@ -24,7 +21,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * ***** END LICENSE BLOCK *****
@@ -43,6 +40,37 @@ uses
 
 
 type
+
+  ///  <summary>Structure used to specify one or more ALink names or KLink
+  ///  keywords to be searched for.</summary>
+  ///  <remarks>The LPCTSTR fields behave strangely when using the Unicode API.
+  ///  In this case LPCTSTR is defined as PWideChar, but casting a Unicode
+  ///  string to a PChar (=PWideChar) causes HTML Help to see only the first
+  ///  character of the keyword, implying HTML Help is treating the string an
+  ///  ANSI string. To get this to work a Unicode Delphi string must first be
+  ///  cast to an ANSI string and then to a pointer before assiging to the
+  ///  LPCTSTR valued field.</remarks>
+  THHAKLink = packed record
+    ///  <summary>Size of record in bytes.</summary>
+    cbStruct: Integer;
+    ///  <summary>Reserved. Must be False.</summary>
+    fReserved: BOOL;
+    ///  <summary>Semi-colon separated keywords.</summary>
+    pszKeywords: LPCTSTR;
+    ///  <summary>URL to jump to if none of the keywords are found (may be nil).
+    ///  </summary>
+    pszUrl: LPCTSTR;
+    ///  <summary>Text to be displayed in a message box on failure (may be nil).
+    ///  </summary>
+    pszMsgText: LPCTSTR;
+    ///  <summary>Title of any failure message box.</summary>
+    pszMsgTitle: LPCTSTR;
+    ///  <summary>Name of window where pszUrl is to be displayed.</summary>
+    pszWindow: LPCTSTR;
+    ///  <summary>Flag determining if help index is displayed if keyword lookup
+    ///  fails.</summary>
+    fIndexOnFail: BOOL;
+  end;
 
   {
   THelpManager:
@@ -101,9 +129,7 @@ implementation
 
 uses
   // Delphi
-  SysUtils,
-  // Project
-  UHTMLHelp;
+  SysUtils;
 
 
 { THelpManager }

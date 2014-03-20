@@ -135,7 +135,6 @@
 			<DCCReference Include="UHTMLClip.pas"/>
 			<DCCReference Include="UHTMLClipViewer.pas"/>
 			<DCCReference Include="UHTMLDocViewer.pas"/>
-			<DCCReference Include="UHTMLHelp.pas"/>
 			<DCCReference Include="UIDListViewer.pas"/>
 			<DCCReference Include="UIntfObjects.pas"/>
 			<DCCReference Include="ULocale.pas"/>
