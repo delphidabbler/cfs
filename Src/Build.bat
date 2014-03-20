@@ -123,6 +123,7 @@ if not defined DELPHI2010 goto BadDELPHI2010Env
 if not defined DELPHIDABLIBD2010 goto BadDELPHIDABLIBD2010Env
 if not defined INNOSETUP goto BadINNOSETUPEnv
 if not defined VIEDROOT goto BadVIEDROOTEnv
+if not defined HHCROOT goto BadHHCROOTEnv
 echo Done.
 echo.
 goto SetEnvVars
@@ -143,6 +144,10 @@ goto Error
 
 :BadVIEDROOTEnv
 set ErrorMsg=VIEDROOT Environment varibale not defined
+goto Error
+
+:BadHHCROOTEnv
+set ErrorMsg=HHCROOT Environment varibale not defined
 goto Error
 
 rem ----------------------------------------------------------------------------
