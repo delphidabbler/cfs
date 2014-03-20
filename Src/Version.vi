@@ -25,7 +25,7 @@
 ; The Initial Developer of the Original Code is Peter Johnson
 ; (http://www.delphidabbler.com/).
 ;
-; Portions created by the Initial Developer are Copyright (C) 2008-2011 Peter
+; Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
 ; Johnson. All Rights Reserved.
 ;
 ; Contributor(s): None
@@ -34,8 +34,8 @@
 ;
 ;
 [Fixed File Info]
-File Version #=4, 1, 0, 13
-Product Version #=4, 1, 0, 0
+File Version #=4, 1, 1, 14
+Product Version #=4, 1, 1, 0
 File OS=1
 File Type=1
 File Sub-Type=0
