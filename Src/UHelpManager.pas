@@ -129,7 +129,9 @@ implementation
 
 uses
   // Delphi
-  SysUtils;
+  SysUtils,
+  // Project
+  UUtils;
 
 
 { THelpManager }
@@ -181,16 +183,15 @@ class procedure THelpManager.ShowALink(const AKeyword: string;
     @param ErrTopic [in] Name of topic to display if keyword not found.
   }
 var
-  ALink: THHAKLink;   // structure containing details of A-Link
+  ALink: THHAKLink; // structure containing details of A-Link
 begin
-  // Fill in A link structure
-  ZeroMemory(@ALink, SizeOf(ALink));
-  ALink.cbStruct := SizeOf(ALink);      // size of structure
-  ALink.fIndexOnFail := False;
-  ALink.pszUrl := PChar(TopicURL(ErrTopic));
-  ALink.pszKeywords := PChar(AKeyword); // required keyword
-  // Display help
-  DoAppHelp(HH_ALINK_LOOKUP, '', LongWord(@ALink));
+  ZeroMemory(@ALink, SizeOf(THHAKLink));
+  ALink.cbStruct := SizeOf(THHAKLink);
+  // See remarks for THHAKLink for explanation of the following string casts.
+  ALink.pszKeywords := Pointer(UnicodeStringToASCIIString(AKeyword));
+  ALink.fIndexOnFail := True;
+  // We pass "pointer" to ALink as command's data
+  DoAppHelp(HH_ALINK_LOOKUP, '', DWORD(@ALink));
 end;
 
 class procedure THelpManager.ShowTopic(Topic: string);
