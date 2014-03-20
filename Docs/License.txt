@@ -31,7 +31,7 @@ DelphiDabbler Clipboard Format Spy you are consenting to be bound by the
 agreement. If you do not agree to the terms and conditions of this agreement do
 not install or use any part of DelphiDabbler Clipboard Format Spy.
 
-DelphiDabbler Clipboard Format Spy is copyright © 1997-2011 by Peter D Johnson,
+DelphiDabbler Clipboard Format Spy is copyright © 1997-2014 by Peter D Johnson,
 http://www.delphidabbler.com.
 
 
