@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -185,6 +185,7 @@ begin
   fWBController.OnMenuPopup := PopupMenuHandler;
   fWBController.OnNavigate := NavigationHandler;
   fWBController.OnUpdateCSS := UpdateCSSHandler;
+  fWBController.Silent := True; // inhibit JScript error dialogues
 end;
 
 destructor THTMLViewerFrame.Destroy;

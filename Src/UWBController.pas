@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -166,6 +166,12 @@ type
       {Executes a command on the web browser.
         @param CmdID [in] ID of command to the executed.
       }
+    function GetSilent: Boolean;
+      {Read accessor for Silent property.
+      }
+    procedure SetSilent(const Value: Boolean);
+      {Write accessor for Silent property.
+      }
   protected
     procedure WaitForDocToLoad;
       {Waits for a document to complete loading.
@@ -280,6 +286,9 @@ type
     procedure ClearSelection;
       {Clears any selected text in browser control.
       }
+    property Silent: Boolean read GetSilent write SetSilent;
+      {Determines if web browser control is "silent", i.e. doesn't display
+      error diaogues etc.}
     property OnUpdateCSS: TWBUpdateCSSEvent
       read fOnUpdateCSS write fOnUpdateCSS;
       {Event triggered when browser needs default CSS. Provides opportunity to
@@ -489,6 +498,13 @@ begin
     Result := '';
 end;
 
+function TWBController.GetSilent: Boolean;
+  {Read accessor for Silent property.
+  }
+begin
+  Result := fWebBrowser.Silent;
+end;
+
 procedure TWBController.InternalLoadDocumentFromStream(
   const Stream: TStream);
   {Updates the web browser's current document from HTML read from stream.
@@ -624,6 +640,13 @@ begin
     raise EWBController.Create(sOleObjectError);
   // Register's given client site as web browser's OLE container
   OleObj.SetClientSite(Site);
+end;
+
+procedure TWBController.SetSilent(const Value: Boolean);
+  {Write accessor for Silent property.
+  }
+begin
+  fWebBrowser.Silent := Value;
 end;
 
 function TWBController.ShowContextMenu(const dwID: DWORD;
