@@ -23,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008-2011 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
@@ -79,6 +79,12 @@ function FileAge(const FileName: string): Integer;
     @param FileName [in] Name of file.
     @return Required OS time stamp or -1 if file does not exist or is a
       directory.
+  }
+
+function UnicodeStringToASCIIString(const S: string): RawByteString;
+  {Converts the given Unicode string into an ASCII string.
+    @param S [in] Unicode string to be converted.
+    @return Required ASCII string stored in a raw byte string.
   }
 
 
@@ -190,6 +196,33 @@ begin
   begin
     Result := FileGetDate(FH);
     FileClose(FH);
+  end;
+end;
+
+function UnicodeStringToASCIIString(const S: string): RawByteString;
+  {Converts the given Unicode string into an ASCII string.
+    @param S [in] Unicode string to be converted.
+    @return Required ASCII string stored in a raw byte string.
+  }
+const
+  ASCIICodePage = 20127;
+var
+  Bytes: TBytes;
+  Encoding: TEncoding;
+begin
+  Encoding := TMBCSEncoding.Create(ASCIICodePage);
+  try
+    Bytes := Encoding.GetBytes(S);
+    SetLength(Result, Length(Bytes));
+    if Length(Bytes) > 0 then
+    begin
+      Move(Bytes[0], Result[1], Length(Bytes));
+      if Result[Length(Result)] = #0 then
+        SetLength(Result, Length(Result) - 1);
+      SetCodePage(Result, ASCIICodePage, False);
+    end;
+  finally
+    Encoding.Free;
   end;
 end;
 
