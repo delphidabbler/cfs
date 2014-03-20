@@ -1,7 +1,7 @@
 @rem ---------------------------------------------------------------------------
 @rem Script used to build the DelphiDabbler CLipboard Format Spy project
 @rem
-@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008-2010
+@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008-2014
 @rem
 @rem $Rev$
 @rem $Date$
@@ -19,6 +19,7 @@
 @rem   DELPHIDABLIBD2010 to be set to the install directory of the required
 @rem     DelphiDabbler components on Delphi 2010.
 @rem   INNOSETUP to be set to Unicode Inno Setup install directory.
+@rem   VIED to be set to Version Information Editor install directory.
 @rem
 @rem Switches: exactly one of the following must be provided
 @rem   all - build everything
@@ -120,6 +121,7 @@ echo Checking predefined environment environment variables
 if not defined DELPHI2010 goto BadDELPHI2010Env
 if not defined DELPHIDABLIBD2010 goto BadDELPHIDABLIBD2010Env
 if not defined INNOSETUP goto BadINNOSETUPEnv
+if not defined VIEDROOT goto BadVIEDROOTEnv
 echo Done.
 echo.
 goto SetEnvVars
@@ -138,6 +140,9 @@ goto Error
 set ErrorMsg=INNOSETUP Environment varibale not defined
 goto Error
 
+:BadVIEDROOTEnv
+set ErrorMsg=VIEDROOT Environment varibale not defined
+goto Error
 
 rem ----------------------------------------------------------------------------
 rem Set up required environment variables
@@ -172,7 +177,7 @@ set ISCCExe="%INNOSETUP%\ISCC.exe"
 rem Microsoft HTML Workshop - assumed to be on the path
 set HHCExe=HHC.exe
 rem DelphiDabbler Version Information Editor - assumed to be on the path
-set VIEdExe=VIEd.exe
+set VIEdExe="%VIEDROOT%\VIEd.exe"
 
 echo Done.
 echo.
