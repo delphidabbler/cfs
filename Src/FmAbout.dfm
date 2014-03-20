@@ -8,6 +8,8 @@ inherited AboutBox: TAboutBox
   ClientWidth = 293
   OldCreateOrder = True
   Position = poOwnerFormCenter
+  ExplicitWidth = 299
+  ExplicitHeight = 211
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMain: TPanel
@@ -56,13 +58,13 @@ inherited AboutBox: TAboutBox
     object lblProductName: TLabel
       Left = 48
       Top = 8
-      Width = 112
+      Width = 100
       Height = 16
       Caption = 'lblProductName'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = 'MS Sans Serif'
+      Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
       IsControl = True
@@ -78,7 +80,7 @@ inherited AboutBox: TAboutBox
     object lblCopyright: TLabel
       Left = 8
       Top = 56
-      Width = 54
+      Width = 57
       Height = 13
       Caption = 'lblCopyright'
       IsControl = True
@@ -86,7 +88,7 @@ inherited AboutBox: TAboutBox
     object lblComments: TLabel
       Left = 8
       Top = 80
-      Width = 226
+      Width = 230
       Height = 13
       Caption = 'This software is released under an open source '
       IsControl = True
@@ -94,15 +96,20 @@ inherited AboutBox: TAboutBox
     object hlblWebsite: TPJHotLabel
       Left = 157
       Top = 113
-      Width = 113
+      Width = 115
       Height = 13
       Caption = 'www.delphidabbler.com'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Name = 'Tahoma'
       Font.Style = [fsUnderline]
       CaptionIsURL = False
+      VisitedFont.Charset = DEFAULT_CHARSET
+      VisitedFont.Color = clBlue
+      VisitedFont.Height = -11
+      VisitedFont.Name = 'Tahoma'
+      VisitedFont.Style = [fsUnderline]
       HighlightFont.Charset = DEFAULT_CHARSET
       HighlightFont.Color = clRed
       HighlightFont.Height = -11
@@ -111,24 +118,24 @@ inherited AboutBox: TAboutBox
       URL = 'http://www.delphidabbler.com/'
     end
     object lblLicense: TLabel
-      Left = 234
-      Top = 80
-      Width = 33
+      Left = 8
+      Top = 95
+      Width = 32
       Height = 13
       Cursor = crHandPoint
       Caption = 'license'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGreen
       Font.Height = -11
-      Font.Name = 'MS Sans Serif'
+      Font.Name = 'Tahoma'
       Font.Style = [fsUnderline]
       ParentFont = False
       OnClick = lblLicenseClick
     end
     object lblCommentsEnd: TLabel
-      Left = 267
-      Top = 80
-      Width = 3
+      Left = 41
+      Top = 95
+      Width = 4
       Height = 13
       Caption = '.'
     end

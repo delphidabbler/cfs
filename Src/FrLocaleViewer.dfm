@@ -23,21 +23,21 @@ object LocaleViewerFrame: TLocaleViewerFrame
       object lblLangID: TLabel
         Left = 8
         Top = 36
-        Width = 91
+        Width = 94
         Height = 13
         Caption = 'Language Identifier'
       end
       object lblLangName: TLabel
         Left = 8
         Top = 60
-        Width = 79
+        Width = 77
         Height = 13
         Caption = 'Language Name'
       end
       object lblEngLangName: TLabel
         Left = 8
         Top = 84
-        Width = 133
+        Width = 132
         Height = 13
         Caption = 'Language Name (in English)'
       end
@@ -51,28 +51,28 @@ object LocaleViewerFrame: TLocaleViewerFrame
       object lblCountryCode: TLabel
         Left = 8
         Top = 156
-        Width = 64
+        Width = 67
         Height = 13
         Caption = 'Country Code'
       end
       object lblCountryName: TLabel
         Left = 8
         Top = 180
-        Width = 67
+        Width = 69
         Height = 13
         Caption = 'Country Name'
       end
       object lblEngCountryName: TLabel
         Left = 8
         Top = 204
-        Width = 121
+        Width = 124
         Height = 13
         Caption = 'Country Name (in English)'
       end
       object lblAbbrevCountryName: TLabel
         Left = 8
         Top = 228
-        Width = 127
+        Width = 131
         Height = 13
         Caption = 'Abbreviated Country Name'
       end
@@ -86,26 +86,26 @@ object LocaleViewerFrame: TLocaleViewerFrame
       object lblLanguage: TLabel
         Left = 8
         Top = 8
-        Width = 124
+        Width = 126
         Height = 13
         Caption = 'Language Information'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
       end
       object lblCountry: TLabel
         Left = 8
         Top = 136
-        Width = 111
+        Width = 116
         Height = 13
         Caption = 'Country Information'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
       end
