@@ -6,18 +6,11 @@
  * discover what frame to display. It also manages viewer help by searching for
  * an ALink keyword that is the same as the name of the frame.
  *
- * This unit requires the following DelphiDabbler component:
- *   - TPJUserWdwState Release 5.3 or later
+ * This unit requires the DelphiDabbler TPJUserWdwState component Release 5.3 or
+ * later.
  *
- * v1.0 of 24 Mar 2008  - Original version.
- * v1.1 of 03 May 2008  - Bug fix. Window wasn't saving or restoring its
- *                        settings. Added missing TPJCBViewer component.
- *                      - Adjusted button position to suit Vista window border.
- * v1.2 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
- *                        New base class(es) used to ensure form is parented by
- *                        owning control and to apply Delphi Alt key bug fix.
- *                      - Gave help button an accelerator key (H).
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -36,7 +29,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None.

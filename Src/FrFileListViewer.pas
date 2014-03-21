@@ -4,10 +4,8 @@
  * Implements a viewer frame that displays a list of files provided in a
  * TFileList object.
  *
- * v1.0 of 10 Mar 2008  - Original version.
- * v1.1 of 04 May 2008  - Changed caption of 1st list view to "Files / Folders"
- *                        from "Dropped Files".
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -26,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None

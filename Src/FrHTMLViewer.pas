@@ -3,8 +3,8 @@
  *
  * Implements a viewer frame that displays complete and partial HTML documents.
  *
- * v1.0 of 11 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *

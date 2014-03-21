@@ -4,11 +4,11 @@
  * Creates and manages a status bar that can display messages on the left and
  * a link to the DelphiDabbler website on the right.
  *
- * This unit requires the following DelphiDabbler components:
- *   - TPJHotLabel Release 2.1 or later.
+ * This unit requires the DelphiDabbler TPJHotLabel component Release 2.1 or
+ * later.
  *
- * v1.0 of 24 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -27,7 +27,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None

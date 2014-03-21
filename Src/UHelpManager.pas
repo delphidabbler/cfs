@@ -4,6 +4,9 @@
  * Implements static class that manages the Clipboard Format Spy HTML Help
  * system.
  *
+ * $Rev$
+ * $Date$
+ *
  * ***** BEGIN LICENSE BLOCK *****
  *
  * Version: MPL 1.1

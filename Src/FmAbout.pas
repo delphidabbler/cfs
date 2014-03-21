@@ -7,12 +7,8 @@
  *   - TPJVersionInfo Release 3.1.1 or later.
  *   - TPJHotLabel Release 2.1 or later.
  *
- * v1.0 of 08 Mar 2008  - Original version.
- * v1.1 of 19 Jun 2008  - Changed to descend from TBaseDlgForm instead of TForm.
- *                        New base class(es) used to ensure form is parented by
- *                        owning control and to apply Delphi Alt key bug fix.
- *                      - Enabled dialog to close when ESC key pressed.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -31,7 +27,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None.

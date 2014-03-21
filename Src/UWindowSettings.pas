@@ -3,11 +3,11 @@
  *
  * Implements a static class that stores and retrieves window state settings.
  *
- * This unit requires the following DelphiDabbler components:
- *   - TPJUserWdwState Release 5.3 or later
+ * This unit requires the DelphiDabbler TPJUserWdwState component Release 5.3 or
+ * later.
  *
- * v1.0 of 09 Mar 2008  - Original version.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -26,7 +26,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None

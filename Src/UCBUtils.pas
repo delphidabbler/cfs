@@ -3,20 +3,8 @@
  *
  * Clipboard format utility functions.
  *
- * v1.0 of 07 Jul 1998  - Original version.
- * v1.1 of 07 Dec 1999  - Added CF_XXX format codes new to 32 bit Windows and
- *                        constants to hold number of formats.
- * v2.0 of 11 Mar 2008  - Renamed unit from CBUtils.pas to UCBUtils.pas
- *                      - Changed code that gets standard windows clipbaord
- *                        format names to return name of constant rather than
- *                        description. Also refactored this code.
- *                      - Added new routines:
- *                        - ClipboardOwnerExe: gets process that owns clipboard.
- *                        - ClearClipboard: clears all data from clipboard.
- *                        - IsDataInGlobalMemFormat: checks if clipboard data in
- *                          global memory.
- *                        - CanOpenClipboard: checks if clipboard can be opened.
- *
+ * $Rev$
+ * $Date$
  *
  * ***** BEGIN LICENSE BLOCK *****
  *
@@ -35,7 +23,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 1997-2008 Peter
+ * Portions created by the Initial Developer are Copyright (C) 1997-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s):

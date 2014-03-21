@@ -1,7 +1,7 @@
 {
  * UObjDescAdapter.pas
  *
- * Implements a cthat provides an alternative interface to Object descriptors
+ * Implements a that provides an alternative interface to Object descriptors
  * and Link Source descriptors.
  *
  * $Rev$
@@ -24,7 +24,7 @@
  * The Initial Developer of the Original Code is Peter Johnson
  * (http://www.delphidabbler.com/).
  *
- * Portions created by the Initial Developer are Copyright (C) 2008-2010 Peter
+ * Portions created by the Initial Developer are Copyright (C) 2008-2014 Peter
  * Johnson. All Rights Reserved.
  *
  * Contributor(s): None
