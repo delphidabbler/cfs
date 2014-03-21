@@ -14,16 +14,18 @@ echo Tidying
 echo ~~~~~~~
 echo.
 
-set SrcDir=..\Src
+cd ..
 
-echo Deleting *.~* from "%SrcDir%" and subfolders
-del /S %SrcDir%\*.~* 
+del /S *.~* 2>nul
+del /S ~* 2>nul
+del /S *.dsk 2>nul
+del /S *.local 2>nul
+del /S *.identcache 2>nul
+del /S *.tvsconfig 2>nul
+rem remove __history folders
+for /F "usebackq" %%i in (`dir /S /B /A:D __history*`) do rmdir /S /Q %%i
+
 echo.
-
-echo Deleting *.dpp from "%SrcDir%" and subfolders
-del /S %SrcDir%\*.ddp 
-echo.
-
 echo Done.
 
 endlocal
