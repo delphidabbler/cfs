@@ -34,59 +34,59 @@
 
 <html>
 <head>
-	<meta
-		HTTP-EQUIV="Content-Type"
-		Content="text-html; charset=Windows-1252"
-	>
-	<title>Object and Link Source Descriptor Viewer</title>
-	<link
-		rel="stylesheet"
-		href="../css/main.css"
-		type="text/css"
-	>
+  <meta
+    HTTP-EQUIV="Content-Type"
+    Content="text-html; charset=Windows-1252"
+  >
+  <title>Object and Link Source Descriptor Viewer</title>
+  <link
+    rel="stylesheet"
+    href="../css/main.css"
+    type="text/css"
+  >
 </head>
 <body>
-	<object
-		type="application/x-oleobject"
-		classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-		<param name="ALink Name" value="ObjDescViewerFrame">
-	</object>
-	<h1>
-		Object &amp; Link Source Descriptor Viewer
-	</h1>
-	<p>
-		This window displays information about a link source descriptor or an
-		object descriptor described by the &quot;Object Descriptor&quot; and
-		&quot;Link Source Descriptor&quot; clipboard formats. The following
-		information is displayed:
-	</p>
-	<ul>
-		<li>
-			CLSID &ndash; GUID representing the object or link source.
-		</li>
-		<li>
-			The draw aspect of the object or link source: DVASPECT_CONTENT,
-			DVASPECT_THUMBNAIL, DVASPECT_ICON, DVASPECT_DOCPRINT or a comment
-			that the source application did not draw the object.
-		</li>
-		<li>
-			The extent (size) of the object if specified.
-		</li>
-		<li>
-			Status flags in hex which are a bitmask of the Windows OLEMISC
-			enumeration.
-		</li>
-		<li>
-			Full user type name of the object or link source if provided.
-		</li>
-		<li>
-			Name that identifies the display name of the data source.
-		</li>
-	</ul>
-	<p>
-		There is a context menu that appears when any of the text boxes that
-		contain the provided information is right-clicked. This menu gives the
-		option to select and copy the text in CF_TEXT format.
-	</p>
+  <object
+    type="application/x-oleobject"
+    classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+    <param name="ALink Name" value="ObjDescViewerFrame">
+  </object>
+  <h1>
+    Object &amp; Link Source Descriptor Viewer
+  </h1>
+  <p>
+    This window displays information about a link source descriptor or an
+    object descriptor described by the &quot;Object Descriptor&quot; and
+    &quot;Link Source Descriptor&quot; clipboard formats. The following
+    information is displayed:
+  </p>
+  <ul>
+    <li>
+      CLSID &ndash; GUID representing the object or link source.
+    </li>
+    <li>
+      The draw aspect of the object or link source: DVASPECT_CONTENT,
+      DVASPECT_THUMBNAIL, DVASPECT_ICON, DVASPECT_DOCPRINT or a comment
+      that the source application did not draw the object.
+    </li>
+    <li>
+      The extent (size) of the object if specified.
+    </li>
+    <li>
+      Status flags in hex which are a bitmask of the Windows OLEMISC
+      enumeration.
+    </li>
+    <li>
+      Full user type name of the object or link source if provided.
+    </li>
+    <li>
+      Name that identifies the display name of the data source.
+    </li>
+  </ul>
+  <p>
+    There is a context menu that appears when any of the text boxes that
+    contain the provided information is right-clicked. This menu gives the
+    option to select and copy the text in CF_TEXT format.
+  </p>
 </body>
 </html>

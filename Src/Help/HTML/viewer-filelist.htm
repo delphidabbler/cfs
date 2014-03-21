@@ -34,58 +34,58 @@
 
 <html>
 <head>
-	<meta
-		HTTP-EQUIV="Content-Type"
-		Content="text-html; charset=Windows-1252"
-	>
-	<title>File List Viewer</title>
-	<link
-		rel="stylesheet"
-		href="../css/main.css"
-		type="text/css"
-	>
+  <meta
+    HTTP-EQUIV="Content-Type"
+    Content="text-html; charset=Windows-1252"
+  >
+  <title>File List Viewer</title>
+  <link
+    rel="stylesheet"
+    href="../css/main.css"
+    type="text/css"
+  >
 </head>
 <body>
-	<object
-		type="application/x-oleobject"
-		classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-		<param name="ALink Name" value="FileListViewerFrame">
-	</object>
-	<h1>
-		File List Viewer
-	</h1>
-	<p>
-		This window displays lists of files that have been provided via the
-		CF_HDROP and &quot;Shell IDList Array&quot; clipboard formats.
-	</p>
-	<p>
-		In the case of CF_HDROP the display lists files that have been copied
-		to the clipboard whilst for &quot;Shell IDList Array&quot; the display
-		shows both a root folder and a list of contained files. The display
-		distinguishes between files and folders &ndash; different icons are
-		used.  
-	</p>
-	<p>
-		Right clicking in the main window displays a popup menu. The items on
-		the menu depend on the context.
-	</p>
-	<ul>
-		<li>
-			A <em>Copy File List</em> menu item is always available. This causes
-			a list of files to be copied to the clipboard as text, with each
-			file or folder name separated by CRLF.
-		</li>
-		<li>
-			If a folder is right clicked then an <em>Explore</em> default menu
-			item is also provided. Clicking this item causes Explorer to be
-			opened with the folder selected.
-		</li>
-		<li>
-			When a file entry is right clicked the default option changes to
-			<em>Open</em> and selecting the option causes the program to attempt
-			to open the file in any associated application. If there is no such
-			application an error message is displayed.
-		</li>
-	</ul>
+  <object
+    type="application/x-oleobject"
+    classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+    <param name="ALink Name" value="FileListViewerFrame">
+  </object>
+  <h1>
+    File List Viewer
+  </h1>
+  <p>
+    This window displays lists of files that have been provided via the
+    CF_HDROP and &quot;Shell IDList Array&quot; clipboard formats.
+  </p>
+  <p>
+    In the case of CF_HDROP the display lists files that have been copied
+    to the clipboard whilst for &quot;Shell IDList Array&quot; the display
+    shows both a root folder and a list of contained files. The display
+    distinguishes between files and folders &ndash; different icons are
+    used.
+  </p>
+  <p>
+    Right clicking in the main window displays a popup menu. The items on
+    the menu depend on the context.
+  </p>
+  <ul>
+    <li>
+      A <em>Copy File List</em> menu item is always available. This causes
+      a list of files to be copied to the clipboard as text, with each
+      file or folder name separated by CRLF.
+    </li>
+    <li>
+      If a folder is right clicked then an <em>Explore</em> default menu
+      item is also provided. Clicking this item causes Explorer to be
+      opened with the folder selected.
+    </li>
+    <li>
+      When a file entry is right clicked the default option changes to
+      <em>Open</em> and selecting the option causes the program to attempt
+      to open the file in any associated application. If there is no such
+      application an error message is displayed.
+    </li>
+  </ul>
 </body>
 </html>

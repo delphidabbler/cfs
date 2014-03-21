@@ -34,57 +34,57 @@
 
 <html>
 <head>
-	<meta
-		HTTP-EQUIV="Content-Type"
-		Content="text-html; charset=Windows-1252"
-	>
-	<title>File Group Descriptor Viewer</title>
-	<link
-		rel="stylesheet"
-		href="../css/main.css"
-		type="text/css"
-	>
+  <meta
+    HTTP-EQUIV="Content-Type"
+    Content="text-html; charset=Windows-1252"
+  >
+  <title>File Group Descriptor Viewer</title>
+  <link
+    rel="stylesheet"
+    href="../css/main.css"
+    type="text/css"
+  >
 </head>
 <body>
-	<object
-		type="application/x-oleobject"
-		classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-		<param name="ALink Name" value="FileGroupDescViewerFrame">
-	</object>
-	<h1>
-		File Group Descriptor Viewer
-	</h1>
-	<p>
-		This window displays information about a group of (one or more) files
-		copied using the &quot;FileGroupDescriptor&quot; and
-		&quot;FileGroupDescriptorW&quot; clipboard formats. Supported
-		information types are:
-	</p>
-	<ul>
-		<li>
-			CLSID &ndash; a GUID identifying the file.
-		</li>
-		<li>
-			Size of file's icon and its co-ordinates on screen.
-		</li>
-		<li>
-			File attributes
-		</li>
-		<li>
-			Creation, last access and last modification times of the file.
-		</li>
-		<li>
-			Size of the file.
-		</li>
-	</ul>
-	<p>
-		Not all types of information may be provided. When absent the
-		information is omitted from the list.
-	</p>
-	<p>
-		A context menu is provided to enable a list of the file names in the 
-		group to be copied to the clipboard as CF_TEXT. Each file name is
-		separated by a CRLF pair.
-	</p>
+  <object
+    type="application/x-oleobject"
+    classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+    <param name="ALink Name" value="FileGroupDescViewerFrame">
+  </object>
+  <h1>
+    File Group Descriptor Viewer
+  </h1>
+  <p>
+    This window displays information about a group of (one or more) files
+    copied using the &quot;FileGroupDescriptor&quot; and
+    &quot;FileGroupDescriptorW&quot; clipboard formats. Supported
+    information types are:
+  </p>
+  <ul>
+    <li>
+      CLSID &ndash; a GUID identifying the file.
+    </li>
+    <li>
+      Size of file's icon and its co-ordinates on screen.
+    </li>
+    <li>
+      File attributes
+    </li>
+    <li>
+      Creation, last access and last modification times of the file.
+    </li>
+    <li>
+      Size of the file.
+    </li>
+  </ul>
+  <p>
+    Not all types of information may be provided. When absent the
+    information is omitted from the list.
+  </p>
+  <p>
+    A context menu is provided to enable a list of the file names in the
+    group to be copied to the clipboard as CF_TEXT. Each file name is
+    separated by a CRLF pair.
+  </p>
 </body>
 </html>
