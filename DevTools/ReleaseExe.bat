@@ -3,6 +3,9 @@
 @rem Format Spy.
 @rem
 @rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008-2014
+@rem
+@rem $Rev$
+@rem $Date$
 @rem ---------------------------------------------------------------------------
 
 @echo off

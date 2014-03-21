@@ -1,9 +1,10 @@
 @rem ---------------------------------------------------------------------------
 @rem Script used to delete Clipboard Format Spy's temp and backup source files
 @rem
-@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008
+@rem Copyright (C) Peter Johnson (www.delphidabbler.com), 2008-2014
 @rem
-@rem v1.0 of 02 Mar 2008 - First version.
+@rem $Rev$
+@rem $Date$
 @rem ---------------------------------------------------------------------------
 
 @echo off
