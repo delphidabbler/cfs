@@ -1,8 +1,0 @@
-{TODO : Add "text/_moz_htmlcontext" format and display using HTML viewer.}
-{TODO : Add "WorksRTF" format and display using RTF viewer.}
-{TODO : Change project to use OLE clipboard and IDataObject (and list TYMED in list view)}
-{DONE : Correct error in Version.vi - Uses <SPECIALBUILD> instead of <SHORTFNAME> for Internal Name}
-{DONE : Correct error in main.css - h1 style has font-weight spelled wrongly}
-{TODO : Add sort indicators to list view header}
-{TODO : Add help for standard and any other known format types}
-{DONE : Spurious line in Build.bat that sets MS SDK info}
